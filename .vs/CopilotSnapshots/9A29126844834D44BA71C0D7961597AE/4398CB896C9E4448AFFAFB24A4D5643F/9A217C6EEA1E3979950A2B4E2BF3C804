@@ -1,0 +1,26 @@
+﻿using System.Data;
+using OnlineQuizSystem.DAL.Repositories;
+
+namespace OnlineQuizSystem.BLL.Services
+{
+    public class QuizService
+    {
+        QuestionRepository repo = new QuestionRepository();
+
+        public int Difficulty = 2;
+
+        public DataRow GetQuestion()
+        {
+            return repo.GetRandom(Difficulty);
+        }
+
+        public void Update(bool correct)
+        {
+            if (correct) Difficulty++;
+            else Difficulty--;
+
+            if (Difficulty < 1) Difficulty = 1;
+            if (Difficulty > 3) Difficulty = 3;
+        }
+    }
+}
