@@ -1,0 +1,61 @@
+@page
+@model OnlineQuizSystem.Pages.Dashboard.IndexModel
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="glass-card" style="max-width: 1000px;">
+    <h2 class="card-title">Welcome, @Model.UserName!</h2>
+    <p class="card-subtitle">Select an action below to get started</p>
+
+    <div class="dashboard-grid">
+        <a asp-page="/Quiz/Take" style="text-decoration: none; color: inherit;">
+            <div class="dashboard-card">
+                <div class="dashboard-icon">🚀</div>
+                <h3 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 0.5rem;">Take a Quiz</h3>
+                <p style="color: var(--text-muted);">Start a new adaptive quiz session and test your knowledge.</p>
+            </div>
+        </a>
+
+        <a asp-page="/Results/Index" style="text-decoration: none; color: inherit;">
+            <div class="dashboard-card">
+                <div class="dashboard-icon">📊</div>
+                <h3 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 0.5rem;">My Results</h3>
+                <p style="color: var(--text-muted);">View your past performance and statistics.</p>
+            </div>
+        </a>
+
+        <a asp-page="/Dashboard/ManageTeachers" style="text-decoration: none; color: inherit;">
+            <div class="dashboard-card">
+                <div class="dashboard-icon">👨‍🏫</div>
+                <h3 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 0.5rem;">Manage Teachers</h3>
+                <p style="color: var(--text-muted);">Enroll or remove from different teachers.</p>
+            </div>
+        </a>
+
+        <a asp-page="/Dashboard/ManageSections" style="text-decoration: none; color: inherit;">
+            <div class="dashboard-card">
+                <div class="dashboard-icon">📚</div>
+                <h3 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 0.5rem;">Manage Sections</h3>
+                <p style="color: var(--text-muted);">Enroll in course sections offered by your teachers.</p>
+            </div>
+        </a>
+    </div>
+
+    @if (Model.EnrolledTeachers != null && Model.EnrolledTeachers.Rows.Count > 0)
+    {
+        <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid var(--border);">
+            <h3 style="font-size: 1.2rem; font-weight: 600; margin-bottom: 1rem;">Enrolled Teachers</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 1rem;">
+                @foreach (System.Data.DataRow teacher in Model.EnrolledTeachers.Rows)
+                {
+                    <div style="padding: 1rem; border: 1px solid var(--border); border-radius: 8px; text-align: center;">
+                        <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">👨‍🏫</div>
+                        <div style="font-weight: 500;">@teacher["Name"]</div>
+                        <div style="font-size: 0.85rem; color: var(--text-muted);">@teacher["Email"]</div>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+</div>

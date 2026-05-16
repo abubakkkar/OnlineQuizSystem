@@ -1,0 +1,56 @@
+@page
+@model OnlineQuizSystem.Pages.Teacher.ResultsModel
+@{
+    ViewData["Title"] = "Student Results";
+}
+
+<div class="glass-card" style="max-width: 1000px; margin-top: 2rem;">
+    <h2 class="card-title">Student Marks & Results</h2>
+    <p class="card-subtitle">View all your students' quiz scores</p>
+
+    <div style="margin-top: 2rem;">
+        <table class="table" style="width: 100%; text-align: left;">
+            <thead>
+                <tr>
+                    <th>Student Name</th>
+                    <th>Email</th>
+                    <th>Total Questions</th>
+                    <th>Total Marks</th>
+                    <th>Time Attempted</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.Results != null && Model.Results.Rows.Count > 0)
+                {
+                    @foreach (System.Data.DataRow row in Model.Results.Rows)
+                    {
+                        <tr>
+                            <td style="font-weight: 500;">@row["StudentName"]</td>
+                            <td>@row["StudentEmail"]</td>
+                            <td>@row["TotalQuestions"]</td>
+                            <td>
+                                <span class="badge" style="background: rgba(59, 130, 246, 0.2); color: #93c5fd; padding: 4px 12px; border-radius: 4px; font-weight: 600;">
+                                    @row["TotalMarks"]
+                                </span>
+                            </td>
+                            <td>@Convert.ToDateTime(row["StartTime"]).ToString("MMM dd, yyyy HH:mm")</td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="5" style="text-align: center; color: var(--text-muted); padding: 2rem;">No student results found yet.</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<style>
+    .table th, .table td {
+        padding: 12px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+</style>

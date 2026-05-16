@@ -1,0 +1,147 @@
+@page
+@model OnlineQuizSystem.Pages.Quiz.TakeModel
+@{
+    ViewData["Title"] = "Take Quiz";
+}
+
+<div class="glass-card quiz-container">
+    @if (!Model.TeacherSelected)
+    {
+        <div class="text-center">
+            <h2 class="card-title" style="margin-bottom: 1.5rem;">Select a Teacher</h2>
+            <p class="card-subtitle" style="margin-bottom: 2rem;">Choose which teacher's quiz you want to attempt</p>
+            
+            @if (Model.EnrolledTeachers != null && Model.EnrolledTeachers.Rows.Count > 0)
+            {
+                <form method="get">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
+                        @foreach (System.Data.DataRow teacher in Model.EnrolledTeachers.Rows)
+                        {
+                            <button type="submit" name="teacherId" value="@teacher["TeacherID"]" class="teacher-btn" style="padding: 1.5rem; border: 2px solid var(--border); border-radius: 12px; background: var(--bg-secondary); cursor: pointer; transition: all 0.3s; font-size: 1rem; font-weight: 500;">
+                                👨‍🏫<br/>
+                                @teacher["Name"]
+                            </button>
+                        }
+                    </div>
+                </form>
+            }
+            else
+            {
+                <div style="margin-bottom: 2rem;">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">📚</div>
+                    <h3 style="margin-bottom: 1rem;">No Teachers Enrolled</h3>
+                    <p style="color: var(--text-muted); margin-bottom: 2rem;">You need to enroll in at least one teacher to take a quiz.</p>
+                    <a asp-page="/Dashboard/Index" class="btn-primary" style="display: inline-block; padding: 0.8rem 2rem;">Back to Dashboard</a>
+                </div>
+            }
+        </div>
+    }
+    else if (Model.Question != null)
+    {
+        <div class="quiz-header">
+            <div>
+                <span style="color: var(--text-muted); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;">Difficulty Level</span>
+                <div style="font-weight: 700; color: var(--primary);">Level @Model.Difficulty</div>
+            </div>
+            <div class="timer" id="timerDisplay">--:--</div>
+        </div>
+
+        <h3 class="question-text">@Model.Question["QuestionText"]</h3>
+
+        <form method="post" id="quizForm">
+            <input type="hidden" name="CorrectAnswer" value="@Model.Question["CorrectOption"]" />
+            
+            <div class="options-grid">
+                <label class="option-label" onclick="selectOption(this)">
+                    <input type="radio" asp-for="SelectedAnswer" value="A" required />
+                    @Model.Question["OptionA"]
+                </label>
+                
+                <label class="option-label" onclick="selectOption(this)">
+                    <input type="radio" asp-for="SelectedAnswer" value="B" required />
+                    @Model.Question["OptionB"]
+                </label>
+                
+                <label class="option-label" onclick="selectOption(this)">
+                    <input type="radio" asp-for="SelectedAnswer" value="C" required />
+                    @Model.Question["OptionC"]
+                </label>
+                
+                <label class="option-label" onclick="selectOption(this)">
+                    <input type="radio" asp-for="SelectedAnswer" value="D" required />
+                    @Model.Question["OptionD"]
+                </label>
+            </div>
+
+            <div class="text-center mt-4">
+                <button type="submit" class="btn-primary" style="padding: 0.8rem 3rem; font-size: 1.1rem;">Submit Answer</button>
+            </div>
+        </form>
+
+        <script>
+            function selectOption(element) {
+                document.querySelectorAll('.option-label').forEach(el => el.classList.remove('selected'));
+                element.classList.add('selected');
+                element.querySelector('input').checked = true;
+            }
+
+            // Quiz Timer
+            let timeLeft = @Model.TimeLeftSeconds;
+            const timerEl = document.getElementById('timerDisplay');
+            const form = document.getElementById('quizForm');
+            
+            function formatTime(seconds) {
+                const m = Math.floor(seconds / 60);
+                const s = seconds % 60;
+                return (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
+            }
+
+            timerEl.innerText = formatTime(timeLeft);
+            
+            const timer = setInterval(() => {
+                timeLeft--;
+                timerEl.innerText = formatTime(timeLeft);
+                
+                if(timeLeft <= 60) {
+                    timerEl.style.color = 'var(--danger)';
+                    timerEl.style.borderColor = 'rgba(239, 68, 68, 0.2)';
+                    timerEl.style.background = 'rgba(239, 68, 68, 0.1)';
+                }
+                
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    window.removeEventListener('beforeunload', preventLeave);
+                    form.submit();
+                }
+            }, 1000);
+
+            // Prevent leaving page during quiz
+            function preventLeave(e) {
+                e.preventDefault();
+                e.returnValue = '';
+            }
+            window.addEventListener('beforeunload', preventLeave);
+
+            // Disable back/forward navigation cache behavior
+            window.addEventListener('pageshow', function(event) {
+                if (event.persisted) {
+                    window.location.reload();
+                }
+            });
+
+            // Handle deliberate form submission (we allow it, so we stop preventing leave)
+            form.addEventListener('submit', function() {
+                window.removeEventListener('beforeunload', preventLeave);
+            });
+        </script>
+    }
+    else
+    {
+        <div class="text-center">
+            <div style="font-size: 3rem; margin-bottom: 1rem;">📭</div>
+            <h3 style="margin-bottom: 1rem;">No Questions Available</h3>
+            <p style="color: var(--text-muted); margin-bottom: 2rem;">It seems the database is empty or not connected. If you are an administrator, please add some questions or check the database connection.</p>
+            <a asp-page="/Dashboard/Index" class="btn-secondary">Return to Dashboard</a>
+        </div>
+    }
+</div>

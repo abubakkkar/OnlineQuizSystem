@@ -1,0 +1,186 @@
+@page
+@model OnlineQuizSystem.Pages.Teacher.IndexModel
+@{
+    ViewData["Title"] = "Create Quiz";
+}
+
+<div class="glass-card" style="max-width: 900px; margin: auto;">
+    <h2 class="card-title">Quiz Builder</h2>
+    <p class="card-subtitle">Draft your questions first, then upload the whole quiz</p>
+
+    @if (!string.IsNullOrEmpty(Model.SuccessMessage))
+    {
+        <div class="alert" style="background: rgba(16, 185, 129, 0.1); border-color: rgba(16, 185, 129, 0.2); color: #6ee7b7;">
+            @Model.SuccessMessage
+        </div>
+    }
+
+    <div asp-validation-summary="ModelOnly" class="alert" style="color: #fca5a5;"></div>
+
+    <div id="questions-container">
+        <!-- Questions will be rendered here -->
+    </div>
+
+    <div style="text-align: center; margin-top: 1.5rem;">
+        <button type="button" class="btn" style="background: rgba(255,255,255,0.1); color: white; border: 1px dashed rgba(255,255,255,0.3); padding: 10px 20px;" onclick="addQuestionUI()">
+            + Add Another Question
+        </button>
+    </div>
+
+    <hr style="border-color: rgba(255,255,255,0.1); margin: 2rem 0;" />
+
+    <form method="post" id="quizForm" onsubmit="return submitQuiz()">
+        <input type="hidden" id="questionsJson" name="QuestionsJson" />
+        
+        <h3 style="margin-bottom: 1rem;">Upload Quiz Details</h3>
+        <p style="font-size: 0.9rem; color: #94a3b8; margin-bottom: 1rem;">Select an existing section or create a new one to upload these questions.</p>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div class="form-group">
+                <label class="form-label">Select Existing Section</label>
+                <select asp-for="SelectedSectionID" class="form-control" style="background-color: rgba(15, 23, 42, 0.5);">
+                    <option value="">-- Choose Section --</option>
+                    @if (Model.TeacherSections != null)
+                    {
+                        foreach (System.Data.DataRow row in Model.TeacherSections.Rows)
+                        {
+                            <option value="@row["SectionID"]">@row["SectionName"]</option>
+                        }
+                    }
+                </select>
+            </div>
+            
+            <div style="display: flex; align-items: center; justify-content: center;">
+                <strong style="color: #94a3b8;">— OR —</strong>
+            </div>
+
+            <div class="form-group" style="grid-column: 1 / -1; display: grid; grid-template-columns: 2fr 1fr; gap: 1rem;">
+                <div>
+                    <label class="form-label">Create New Section Name</label>
+                    <input asp-for="NewSectionName" class="form-control" placeholder="e.g. Midterm Physics Quiz" />
+                </div>
+                <div>
+                    <label class="form-label">Max Time (Minutes)</label>
+                    <input asp-for="NewSectionMaxTime" class="form-control" type="number" min="1" max="180" value="30" />
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group mt-4">
+            <button type="submit" class="btn-primary" style="width: 100%; font-size: 1.1rem; padding: 12px;">Upload Final Quiz</button>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <script>
+        let questions = [];
+
+        function addQuestionUI() {
+            const index = questions.length;
+            questions.push({
+                QuestionText: '',
+                OptionA: '',
+                OptionB: '',
+                OptionC: '',
+                OptionD: '',
+                CorrectOption: 'A',
+                DifficultyLevel: 1
+            });
+            renderQuestions();
+        }
+
+        function renderQuestions() {
+            const container = document.getElementById('questions-container');
+            container.innerHTML = '';
+            
+            questions.forEach((q, i) => {
+                const html = `
+                    <div style="background: rgba(255,255,255,0.05); padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem; border: 1px solid rgba(255,255,255,0.1);">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                            <h4 style="margin: 0; color: #6ee7b7;">Question ${i + 1}</h4>
+                            ${i > 0 ? `<button type="button" onclick="removeQuestion(${i})" style="background: transparent; border: none; color: #fca5a5; cursor: pointer; font-size: 0.9rem;">Remove</button>` : ''}
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Question Text</label>
+                            <input type="text" class="form-control" value="${q.QuestionText}" onchange="updateQuestion(${i}, 'QuestionText', this.value)" required />
+                        </div>
+                        
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                            <div class="form-group">
+                                <label class="form-label">Option A</label>
+                                <input type="text" class="form-control" value="${q.OptionA}" onchange="updateQuestion(${i}, 'OptionA', this.value)" required />
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Option B</label>
+                                <input type="text" class="form-control" value="${q.OptionB}" onchange="updateQuestion(${i}, 'OptionB', this.value)" required />
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Option C</label>
+                                <input type="text" class="form-control" value="${q.OptionC}" onchange="updateQuestion(${i}, 'OptionC', this.value)" required />
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Option D</label>
+                                <input type="text" class="form-control" value="${q.OptionD}" onchange="updateQuestion(${i}, 'OptionD', this.value)" required />
+                            </div>
+                        </div>
+
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem;">
+                            <div class="form-group">
+                                <label class="form-label">Correct Option</label>
+                                <select class="form-control" style="background-color: rgba(15, 23, 42, 0.5);" onchange="updateQuestion(${i}, 'CorrectOption', this.value)">
+                                    <option value="A" ${q.CorrectOption === 'A' ? 'selected' : ''}>A</option>
+                                    <option value="B" ${q.CorrectOption === 'B' ? 'selected' : ''}>B</option>
+                                    <option value="C" ${q.CorrectOption === 'C' ? 'selected' : ''}>C</option>
+                                    <option value="D" ${q.CorrectOption === 'D' ? 'selected' : ''}>D</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Difficulty (1-3)</label>
+                                <input type="number" min="1" max="3" class="form-control" value="${q.DifficultyLevel}" onchange="updateQuestion(${i}, 'DifficultyLevel', this.value)" required />
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.insertAdjacentHTML('beforeend', html);
+            });
+        }
+
+        function updateQuestion(index, field, value) {
+            if(field === 'DifficultyLevel') {
+                questions[index][field] = parseInt(value);
+            } else {
+                questions[index][field] = value;
+            }
+        }
+
+        function removeQuestion(index) {
+            questions.splice(index, 1);
+            renderQuestions();
+        }
+
+        function submitQuiz() {
+            if (questions.length === 0) {
+                alert("Please add at least one question to the quiz.");
+                return false;
+            }
+
+            const existingSection = document.getElementById("SelectedSectionID").value;
+            const newSection = document.getElementById("NewSectionName").value;
+
+            if (!existingSection && !newSection.trim()) {
+                alert("Please select an existing section or type a name to create a new one!");
+                return false;
+            }
+
+            document.getElementById("questionsJson").value = JSON.stringify(questions);
+            return true;
+        }
+
+        // Initialize with one empty question
+        window.onload = function() {
+            addQuestionUI();
+        };
+    </script>
+}

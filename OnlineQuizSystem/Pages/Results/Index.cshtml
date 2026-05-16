@@ -1,0 +1,53 @@
+@page
+@model OnlineQuizSystem.Pages.Results.IndexModel
+@{
+    ViewData["Title"] = "Quiz Results";
+}
+
+<h1>Your Quiz Results</h1>
+
+@if (Model.Results != null && Model.Results.Rows.Count > 0)
+{
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Question</th>
+                    <th>Your Answer</th>
+                    <th>Correct Answer</th>
+                    <th>Result</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (System.Data.DataRow row in Model.Results.Rows)
+                {
+                    <tr>
+                        <td>@row["QuestionText"]</td>
+                        <td>@row["SelectedAnswer"]</td>
+                        <td>@row["CorrectOption"]</td>
+                        <td>
+                            @if (Convert.ToBoolean(row["IsCorrect"]))
+                            {
+                                <span class="text-success">✓ Correct</span>
+                            }
+                            else
+                            {
+                                <span class="text-danger">✗ Incorrect</span>
+                            }
+                        </td>
+                        <td>@Convert.ToDateTime(row["AnsweredAt"]).ToString("g")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+else
+{
+    <p>No quiz results found. <a href="/Quiz/Take">Take a quiz</a> to see your results here.</p>
+}
+
+<div>
+    <a href="/Dashboard" class="btn btn-primary">Back to Dashboard</a>
+</div>

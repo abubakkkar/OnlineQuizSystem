@@ -1,0 +1,90 @@
+@page
+@model OnlineQuizSystem.Pages.Admin.IndexModel
+@{
+    ViewData["Title"] = "Admin Panel";
+}
+
+<div class="glass-card" style="max-width: 800px;">
+    <h2 class="card-title">Admin Panel</h2>
+    <p class="card-subtitle">Manage Quiz Questions</p>
+
+    @if (!string.IsNullOrEmpty(Model.SuccessMessage))
+    {
+        <div class="alert" style="background: rgba(16, 185, 129, 0.1); border-color: rgba(16, 185, 129, 0.2); color: #6ee7b7;">
+            @Model.SuccessMessage
+        </div>
+    }
+
+    <div asp-validation-summary="ModelOnly" class="alert"></div>
+
+    <form method="post">
+        <div class="form-group">
+            <label asp-for="Input.QuestionText" class="form-label">Question Text</label>
+            <input asp-for="Input.QuestionText" class="form-control" />
+            <span asp-validation-for="Input.QuestionText" class="text-danger"></span>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div class="form-group">
+                <label asp-for="Input.OptionA" class="form-label">Option A</label>
+                <input asp-for="Input.OptionA" class="form-control" />
+                <span asp-validation-for="Input.OptionA" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.OptionB" class="form-label">Option B</label>
+                <input asp-for="Input.OptionB" class="form-control" />
+                <span asp-validation-for="Input.OptionB" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.OptionC" class="form-label">Option C</label>
+                <input asp-for="Input.OptionC" class="form-control" />
+                <span asp-validation-for="Input.OptionC" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.OptionD" class="form-label">Option D</label>
+                <input asp-for="Input.OptionD" class="form-control" />
+                <span asp-validation-for="Input.OptionD" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+            <div class="form-group">
+                <label asp-for="Input.CorrectOption" class="form-label">Correct Option (A, B, C, or D)</label>
+                <select asp-for="Input.CorrectOption" class="form-control" style="background-color: rgba(15, 23, 42, 0.5);">
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                </select>
+                <span asp-validation-for="Input.CorrectOption" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Input.DifficultyLevel" class="form-label">Difficulty Level (1-3)</label>
+                <input asp-for="Input.DifficultyLevel" type="number" min="1" max="3" class="form-control" />
+                <span asp-validation-for="Input.DifficultyLevel" class="text-danger"></span>
+            </div>
+        <div class="form-group">
+            <label asp-for="Input.TeacherID" class="form-label">Teacher</label>
+            <select asp-for="Input.TeacherID" class="form-control">
+                <option value="">Select Teacher</option>
+                @if (Model.Teachers != null)
+                {
+                    foreach (System.Data.DataRow row in Model.Teachers.Rows)
+                    {
+                        <option value="@row["TeacherID"]">@row["Name"]</option>
+                    }
+                }
+            </select>
+            <span asp-validation-for="Input.TeacherID" class="text-danger"></span>
+        </div>
+
+        <div class="form-group mt-4">
+            <button type="submit" class="btn-primary" style="width: 100%;">Add Question</button>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,68 @@
+@page
+@model OnlineQuizSystem.Pages.Dashboard.ManageTeachersModel
+@{
+    ViewData["Title"] = "Manage Teachers";
+}
+
+<div class="glass-card" style="max-width: 1000px;">
+    <h2 class="card-title">Manage Teachers</h2>
+    <p class="card-subtitle">Enroll or remove from teachers</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem;">
+        <!-- Available Teachers -->
+        <div>
+            <h3 style="font-size: 1.1rem; font-weight: 600; margin-bottom: 1rem;">Available Teachers</h3>
+            @if (Model.AvailableTeachers != null && Model.AvailableTeachers.Rows.Count > 0)
+            {
+                <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                    @foreach (System.Data.DataRow teacher in Model.AvailableTeachers.Rows)
+                    {
+                        <form method="post" style="display: flex; align-items: center; justify-content: space-between; padding: 1rem; border: 1px solid var(--border); border-radius: 8px;">
+                            <div>
+                                <div style="font-weight: 500;">@teacher["Name"]</div>
+                                <div style="font-size: 0.9rem; color: var(--text-muted);">@teacher["Email"]</div>
+                            </div>
+                            <button type="submit" asp-page-handler="Enroll" asp-route-teacherId="@teacher["TeacherID"]" class="btn-primary" style="padding: 0.5rem 1rem; font-size: 0.9rem;">
+                                + Enroll
+                            </button>
+                        </form>
+                    }
+                </div>
+            }
+            else
+            {
+                <p style="color: var(--text-muted);">All available teachers are enrolled.</p>
+            }
+        </div>
+
+        <!-- Enrolled Teachers -->
+        <div>
+            <h3 style="font-size: 1.1rem; font-weight: 600; margin-bottom: 1rem;">Enrolled Teachers</h3>
+            @if (Model.EnrolledTeachers != null && Model.EnrolledTeachers.Rows.Count > 0)
+            {
+                <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                    @foreach (System.Data.DataRow teacher in Model.EnrolledTeachers.Rows)
+                    {
+                        <form method="post" style="display: flex; align-items: center; justify-content: space-between; padding: 1rem; border: 2px solid var(--primary); border-radius: 8px; background: rgba(79, 172, 254, 0.05);">
+                            <div>
+                                <div style="font-weight: 500;">@teacher["Name"]</div>
+                                <div style="font-size: 0.9rem; color: var(--text-muted);">@teacher["Email"]</div>
+                            </div>
+                            <button type="submit" asp-page-handler="Remove" asp-route-teacherId="@teacher["TeacherID"]" class="btn-danger" style="padding: 0.5rem 1rem; font-size: 0.9rem; background: var(--danger); color: white;">
+                                × Remove
+                            </button>
+                        </form>
+                    }
+                </div>
+            }
+            else
+            {
+                <p style="color: var(--text-muted);">You are not enrolled in any teachers yet.</p>
+            }
+        </div>
+    </div>
+
+    <div style="margin-top: 2rem;">
+        <a asp-page="/Dashboard/Index" class="btn-secondary" style="display: inline-block; padding: 0.8rem 1.5rem;">← Back to Dashboard</a>
+    </div>
+</div>

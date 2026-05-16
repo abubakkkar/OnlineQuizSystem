@@ -1,0 +1,48 @@
+@page
+@model OnlineQuizSystem.Pages.Admin.ResultsModel
+@{
+    ViewData["Title"] = "Student Results";
+}
+
+<div class="glass-card" style="max-width: 1000px; margin-top: 2rem;">
+    <h2 class="card-title">Student Marks & Results</h2>
+    <p class="card-subtitle">View all quiz answers and marks</p>
+
+    <div style="margin-top: 2rem;">
+        <table class="table" style="width: 100%; text-align: left;">
+            <thead>
+                <tr>
+                    <th>Student Name</th>
+                    <th>Question</th>
+                    <th>Selected Answer</th>
+                    <th>Result</th>
+                    <th>Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (System.Data.DataRow row in Model.Results.Rows)
+                {
+                    var isCorrect = Convert.ToBoolean(row["IsCorrect"]);
+                    <tr>
+                        <td>@row["StudentName"]</td>
+                        <td>@row["QuestionText"]</td>
+                        <td>@row["SelectedAnswer"]</td>
+                        <td>
+                            <span class="badge" style="background: @(isCorrect ? "rgba(16, 185, 129, 0.2)" : "rgba(239, 68, 68, 0.2)"); color: @(isCorrect ? "#6ee7b7" : "#fca5a5"); padding: 4px 8px; border-radius: 4px;">
+                                @(isCorrect ? "Correct" : "Incorrect")
+                            </span>
+                        </td>
+                        <td>@Convert.ToDateTime(row["AnsweredAt"]).ToString("MMM dd, yyyy HH:mm")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<style>
+    .table th, .table td {
+        padding: 12px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+</style>

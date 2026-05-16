@@ -1,0 +1,84 @@
+@page
+@model OnlineQuizSystem.Pages.Teacher.ProfileModel
+@{
+    ViewData["Title"] = "Teacher Profile";
+}
+
+<div class="glass-card" style="max-width: 800px;">
+    <h2 class="card-title">Teacher Profile</h2>
+    <p class="card-subtitle">Manage your account settings</p>
+
+    @if (!string.IsNullOrEmpty(Model.SuccessMessage))
+    {
+        <div style="padding: 1rem; border-left: 4px solid #10b981; background: rgba(16, 185, 129, 0.1); border-radius: 4px; margin-bottom: 1.5rem; color: #047857;">
+            @Model.SuccessMessage
+        </div>
+    }
+
+    @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+    {
+        <div style="padding: 1rem; border-left: 4px solid #ef4444; background: rgba(239, 68, 68, 0.1); border-radius: 4px; margin-bottom: 1.5rem; color: #991b1b;">
+            @Model.ErrorMessage
+        </div>
+    }
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+        <!-- Profile Information -->
+        <div>
+            <h3 style="font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem; border-bottom: 2px solid var(--primary); padding-bottom: 0.5rem;">Profile Information</h3>
+            
+            <form method="post" asp-page-handler="UpdateProfile">
+                <div class="form-group">
+                    <label class="form-label">Name</label>
+                    <input type="text" name="Name" value="@Model.TeacherName" class="form-control" required />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Email</label>
+                    <input type="email" name="Email" value="@Model.TeacherEmail" class="form-control" required />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Role</label>
+                    <input type="text" value="@Model.TeacherRole" class="form-control" disabled style="background: var(--bg-secondary); cursor: not-allowed;" />
+                </div>
+
+                <button type="submit" class="btn-primary" style="width: 100%; padding: 0.8rem; margin-top: 1rem;">
+                    Save Changes
+                </button>
+            </form>
+        </div>
+
+        <!-- Change Password -->
+        <div>
+            <h3 style="font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem; border-bottom: 2px solid #ef4444; padding-bottom: 0.5rem;">Change Password</h3>
+            
+            <form method="post" asp-page-handler="ChangePassword">
+                <div class="form-group">
+                    <label class="form-label">Current Password</label>
+                    <input type="password" name="CurrentPassword" class="form-control" placeholder="Enter current password" required />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">New Password</label>
+                    <input type="password" name="NewPassword" class="form-control" placeholder="Enter new password" required />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Confirm New Password</label>
+                    <input type="password" name="ConfirmPassword" class="form-control" placeholder="Confirm new password" required />
+                </div>
+
+                <button type="submit" class="btn-primary" style="width: 100%; padding: 0.8rem; margin-top: 1rem; background: #ef4444;">
+                    Update Password
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div style="margin-top: 2rem;">
+        <a asp-page="/Teacher/Index" class="btn-secondary" style="display: inline-block; padding: 0.8rem 1.5rem;">
+            ← Back to Panel
+        </a>
+    </div>
+</div>

@@ -1,0 +1,429 @@
+D:\123\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\rpswa.dswa.cache.json
+D:\123\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\OnlineQuizSystem.GeneratedMSBuildEditorConfig.editorconfig
+D:\123\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\OnlineQuizSystem.AssemblyInfoInputs.cache
+D:\123\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\OnlineQuizSystem.AssemblyInfo.cs
+D:\123\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\OnlineQuizSystem.csproj.CoreCompileInputs.cache
+D:\123\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\OnlineQuizSystem.MvcApplicationPartsAssemblyInfo.cache
+D:\123\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\OnlineQuizSystem.RazorAssemblyInfo.cache
+D:\123\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\OnlineQuizSystem.RazorAssemblyInfo.cs
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\rpswa.dswa.cache.json
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\OnlineQuizSystem.GeneratedMSBuildEditorConfig.editorconfig
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\OnlineQuizSystem.AssemblyInfoInputs.cache
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\OnlineQuizSystem.AssemblyInfo.cs
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\OnlineQuizSystem.csproj.CoreCompileInputs.cache
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\OnlineQuizSystem.MvcApplicationPartsAssemblyInfo.cache
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\OnlineQuizSystem.RazorAssemblyInfo.cache
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\OnlineQuizSystem.RazorAssemblyInfo.cs
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\bin\Debug\net10.0\appsettings.Development.json
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\bin\Debug\net10.0\appsettings.json
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\bin\Debug\net10.0\OnlineQuizSystem.staticwebassets.runtime.json
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\bin\Debug\net10.0\OnlineQuizSystem.staticwebassets.endpoints.json
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\bin\Debug\net10.0\OnlineQuizSystem.exe
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\bin\Debug\net10.0\OnlineQuizSystem.deps.json
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\bin\Debug\net10.0\OnlineQuizSystem.runtimeconfig.json
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\bin\Debug\net10.0\OnlineQuizSystem.dll
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\bin\Debug\net10.0\OnlineQuizSystem.pdb
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\bin\Debug\net10.0\System.Data.SqlClient.dll
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\bin\Debug\net10.0\runtimes\win-arm64\native\sni.dll
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\bin\Debug\net10.0\runtimes\win-x64\native\sni.dll
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\bin\Debug\net10.0\runtimes\win-x86\native\sni.dll
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\bin\Debug\net10.0\runtimes\unix\lib\net8.0\System.Data.SqlClient.dll
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\bin\Debug\net10.0\runtimes\win\lib\net8.0\System.Data.SqlClient.dll
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\OnlineQuizSystem.csproj.AssemblyReference.cache
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\rjimswa.dswa.cache.json
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\rjsmrazor.dswa.cache.json
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\rjsmcshtml.dswa.cache.json
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\scopedcss\Pages\Shared\_Layout.cshtml.rz.scp.css
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\scopedcss\bundle\OnlineQuizSystem.styles.css
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\scopedcss\projectbundle\OnlineQuizSystem.bundle.scp.css
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\zrfbl3kn5z-{0}-61n19gt1b8-61n19gt1b8.gz
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\cs2qhxxo7o-{0}-xtxxf3hu2r-xtxxf3hu2r.gz
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\9n4jks2jk7-{0}-bqjiyaj88i-bqjiyaj88i.gz
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\mbbgtgstou-{0}-c2jlpeoesf-c2jlpeoesf.gz
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\bv3h6jbyqn-{0}-erw9l3u2r3-erw9l3u2r3.gz
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\cfk6pbmahl-{0}-aexeepp0ev-aexeepp0ev.gz
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\bp97znnhao-{0}-d7shbmvgxk-d7shbmvgxk.gz
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\6eoscd3e41-{0}-ausgxo2sd3-ausgxo2sd3.gz
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\dllfm3htrq-{0}-k8d9w2qqmf-k8d9w2qqmf.gz
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\unaghrqr83-{0}-cosvhxvwiu-cosvhxvwiu.gz
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\vq6filqs0x-{0}-ub07r2b239-ub07r2b239.gz
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\pjmqia9on4-{0}-fvhpjtyr6v-fvhpjtyr6v.gz
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\e3oc72ytnm-{0}-b7pk76d08c-b7pk76d08c.gz
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\q5fxx7k8yf-{0}-fsbi9cje9m-fsbi9cje9m.gz
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\6ynmwsmka6-{0}-rzd6atqjts-rzd6atqjts.gz
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\4mmnj5e3sg-{0}-ee0r1s7dh0-ee0r1s7dh0.gz
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\h8deqqxaua-{0}-dxx9fxp4il-dxx9fxp4il.gz
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\6we0pkh0uf-{0}-jd9uben2k1-jd9uben2k1.gz
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\yjmtdyqb7g-{0}-khv3u5hwcm-khv3u5hwcm.gz
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\777orv8wd5-{0}-r4e9w2rdcm-r4e9w2rdcm.gz
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\vqo7kjk35c-{0}-lcd1t2u6c8-lcd1t2u6c8.gz
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\92ravcpyw6-{0}-c2oey78nd0-c2oey78nd0.gz
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\5tmzs92954-{0}-tdbxkamptv-tdbxkamptv.gz
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\vm92ttuj5y-{0}-j5mq2jizvt-j5mq2jizvt.gz
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\b3etida982-{0}-06098lyss8-06098lyss8.gz
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\pqpagvdv6p-{0}-nvvlpmu67g-nvvlpmu67g.gz
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\py6huchyrl-{0}-s35ty4nyc5-s35ty4nyc5.gz
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\kql9dw3y32-{0}-pj5nd1wqec-pj5nd1wqec.gz
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\d4bldr6yet-{0}-46ein0sx1k-46ein0sx1k.gz
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\o0lg2ka7f5-{0}-v0zj4ognzu-v0zj4ognzu.gz
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\1hjbm5goyk-{0}-37tfw0ft22-37tfw0ft22.gz
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\8yvpjdimze-{0}-hrwsygsryq-hrwsygsryq.gz
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\uox7q76n0c-{0}-pk9g2wxc8p-pk9g2wxc8p.gz
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\8rhh25oz3t-{0}-ft3s53vfgj-ft3s53vfgj.gz
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\ekz5avmc8v-{0}-6cfz1n2cew-6cfz1n2cew.gz
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\rc1cbpfe64-{0}-6pdc2jztkx-6pdc2jztkx.gz
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\uubr867d0w-{0}-493y06b0oq-493y06b0oq.gz
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\7du4qls53c-{0}-iovd86k7lj-iovd86k7lj.gz
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\b80pjjqz3y-{0}-vr1egmr9el-vr1egmr9el.gz
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\dxcg4vjlcl-{0}-kbrnm935zg-kbrnm935zg.gz
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\k4mm09oqc6-{0}-jj8uyg4cgr-jj8uyg4cgr.gz
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\e99gb05o16-{0}-y7v9cxd14o-y7v9cxd14o.gz
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\aqrtd5vb37-{0}-notf2xhcfb-notf2xhcfb.gz
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\s49erivxyu-{0}-h1s4sie4z3-h1s4sie4z3.gz
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\83cmtebpn9-{0}-63fj8s7r0e-63fj8s7r0e.gz
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\71plruibqo-{0}-0j3bgjxly4-0j3bgjxly4.gz
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\pmirz2cilp-{0}-47otxtyo56-47otxtyo56.gz
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\q534v8b350-{0}-4v8eqarkd7-4v8eqarkd7.gz
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\iiyci8ht62-{0}-356vix0kms-356vix0kms.gz
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\59fs84n5q4-{0}-83jwlth58m-83jwlth58m.gz
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\ygwjoinfcj-{0}-mrlpezrjn3-mrlpezrjn3.gz
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\ylkrcn6z85-{0}-lzl9nlhx6b-lzl9nlhx6b.gz
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\iyvf48wd4k-{0}-ag7o75518u-ag7o75518u.gz
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\mhgz7e63os-{0}-x0q3zqp4vz-x0q3zqp4vz.gz
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\cv3i9lzex9-{0}-0i3buxo5is-0i3buxo5is.gz
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\f1k4rj2gde-{0}-o1o13a6vjx-o1o13a6vjx.gz
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\f0efo3e7pe-{0}-ttgo8qnofa-ttgo8qnofa.gz
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\0j6d141vpa-{0}-2z0ns9nrw6-2z0ns9nrw6.gz
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\t5qcvvdlqr-{0}-muycvpuwrr-muycvpuwrr.gz
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\hakdo18nvx-{0}-87fc7y1x7t-87fc7y1x7t.gz
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\apafmzzop8-{0}-mlv21k5csn-mlv21k5csn.gz
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\ff4fo74ony-{0}-rjvlugsqym-rjvlugsqym.gz
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\r09d5ttecw-{0}-rjvlugsqym-rjvlugsqym.gz
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\staticwebassets.build.json
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\staticwebassets.build.json.cache
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\staticwebassets.development.json
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\staticwebassets.build.endpoints.json
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\swae.build.ex.cache
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\OnlineQu.9C924EC0.Up2Date
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\OnlineQuizSystem.dll
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\refint\OnlineQuizSystem.dll
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\OnlineQuizSystem.pdb
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\OnlineQuizSystem.genruntimeconfig.cache
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\ref\OnlineQuizSystem.dll
+D:\New folder\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\jg4w63aq5q-{0}-yeeiqmfvkh-yeeiqmfvkh.gz
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\bin\Debug\net10.0\appsettings.Development.json
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\bin\Debug\net10.0\appsettings.json
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\bin\Debug\net10.0\OnlineQuizSystem.staticwebassets.endpoints.json
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\bin\Debug\net10.0\OnlineQuizSystem.staticwebassets.runtime.json
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\bin\Debug\net10.0\OnlineQuizSystem.exe
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\bin\Debug\net10.0\OnlineQuizSystem.deps.json
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\bin\Debug\net10.0\OnlineQuizSystem.runtimeconfig.json
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\bin\Debug\net10.0\OnlineQuizSystem.dll
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\bin\Debug\net10.0\OnlineQuizSystem.pdb
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\bin\Debug\net10.0\System.Data.SqlClient.dll
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\bin\Debug\net10.0\runtimes\win-arm64\native\sni.dll
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\bin\Debug\net10.0\runtimes\win-x64\native\sni.dll
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\bin\Debug\net10.0\runtimes\win-x86\native\sni.dll
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\bin\Debug\net10.0\runtimes\unix\lib\net8.0\System.Data.SqlClient.dll
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\bin\Debug\net10.0\runtimes\win\lib\net8.0\System.Data.SqlClient.dll
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\OnlineQuizSystem.csproj.AssemblyReference.cache
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\rpswa.dswa.cache.json
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\OnlineQuizSystem.GeneratedMSBuildEditorConfig.editorconfig
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\OnlineQuizSystem.AssemblyInfoInputs.cache
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\OnlineQuizSystem.AssemblyInfo.cs
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\OnlineQuizSystem.csproj.CoreCompileInputs.cache
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\OnlineQuizSystem.MvcApplicationPartsAssemblyInfo.cache
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\OnlineQuizSystem.RazorAssemblyInfo.cache
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\OnlineQuizSystem.RazorAssemblyInfo.cs
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\rjimswa.dswa.cache.json
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\rjsmrazor.dswa.cache.json
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\rjsmcshtml.dswa.cache.json
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\scopedcss\Pages\Shared\_Layout.cshtml.rz.scp.css
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\scopedcss\bundle\OnlineQuizSystem.styles.css
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\scopedcss\projectbundle\OnlineQuizSystem.bundle.scp.css
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\jg4w63aq5q-{0}-yeeiqmfvkh-yeeiqmfvkh.gz
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\zrfbl3kn5z-{0}-61n19gt1b8-61n19gt1b8.gz
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\cs2qhxxo7o-{0}-xtxxf3hu2r-xtxxf3hu2r.gz
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\9n4jks2jk7-{0}-bqjiyaj88i-bqjiyaj88i.gz
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\mbbgtgstou-{0}-c2jlpeoesf-c2jlpeoesf.gz
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\bv3h6jbyqn-{0}-erw9l3u2r3-erw9l3u2r3.gz
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\cfk6pbmahl-{0}-aexeepp0ev-aexeepp0ev.gz
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\bp97znnhao-{0}-d7shbmvgxk-d7shbmvgxk.gz
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\6eoscd3e41-{0}-ausgxo2sd3-ausgxo2sd3.gz
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\dllfm3htrq-{0}-k8d9w2qqmf-k8d9w2qqmf.gz
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\unaghrqr83-{0}-cosvhxvwiu-cosvhxvwiu.gz
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\vq6filqs0x-{0}-ub07r2b239-ub07r2b239.gz
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\pjmqia9on4-{0}-fvhpjtyr6v-fvhpjtyr6v.gz
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\e3oc72ytnm-{0}-b7pk76d08c-b7pk76d08c.gz
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\q5fxx7k8yf-{0}-fsbi9cje9m-fsbi9cje9m.gz
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\6ynmwsmka6-{0}-rzd6atqjts-rzd6atqjts.gz
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\4mmnj5e3sg-{0}-ee0r1s7dh0-ee0r1s7dh0.gz
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\h8deqqxaua-{0}-dxx9fxp4il-dxx9fxp4il.gz
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\6we0pkh0uf-{0}-jd9uben2k1-jd9uben2k1.gz
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\yjmtdyqb7g-{0}-khv3u5hwcm-khv3u5hwcm.gz
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\777orv8wd5-{0}-r4e9w2rdcm-r4e9w2rdcm.gz
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\vqo7kjk35c-{0}-lcd1t2u6c8-lcd1t2u6c8.gz
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\92ravcpyw6-{0}-c2oey78nd0-c2oey78nd0.gz
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\5tmzs92954-{0}-tdbxkamptv-tdbxkamptv.gz
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\vm92ttuj5y-{0}-j5mq2jizvt-j5mq2jizvt.gz
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\b3etida982-{0}-06098lyss8-06098lyss8.gz
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\pqpagvdv6p-{0}-nvvlpmu67g-nvvlpmu67g.gz
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\py6huchyrl-{0}-s35ty4nyc5-s35ty4nyc5.gz
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\kql9dw3y32-{0}-pj5nd1wqec-pj5nd1wqec.gz
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\d4bldr6yet-{0}-46ein0sx1k-46ein0sx1k.gz
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\o0lg2ka7f5-{0}-v0zj4ognzu-v0zj4ognzu.gz
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\1hjbm5goyk-{0}-37tfw0ft22-37tfw0ft22.gz
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\8yvpjdimze-{0}-hrwsygsryq-hrwsygsryq.gz
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\uox7q76n0c-{0}-pk9g2wxc8p-pk9g2wxc8p.gz
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\8rhh25oz3t-{0}-ft3s53vfgj-ft3s53vfgj.gz
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\ekz5avmc8v-{0}-6cfz1n2cew-6cfz1n2cew.gz
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\rc1cbpfe64-{0}-6pdc2jztkx-6pdc2jztkx.gz
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\uubr867d0w-{0}-493y06b0oq-493y06b0oq.gz
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\7du4qls53c-{0}-iovd86k7lj-iovd86k7lj.gz
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\b80pjjqz3y-{0}-vr1egmr9el-vr1egmr9el.gz
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\dxcg4vjlcl-{0}-kbrnm935zg-kbrnm935zg.gz
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\k4mm09oqc6-{0}-jj8uyg4cgr-jj8uyg4cgr.gz
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\e99gb05o16-{0}-y7v9cxd14o-y7v9cxd14o.gz
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\aqrtd5vb37-{0}-notf2xhcfb-notf2xhcfb.gz
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\s49erivxyu-{0}-h1s4sie4z3-h1s4sie4z3.gz
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\83cmtebpn9-{0}-63fj8s7r0e-63fj8s7r0e.gz
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\71plruibqo-{0}-0j3bgjxly4-0j3bgjxly4.gz
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\pmirz2cilp-{0}-47otxtyo56-47otxtyo56.gz
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\q534v8b350-{0}-4v8eqarkd7-4v8eqarkd7.gz
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\iiyci8ht62-{0}-356vix0kms-356vix0kms.gz
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\59fs84n5q4-{0}-83jwlth58m-83jwlth58m.gz
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\ygwjoinfcj-{0}-mrlpezrjn3-mrlpezrjn3.gz
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\ylkrcn6z85-{0}-lzl9nlhx6b-lzl9nlhx6b.gz
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\iyvf48wd4k-{0}-ag7o75518u-ag7o75518u.gz
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\mhgz7e63os-{0}-x0q3zqp4vz-x0q3zqp4vz.gz
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\cv3i9lzex9-{0}-0i3buxo5is-0i3buxo5is.gz
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\f1k4rj2gde-{0}-o1o13a6vjx-o1o13a6vjx.gz
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\f0efo3e7pe-{0}-ttgo8qnofa-ttgo8qnofa.gz
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\0j6d141vpa-{0}-2z0ns9nrw6-2z0ns9nrw6.gz
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\t5qcvvdlqr-{0}-muycvpuwrr-muycvpuwrr.gz
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\hakdo18nvx-{0}-87fc7y1x7t-87fc7y1x7t.gz
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\apafmzzop8-{0}-mlv21k5csn-mlv21k5csn.gz
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\ff4fo74ony-{0}-rjvlugsqym-rjvlugsqym.gz
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\r09d5ttecw-{0}-rjvlugsqym-rjvlugsqym.gz
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\staticwebassets.build.json
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\staticwebassets.build.json.cache
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\staticwebassets.development.json
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\staticwebassets.build.endpoints.json
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\swae.build.ex.cache
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\OnlineQu.9C924EC0.Up2Date
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\OnlineQuizSystem.dll
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\refint\OnlineQuizSystem.dll
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\OnlineQuizSystem.pdb
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\OnlineQuizSystem.genruntimeconfig.cache
+D:\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\ref\OnlineQuizSystem.dll
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\bin\Debug\net10.0\appsettings.Development.json
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\bin\Debug\net10.0\appsettings.json
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\bin\Debug\net10.0\OnlineQuizSystem.staticwebassets.endpoints.json
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\bin\Debug\net10.0\OnlineQuizSystem.staticwebassets.runtime.json
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\bin\Debug\net10.0\OnlineQuizSystem.exe
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\bin\Debug\net10.0\OnlineQuizSystem.deps.json
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\bin\Debug\net10.0\OnlineQuizSystem.runtimeconfig.json
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\bin\Debug\net10.0\OnlineQuizSystem.dll
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\bin\Debug\net10.0\OnlineQuizSystem.pdb
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\bin\Debug\net10.0\System.Data.SqlClient.dll
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\bin\Debug\net10.0\runtimes\win-arm64\native\sni.dll
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\bin\Debug\net10.0\runtimes\win-x64\native\sni.dll
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\bin\Debug\net10.0\runtimes\win-x86\native\sni.dll
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\bin\Debug\net10.0\runtimes\unix\lib\net8.0\System.Data.SqlClient.dll
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\bin\Debug\net10.0\runtimes\win\lib\net8.0\System.Data.SqlClient.dll
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\OnlineQuizSystem.csproj.AssemblyReference.cache
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\rpswa.dswa.cache.json
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\OnlineQuizSystem.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\OnlineQuizSystem.AssemblyInfoInputs.cache
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\OnlineQuizSystem.AssemblyInfo.cs
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\OnlineQuizSystem.csproj.CoreCompileInputs.cache
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\OnlineQuizSystem.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\OnlineQuizSystem.RazorAssemblyInfo.cache
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\OnlineQuizSystem.RazorAssemblyInfo.cs
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\rjimswa.dswa.cache.json
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\rjsmrazor.dswa.cache.json
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\rjsmcshtml.dswa.cache.json
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\scopedcss\Pages\Shared\_Layout.cshtml.rz.scp.css
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\scopedcss\bundle\OnlineQuizSystem.styles.css
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\scopedcss\projectbundle\OnlineQuizSystem.bundle.scp.css
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\jg4w63aq5q-{0}-yeeiqmfvkh-yeeiqmfvkh.gz
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\zrfbl3kn5z-{0}-61n19gt1b8-61n19gt1b8.gz
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\cs2qhxxo7o-{0}-xtxxf3hu2r-xtxxf3hu2r.gz
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\9n4jks2jk7-{0}-bqjiyaj88i-bqjiyaj88i.gz
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\mbbgtgstou-{0}-c2jlpeoesf-c2jlpeoesf.gz
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\bv3h6jbyqn-{0}-erw9l3u2r3-erw9l3u2r3.gz
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\cfk6pbmahl-{0}-aexeepp0ev-aexeepp0ev.gz
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\bp97znnhao-{0}-d7shbmvgxk-d7shbmvgxk.gz
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\6eoscd3e41-{0}-ausgxo2sd3-ausgxo2sd3.gz
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\dllfm3htrq-{0}-k8d9w2qqmf-k8d9w2qqmf.gz
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\unaghrqr83-{0}-cosvhxvwiu-cosvhxvwiu.gz
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\vq6filqs0x-{0}-ub07r2b239-ub07r2b239.gz
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\pjmqia9on4-{0}-fvhpjtyr6v-fvhpjtyr6v.gz
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\e3oc72ytnm-{0}-b7pk76d08c-b7pk76d08c.gz
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\q5fxx7k8yf-{0}-fsbi9cje9m-fsbi9cje9m.gz
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\6ynmwsmka6-{0}-rzd6atqjts-rzd6atqjts.gz
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\4mmnj5e3sg-{0}-ee0r1s7dh0-ee0r1s7dh0.gz
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\h8deqqxaua-{0}-dxx9fxp4il-dxx9fxp4il.gz
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\6we0pkh0uf-{0}-jd9uben2k1-jd9uben2k1.gz
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\yjmtdyqb7g-{0}-khv3u5hwcm-khv3u5hwcm.gz
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\777orv8wd5-{0}-r4e9w2rdcm-r4e9w2rdcm.gz
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\vqo7kjk35c-{0}-lcd1t2u6c8-lcd1t2u6c8.gz
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\92ravcpyw6-{0}-c2oey78nd0-c2oey78nd0.gz
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\5tmzs92954-{0}-tdbxkamptv-tdbxkamptv.gz
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\vm92ttuj5y-{0}-j5mq2jizvt-j5mq2jizvt.gz
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\b3etida982-{0}-06098lyss8-06098lyss8.gz
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\pqpagvdv6p-{0}-nvvlpmu67g-nvvlpmu67g.gz
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\py6huchyrl-{0}-s35ty4nyc5-s35ty4nyc5.gz
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\kql9dw3y32-{0}-pj5nd1wqec-pj5nd1wqec.gz
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\d4bldr6yet-{0}-46ein0sx1k-46ein0sx1k.gz
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\o0lg2ka7f5-{0}-v0zj4ognzu-v0zj4ognzu.gz
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\1hjbm5goyk-{0}-37tfw0ft22-37tfw0ft22.gz
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\8yvpjdimze-{0}-hrwsygsryq-hrwsygsryq.gz
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\uox7q76n0c-{0}-pk9g2wxc8p-pk9g2wxc8p.gz
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\8rhh25oz3t-{0}-ft3s53vfgj-ft3s53vfgj.gz
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\ekz5avmc8v-{0}-6cfz1n2cew-6cfz1n2cew.gz
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\rc1cbpfe64-{0}-6pdc2jztkx-6pdc2jztkx.gz
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\uubr867d0w-{0}-493y06b0oq-493y06b0oq.gz
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\7du4qls53c-{0}-iovd86k7lj-iovd86k7lj.gz
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\b80pjjqz3y-{0}-vr1egmr9el-vr1egmr9el.gz
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\dxcg4vjlcl-{0}-kbrnm935zg-kbrnm935zg.gz
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\k4mm09oqc6-{0}-jj8uyg4cgr-jj8uyg4cgr.gz
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\e99gb05o16-{0}-y7v9cxd14o-y7v9cxd14o.gz
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\aqrtd5vb37-{0}-notf2xhcfb-notf2xhcfb.gz
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\s49erivxyu-{0}-h1s4sie4z3-h1s4sie4z3.gz
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\83cmtebpn9-{0}-63fj8s7r0e-63fj8s7r0e.gz
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\71plruibqo-{0}-0j3bgjxly4-0j3bgjxly4.gz
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\pmirz2cilp-{0}-47otxtyo56-47otxtyo56.gz
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\q534v8b350-{0}-4v8eqarkd7-4v8eqarkd7.gz
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\iiyci8ht62-{0}-356vix0kms-356vix0kms.gz
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\59fs84n5q4-{0}-83jwlth58m-83jwlth58m.gz
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\ygwjoinfcj-{0}-mrlpezrjn3-mrlpezrjn3.gz
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\ylkrcn6z85-{0}-lzl9nlhx6b-lzl9nlhx6b.gz
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\iyvf48wd4k-{0}-ag7o75518u-ag7o75518u.gz
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\mhgz7e63os-{0}-x0q3zqp4vz-x0q3zqp4vz.gz
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\cv3i9lzex9-{0}-0i3buxo5is-0i3buxo5is.gz
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\f1k4rj2gde-{0}-o1o13a6vjx-o1o13a6vjx.gz
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\f0efo3e7pe-{0}-ttgo8qnofa-ttgo8qnofa.gz
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\0j6d141vpa-{0}-2z0ns9nrw6-2z0ns9nrw6.gz
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\t5qcvvdlqr-{0}-muycvpuwrr-muycvpuwrr.gz
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\hakdo18nvx-{0}-87fc7y1x7t-87fc7y1x7t.gz
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\apafmzzop8-{0}-mlv21k5csn-mlv21k5csn.gz
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\ff4fo74ony-{0}-rjvlugsqym-rjvlugsqym.gz
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\compressed\r09d5ttecw-{0}-rjvlugsqym-rjvlugsqym.gz
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\staticwebassets.build.json
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\staticwebassets.build.json.cache
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\staticwebassets.development.json
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\staticwebassets.build.endpoints.json
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\swae.build.ex.cache
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\OnlineQu.9C924EC0.Up2Date
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\OnlineQuizSystem.dll
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\refint\OnlineQuizSystem.dll
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\OnlineQuizSystem.pdb
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\OnlineQuizSystem.genruntimeconfig.cache
+C:\Users\EOL\Documents\OnlineQuizSystem - Copy\OnlineQuizSystem\obj\Debug\net10.0\ref\OnlineQuizSystem.dll
+D:\OnlineQuizSystem\OnlineQuizSystem\bin\Debug\net10.0\appsettings.Development.json
+D:\OnlineQuizSystem\OnlineQuizSystem\bin\Debug\net10.0\appsettings.json
+D:\OnlineQuizSystem\OnlineQuizSystem\bin\Debug\net10.0\OnlineQuizSystem.staticwebassets.runtime.json
+D:\OnlineQuizSystem\OnlineQuizSystem\bin\Debug\net10.0\OnlineQuizSystem.staticwebassets.endpoints.json
+D:\OnlineQuizSystem\OnlineQuizSystem\bin\Debug\net10.0\OnlineQuizSystem.exe
+D:\OnlineQuizSystem\OnlineQuizSystem\bin\Debug\net10.0\OnlineQuizSystem.deps.json
+D:\OnlineQuizSystem\OnlineQuizSystem\bin\Debug\net10.0\OnlineQuizSystem.runtimeconfig.json
+D:\OnlineQuizSystem\OnlineQuizSystem\bin\Debug\net10.0\OnlineQuizSystem.dll
+D:\OnlineQuizSystem\OnlineQuizSystem\bin\Debug\net10.0\OnlineQuizSystem.pdb
+D:\OnlineQuizSystem\OnlineQuizSystem\bin\Debug\net10.0\System.Data.SqlClient.dll
+D:\OnlineQuizSystem\OnlineQuizSystem\bin\Debug\net10.0\runtimes\win-arm64\native\sni.dll
+D:\OnlineQuizSystem\OnlineQuizSystem\bin\Debug\net10.0\runtimes\win-x64\native\sni.dll
+D:\OnlineQuizSystem\OnlineQuizSystem\bin\Debug\net10.0\runtimes\win-x86\native\sni.dll
+D:\OnlineQuizSystem\OnlineQuizSystem\bin\Debug\net10.0\runtimes\unix\lib\net8.0\System.Data.SqlClient.dll
+D:\OnlineQuizSystem\OnlineQuizSystem\bin\Debug\net10.0\runtimes\win\lib\net8.0\System.Data.SqlClient.dll
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\OnlineQuizSystem.csproj.AssemblyReference.cache
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\rpswa.dswa.cache.json
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\OnlineQuizSystem.GeneratedMSBuildEditorConfig.editorconfig
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\OnlineQuizSystem.AssemblyInfoInputs.cache
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\OnlineQuizSystem.AssemblyInfo.cs
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\OnlineQuizSystem.csproj.CoreCompileInputs.cache
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\OnlineQuizSystem.MvcApplicationPartsAssemblyInfo.cache
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\OnlineQuizSystem.RazorAssemblyInfo.cache
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\OnlineQuizSystem.RazorAssemblyInfo.cs
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\OnlineQuizSystem.sourcelink.json
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\rjimswa.dswa.cache.json
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\rjsmrazor.dswa.cache.json
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\rjsmcshtml.dswa.cache.json
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\scopedcss\Pages\Shared\_Layout.cshtml.rz.scp.css
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\scopedcss\bundle\OnlineQuizSystem.styles.css
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\scopedcss\projectbundle\OnlineQuizSystem.bundle.scp.css
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\jg4w63aq5q-{0}-2q45ry1923-2q45ry1923.gz
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\zrfbl3kn5z-{0}-61n19gt1b8-61n19gt1b8.gz
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\cs2qhxxo7o-{0}-xtxxf3hu2r-xtxxf3hu2r.gz
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\9n4jks2jk7-{0}-bqjiyaj88i-bqjiyaj88i.gz
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\mbbgtgstou-{0}-c2jlpeoesf-c2jlpeoesf.gz
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\bv3h6jbyqn-{0}-erw9l3u2r3-erw9l3u2r3.gz
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\cfk6pbmahl-{0}-aexeepp0ev-aexeepp0ev.gz
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\bp97znnhao-{0}-d7shbmvgxk-d7shbmvgxk.gz
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\6eoscd3e41-{0}-ausgxo2sd3-ausgxo2sd3.gz
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\dllfm3htrq-{0}-k8d9w2qqmf-k8d9w2qqmf.gz
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\unaghrqr83-{0}-cosvhxvwiu-cosvhxvwiu.gz
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\vq6filqs0x-{0}-ub07r2b239-ub07r2b239.gz
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\pjmqia9on4-{0}-fvhpjtyr6v-fvhpjtyr6v.gz
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\e3oc72ytnm-{0}-b7pk76d08c-b7pk76d08c.gz
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\q5fxx7k8yf-{0}-fsbi9cje9m-fsbi9cje9m.gz
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\6ynmwsmka6-{0}-rzd6atqjts-rzd6atqjts.gz
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\4mmnj5e3sg-{0}-ee0r1s7dh0-ee0r1s7dh0.gz
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\h8deqqxaua-{0}-dxx9fxp4il-dxx9fxp4il.gz
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\6we0pkh0uf-{0}-jd9uben2k1-jd9uben2k1.gz
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\yjmtdyqb7g-{0}-khv3u5hwcm-khv3u5hwcm.gz
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\777orv8wd5-{0}-r4e9w2rdcm-r4e9w2rdcm.gz
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\vqo7kjk35c-{0}-lcd1t2u6c8-lcd1t2u6c8.gz
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\92ravcpyw6-{0}-c2oey78nd0-c2oey78nd0.gz
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\5tmzs92954-{0}-tdbxkamptv-tdbxkamptv.gz
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\vm92ttuj5y-{0}-j5mq2jizvt-j5mq2jizvt.gz
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\b3etida982-{0}-06098lyss8-06098lyss8.gz
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\pqpagvdv6p-{0}-nvvlpmu67g-nvvlpmu67g.gz
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\py6huchyrl-{0}-s35ty4nyc5-s35ty4nyc5.gz
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\kql9dw3y32-{0}-pj5nd1wqec-pj5nd1wqec.gz
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\d4bldr6yet-{0}-46ein0sx1k-46ein0sx1k.gz
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\o0lg2ka7f5-{0}-v0zj4ognzu-v0zj4ognzu.gz
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\1hjbm5goyk-{0}-37tfw0ft22-37tfw0ft22.gz
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\8yvpjdimze-{0}-hrwsygsryq-hrwsygsryq.gz
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\uox7q76n0c-{0}-pk9g2wxc8p-pk9g2wxc8p.gz
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\8rhh25oz3t-{0}-ft3s53vfgj-ft3s53vfgj.gz
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\ekz5avmc8v-{0}-6cfz1n2cew-6cfz1n2cew.gz
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\rc1cbpfe64-{0}-6pdc2jztkx-6pdc2jztkx.gz
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\uubr867d0w-{0}-493y06b0oq-493y06b0oq.gz
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\7du4qls53c-{0}-iovd86k7lj-iovd86k7lj.gz
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\b80pjjqz3y-{0}-vr1egmr9el-vr1egmr9el.gz
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\dxcg4vjlcl-{0}-kbrnm935zg-kbrnm935zg.gz
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\k4mm09oqc6-{0}-jj8uyg4cgr-jj8uyg4cgr.gz
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\e99gb05o16-{0}-y7v9cxd14o-y7v9cxd14o.gz
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\aqrtd5vb37-{0}-notf2xhcfb-notf2xhcfb.gz
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\s49erivxyu-{0}-h1s4sie4z3-h1s4sie4z3.gz
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\83cmtebpn9-{0}-63fj8s7r0e-63fj8s7r0e.gz
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\71plruibqo-{0}-0j3bgjxly4-0j3bgjxly4.gz
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\pmirz2cilp-{0}-47otxtyo56-47otxtyo56.gz
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\q534v8b350-{0}-4v8eqarkd7-4v8eqarkd7.gz
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\iiyci8ht62-{0}-356vix0kms-356vix0kms.gz
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\59fs84n5q4-{0}-83jwlth58m-83jwlth58m.gz
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\ygwjoinfcj-{0}-mrlpezrjn3-mrlpezrjn3.gz
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\ylkrcn6z85-{0}-lzl9nlhx6b-lzl9nlhx6b.gz
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\iyvf48wd4k-{0}-ag7o75518u-ag7o75518u.gz
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\mhgz7e63os-{0}-x0q3zqp4vz-x0q3zqp4vz.gz
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\cv3i9lzex9-{0}-0i3buxo5is-0i3buxo5is.gz
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\f1k4rj2gde-{0}-o1o13a6vjx-o1o13a6vjx.gz
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\f0efo3e7pe-{0}-ttgo8qnofa-ttgo8qnofa.gz
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\0j6d141vpa-{0}-2z0ns9nrw6-2z0ns9nrw6.gz
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\t5qcvvdlqr-{0}-muycvpuwrr-muycvpuwrr.gz
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\hakdo18nvx-{0}-87fc7y1x7t-87fc7y1x7t.gz
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\apafmzzop8-{0}-mlv21k5csn-mlv21k5csn.gz
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\ff4fo74ony-{0}-rjvlugsqym-rjvlugsqym.gz
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\r09d5ttecw-{0}-rjvlugsqym-rjvlugsqym.gz
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\staticwebassets.build.json
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\staticwebassets.build.json.cache
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\staticwebassets.development.json
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\staticwebassets.build.endpoints.json
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\swae.build.ex.cache
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\OnlineQu.9C924EC0.Up2Date
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\OnlineQuizSystem.dll
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\refint\OnlineQuizSystem.dll
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\OnlineQuizSystem.pdb
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\OnlineQuizSystem.genruntimeconfig.cache
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\ref\OnlineQuizSystem.dll

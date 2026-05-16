@@ -1,0 +1,43 @@
+@page
+@model OnlineQuizSystem.Pages.Auth.AdminLoginModel
+@{
+    ViewData["Title"] = "Admin Login";
+}
+
+<div class="glass-card">
+    <h2 class="card-title">Admin Portal</h2>
+    <p class="card-subtitle">Login to manage quiz questions</p>
+
+    @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+    {
+        <div class="alert">
+            @Model.ErrorMessage
+        </div>
+    }
+
+    <form method="post">
+        <div class="form-group">
+            <label asp-for="Input.Email" class="form-label"></label>
+            <input asp-for="Input.Email" class="form-control" placeholder="name@example.com" />
+            <span asp-validation-for="Input.Email" class="text-danger" style="color: var(--danger); font-size: 0.85rem;"></span>
+        </div>
+        
+        <div class="form-group">
+            <label asp-for="Input.Password" class="form-label"></label>
+            <input asp-for="Input.Password" class="form-control" placeholder="••••••••" />
+            <span asp-validation-for="Input.Password" class="text-danger" style="color: var(--danger); font-size: 0.85rem;"></span>
+        </div>
+        
+        <div class="form-group mt-4">
+            <button type="submit" class="btn-primary" style="width: 100%;">Admin Sign In</button>
+        </div>
+    </form>
+
+    <div class="text-center mt-4" style="color: var(--text-muted); font-size: 0.9rem;">
+        <a asp-page="/Auth/Login" style="color: var(--primary); text-decoration: none; font-weight: 600;">Back to User Login</a>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

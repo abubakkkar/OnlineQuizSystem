@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - BrainSpark Quiz</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <a class="navbar-brand" asp-area="" asp-page="/Index">BrainSpark</a>
+                <div class="nav-links">
+                    @{
+                        var role = Context.Session.GetString("Role");
+                        var name = Context.Session.GetString("Name");
+                        var adminName = Context.Session.GetString("AdminName");
+                        var adminRole = Context.Session.GetString("AdminRole");
+                    }
+                    @if (string.IsNullOrEmpty(name) && string.IsNullOrEmpty(adminName))
+                    {
+                        <a class="nav-link" asp-area="" asp-page="/Auth/Login">User Login</a>
+                        <a class="nav-link" asp-area="" asp-page="/Auth/AdminLogin">Admin Login</a>
+                        <a class="nav-link btn-primary" asp-area="" asp-page="/Auth/Signup">Sign Up</a>
+                    }
+                    else if (!string.IsNullOrEmpty(adminName))
+                    {
+                        <span class="nav-welcome">Welcome, @adminName</span>
+                        <a class="nav-link" asp-area="" asp-page="/Admin/Accounts">Accounts</a>
+                        <form asp-page="/Auth/AdminLogout" method="post" class="d-inline">
+                            <button type="submit" class="nav-link btn-logout">Logout</button>
+                        </form>
+                    }
+                    else
+                    {
+                        <span class="nav-welcome">Welcome, @name</span>
+                        @if (role == "Teacher")
+                        {
+                            <a class="nav-link" asp-area="" asp-page="/Teacher/Index">Add Questions</a>
+                            <a class="nav-link" asp-area="" asp-page="/Teacher/ManageSections">Manage Sections</a>
+                            <a class="nav-link" asp-area="" asp-page="/Teacher/Results">Student Results</a>
+                            <a class="nav-link" asp-area="" asp-page="/Profile/Index">Profile</a>
+                        }
+                        else
+                        {
+                            <a class="nav-link" asp-area="" asp-page="/Dashboard/Index">Dashboard</a>
+                            <a class="nav-link" asp-area="" asp-page="/Profile/Index">Profile</a>
+                        }
+                        <form asp-page="/Auth/Logout" method="post" class="d-inline">
+                            <button type="submit" class="nav-link btn-logout">Logout</button>
+                        </form>
+                    }
+                </div>
+            </div>
+        </nav>
+    </header>
+    
+    <main role="main" class="main-content">
+        @RenderBody()
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            &copy; 2026 - BrainSpark Online Quiz System - <a asp-area="" asp-page="/Privacy">Privacy</a>
+        </div>
+    </footer>
+
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

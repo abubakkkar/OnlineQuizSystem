@@ -1,0 +1,91 @@
+@page
+@model OnlineQuizSystem.Pages.Dashboard.ManageSectionsModel
+@{
+    ViewData["Title"] = "Manage Sections";
+}
+
+<div class="glass-card" style="max-width: 1000px;">
+    <h2 class="card-title">Manage Course Sections</h2>
+    <p class="card-subtitle">Enroll or remove from different course sections offered by your teachers</p>
+
+    @if (!string.IsNullOrEmpty(Model.SuccessMessage))
+    {
+        <div style="padding: 1rem; border-left: 4px solid #10b981; background: rgba(16, 185, 129, 0.1); border-radius: 4px; margin-bottom: 1.5rem; color: #047857;">
+            @Model.SuccessMessage
+        </div>
+    }
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem;">
+        <!-- Available Sections -->
+        <div>
+            <h3 style="font-size: 1.1rem; font-weight: 600; margin-bottom: 1rem; color: var(--primary);">📚 Available Sections</h3>
+            
+            @if (Model.AvailableSections != null && Model.AvailableSections.Rows.Count > 0)
+            {
+                <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                    @foreach (System.Data.DataRow section in Model.AvailableSections.Rows)
+                    {
+                        <form method="post" style="padding: 1rem; border: 2px dashed var(--border); border-radius: 8px;">
+                            <div style="margin-bottom: 0.5rem;">
+                                <div style="font-weight: 600;">@(section["SectionName"])</div>
+                                <div style="font-size: 0.85rem; color: var(--text-muted);">by @(section["TeacherName"])</div>
+                            </div>
+                            @if (section["Description"] != DBNull.Value && !string.IsNullOrEmpty(section["Description"].ToString()))
+                            {
+                                <div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.75rem;">@(section["Description"])</div>
+                            }
+                            <button type="submit" asp-page-handler="Enroll" asp-route-sectionId="@(section["SectionID"])" class="btn-primary" style="padding: 0.5rem 1rem; font-size: 0.9rem; width: 100%;">
+                                + Enroll in Section
+                            </button>
+                        </form>
+                    }
+                </div>
+            }
+            else
+            {
+                <div style="padding: 1.5rem; text-align: center; background: var(--bg-secondary); border-radius: 8px;">
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">✓</div>
+                    <p style="color: var(--text-muted);">You are enrolled in all available sections from your teachers!</p>
+                </div>
+            }
+        </div>
+
+        <!-- Enrolled Sections -->
+        <div>
+            <h3 style="font-size: 1.1rem; font-weight: 600; margin-bottom: 1rem; color: #10b981;">✓ Enrolled Sections (@(Model.EnrolledSections?.Rows.Count ?? 0))</h3>
+            
+            @if (Model.EnrolledSections != null && Model.EnrolledSections.Rows.Count > 0)
+            {
+                <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                    @foreach (System.Data.DataRow section in Model.EnrolledSections.Rows)
+                    {
+                        <form method="post" style="padding: 1rem; border: 2px solid var(--primary); border-radius: 8px; background: rgba(79, 172, 254, 0.05);">
+                            <div style="margin-bottom: 0.5rem;">
+                                <div style="font-weight: 600;">@(section["SectionName"])</div>
+                                <div style="font-size: 0.85rem; color: var(--text-muted);">by @(section["TeacherName"])</div>
+                            </div>
+                            @if (section["Description"] != DBNull.Value && !string.IsNullOrEmpty(section["Description"].ToString()))
+                            {
+                                <div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.75rem;">@(section["Description"])</div>
+                            }
+                            <button type="submit" asp-page-handler="Remove" asp-route-sectionId="@(section["SectionID"])" class="btn-danger" style="padding: 0.5rem 1rem; font-size: 0.9rem; width: 100%; background: #ef4444; color: white;">
+                                × Remove
+                            </button>
+                        </form>
+                    }
+                </div>
+            }
+            else
+            {
+                <div style="padding: 1.5rem; text-align: center; background: var(--bg-secondary); border-radius: 8px;">
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">📭</div>
+                    <p style="color: var(--text-muted);">You are not enrolled in any sections yet.</p>
+                </div>
+            }
+        </div>
+    </div>
+
+    <div style="margin-top: 2rem;">
+        <a asp-page="/Dashboard/Index" class="btn-secondary" style="display: inline-block; padding: 0.8rem 1.5rem;">← Back to Dashboard</a>
+    </div>
+</div>

@@ -1,0 +1,100 @@
+@page
+@model OnlineQuizSystem.Pages.Admin.AccountsModel
+@{
+    ViewData["Title"] = "Manage Accounts";
+}
+
+<div class="glass-card" style="max-width: 1000px; margin-top: 2rem;">
+    <h2 class="card-title">Manage Accounts</h2>
+    <p class="card-subtitle">View and disable user and teacher accounts</p>
+
+    @if (!string.IsNullOrEmpty(Model.SuccessMessage))
+    {
+        <div class="alert" style="background: rgba(16, 185, 129, 0.1); border-color: rgba(16, 185, 129, 0.2); color: #6ee7b7;">
+            @Model.SuccessMessage
+        </div>
+    }
+
+    <div style="margin-top: 2rem;">
+        <h3>Teachers</h3>
+        <table class="table" style="width: 100%; text-align: left; margin-bottom: 2rem;">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (System.Data.DataRow row in Model.Teachers.Rows)
+                {
+                    var isActive = Convert.ToBoolean(row["IsActive"]);
+                    <tr>
+                        <td>@row["Name"]</td>
+                        <td>@row["Email"]</td>
+                        <td>
+                            <span class="badge" style="background: @(isActive ? "rgba(16, 185, 129, 0.2)" : "rgba(239, 68, 68, 0.2)"); color: @(isActive ? "#6ee7b7" : "#fca5a5"); padding: 4px 8px; border-radius: 4px;">
+                                @(isActive ? "Active" : "Disabled")
+                            </span>
+                        </td>
+                        <td>
+                            <form method="post" asp-page-handler="ToggleTeacherStatus" class="d-inline">
+                                <input type="hidden" name="teacherId" value="@row["TeacherID"]" />
+                                <input type="hidden" name="isActive" value="@((!isActive).ToString())" />
+                                <button type="submit" class="btn" style="background: @(isActive ? "#ef4444" : "#10b981"); color: white; padding: 4px 12px; border: none; border-radius: 4px; cursor: pointer;">
+                                    @(isActive ? "Disable" : "Enable")
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <h3>Students & Users</h3>
+        <table class="table" style="width: 100%; text-align: left;">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (System.Data.DataRow row in Model.Users.Rows)
+                {
+                    var isActive = Convert.ToBoolean(row["IsActive"]);
+                    <tr>
+                        <td>@row["Name"]</td>
+                        <td>@row["Email"]</td>
+                        <td>@row["Role"]</td>
+                        <td>
+                            <span class="badge" style="background: @(isActive ? "rgba(16, 185, 129, 0.2)" : "rgba(239, 68, 68, 0.2)"); color: @(isActive ? "#6ee7b7" : "#fca5a5"); padding: 4px 8px; border-radius: 4px;">
+                                @(isActive ? "Active" : "Disabled")
+                            </span>
+                        </td>
+                        <td>
+                            <form method="post" asp-page-handler="ToggleUserStatus" class="d-inline">
+                                <input type="hidden" name="userId" value="@row["UserID"]" />
+                                <input type="hidden" name="isActive" value="@((!isActive).ToString())" />
+                                <button type="submit" class="btn" style="background: @(isActive ? "#ef4444" : "#10b981"); color: white; padding: 4px 12px; border: none; border-radius: 4px; cursor: pointer;">
+                                    @(isActive ? "Disable" : "Enable")
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<style>
+    .table th, .table td {
+        padding: 12px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+</style>
