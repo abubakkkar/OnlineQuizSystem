@@ -352,7 +352,6 @@ D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\rjsmcshtml.dswa.cache.jso
 D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\scopedcss\Pages\Shared\_Layout.cshtml.rz.scp.css
 D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\scopedcss\bundle\OnlineQuizSystem.styles.css
 D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\scopedcss\projectbundle\OnlineQuizSystem.bundle.scp.css
-D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\jg4w63aq5q-{0}-2q45ry1923-2q45ry1923.gz
 D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\zrfbl3kn5z-{0}-61n19gt1b8-61n19gt1b8.gz
 D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\cs2qhxxo7o-{0}-xtxxf3hu2r-xtxxf3hu2r.gz
 D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\9n4jks2jk7-{0}-bqjiyaj88i-bqjiyaj88i.gz
@@ -427,3 +426,4 @@ D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\refint\OnlineQuizSystem.d
 D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\OnlineQuizSystem.pdb
 D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\OnlineQuizSystem.genruntimeconfig.cache
 D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\ref\OnlineQuizSystem.dll
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\jg4w63aq5q-{0}-aj0omd636p-aj0omd636p.gz

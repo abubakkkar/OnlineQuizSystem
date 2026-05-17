@@ -4,6 +4,138 @@
     ViewData["Title"] = "Take Quiz";
 }
 
+<style>
+    .quiz-container {
+        display: flex;
+        gap: 2rem;
+        position: relative;
+    }
+
+    .quiz-main {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .quiz-sidebar {
+        width: 280px;
+        background: var(--bg-secondary);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 1.5rem;
+        height: fit-content;
+        position: sticky;
+        top: 2rem;
+    }
+
+    .quiz-sidebar-title {
+        font-size: 1rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: var(--primary);
+    }
+
+    .progress-stat {
+        margin-bottom: 1.5rem;
+        padding-bottom: 1.5rem;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .progress-stat:last-child {
+        border-bottom: none;
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+
+    .stat-label {
+        font-size: 0.85rem;
+        color: var(--text-muted);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 0.5rem;
+    }
+
+    .stat-value {
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--primary);
+    }
+
+    .progress-bar {
+        width: 100%;
+        height: 8px;
+        background: var(--bg-primary);
+        border-radius: 4px;
+        overflow: hidden;
+        margin-top: 0.5rem;
+    }
+
+    .progress-fill {
+        height: 100%;
+        background: linear-gradient(90deg, var(--primary), var(--success));
+        transition: width 0.3s ease;
+    }
+
+    .submit-button-container {
+        margin-top: 2rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid var(--border);
+    }
+
+    .submit-button {
+        width: 100%;
+        padding: 0.8rem;
+        background: var(--success);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+
+    .submit-button:hover {
+        background: var(--success-dark);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
+    }
+
+    .submit-button:disabled {
+        background: var(--text-muted);
+        cursor: not-allowed;
+        transform: none;
+    }
+
+    @@media (max-width: 1024px) {
+        .quiz-container {
+            flex-direction: column;
+        }
+
+        .quiz-sidebar {
+            width: 100%;
+            position: static;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+        }
+
+        .progress-stat {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+            text-align: center;
+        }
+
+        .submit-button-container {
+            grid-column: 1 / -1;
+            margin-top: 0;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+        }
+    }
+</style>
+
 <div class="glass-card quiz-container">
     @if (!Model.TeacherSelected)
     {
@@ -38,45 +170,86 @@
     }
     else if (Model.Question != null)
     {
-        <div class="quiz-header">
-            <div>
-                <span style="color: var(--text-muted); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;">Difficulty Level</span>
-                <div style="font-weight: 700; color: var(--primary);">Level @Model.Difficulty</div>
+        <div class="quiz-main">
+            <div class="quiz-header">
+                <div>
+                    <span style="color: var(--text-muted); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;">Difficulty Level</span>
+                    <div style="font-weight: 700; color: var(--primary);">Level @Model.Difficulty</div>
+                </div>
+                <div class="timer" id="timerDisplay">--:--</div>
             </div>
-            <div class="timer" id="timerDisplay">--:--</div>
+
+            <h3 class="question-text">@Model.Question["QuestionText"]</h3>
+
+            <form method="post" id="quizForm">
+                <input type="hidden" name="CorrectAnswer" value="@Model.Question["CorrectOption"]" />
+                
+                <div class="options-grid">
+                    <label class="option-label" onclick="selectOption(this)">
+                        <input type="radio" asp-for="SelectedAnswer" value="A" required />
+                        <span style="font-size: 2.5rem;">A</span>
+                        <span style="font-size: 0.9rem; color: var(--text-muted);">@Model.Question["OptionA"]</span>
+                    </label>
+                    
+                    <label class="option-label" onclick="selectOption(this)">
+                        <input type="radio" asp-for="SelectedAnswer" value="B" required />
+                        <span style="font-size: 2.5rem;">B</span>
+                        <span style="font-size: 0.9rem; color: var(--text-muted);">@Model.Question["OptionB"]</span>
+                    </label>
+                    
+                    <label class="option-label" onclick="selectOption(this)">
+                        <input type="radio" asp-for="SelectedAnswer" value="C" required />
+                        <span style="font-size: 2.5rem;">C</span>
+                        <span style="font-size: 0.9rem; color: var(--text-muted);">@Model.Question["OptionC"]</span>
+                    </label>
+                    
+                    <label class="option-label" onclick="selectOption(this)">
+                        <input type="radio" asp-for="SelectedAnswer" value="D" required />
+                        <span style="font-size: 2.5rem;">D</span>
+                        <span style="font-size: 0.9rem; color: var(--text-muted);">@Model.Question["OptionD"]</span>
+                    </label>
+                </div>
+
+                <div class="text-center mt-4">
+                    <button type="submit" class="btn-primary" style="padding: 0.8rem 3rem; font-size: 1.1rem;">Submit Answer</button>
+                </div>
+            </form>
         </div>
 
-        <h3 class="question-text">@Model.Question["QuestionText"]</h3>
-
-        <form method="post" id="quizForm">
-            <input type="hidden" name="CorrectAnswer" value="@Model.Question["CorrectOption"]" />
+        <div class="quiz-sidebar">
+            <div class="quiz-sidebar-title">📊 Quiz Progress</div>
             
-            <div class="options-grid">
-                <label class="option-label" onclick="selectOption(this)">
-                    <input type="radio" asp-for="SelectedAnswer" value="A" required />
-                    @Model.Question["OptionA"]
-                </label>
-                
-                <label class="option-label" onclick="selectOption(this)">
-                    <input type="radio" asp-for="SelectedAnswer" value="B" required />
-                    @Model.Question["OptionB"]
-                </label>
-                
-                <label class="option-label" onclick="selectOption(this)">
-                    <input type="radio" asp-for="SelectedAnswer" value="C" required />
-                    @Model.Question["OptionC"]
-                </label>
-                
-                <label class="option-label" onclick="selectOption(this)">
-                    <input type="radio" asp-for="SelectedAnswer" value="D" required />
-                    @Model.Question["OptionD"]
-                </label>
+            <div class="progress-stat">
+                <div class="stat-label">Total Questions</div>
+                <div class="stat-value">@Model.TotalQuestions</div>
             </div>
 
-            <div class="text-center mt-4">
-                <button type="submit" class="btn-primary" style="padding: 0.8rem 3rem; font-size: 1.1rem;">Submit Answer</button>
+            <div class="progress-stat">
+                <div class="stat-label">Attempted</div>
+                <div class="stat-value">@Model.AttemptedQuestions</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: @((Model.TotalQuestions > 0 ? (Model.AttemptedQuestions * 100 / Model.TotalQuestions) : 0))%"></div>
+                </div>
             </div>
-        </form>
+
+            <div class="progress-stat">
+                <div class="stat-label">Remaining</div>
+                <div class="stat-value">@(Model.TotalQuestions - Model.AttemptedQuestions)</div>
+            </div>
+
+            <div class="progress-stat">
+                <div class="stat-label">Time Left</div>
+                <div class="stat-value" id="sidebarTimer">--:--</div>
+            </div>
+
+            <div class="submit-button-container">
+                <form method="post" asp-page-handler="Submit" style="display: inline;">
+                    <button type="submit" class="submit-button" onclick="return confirm('Are you sure you want to submit the quiz? You cannot change your answers after submission.');">
+                        ✓ Submit Quiz
+                    </button>
+                </form>
+            </div>
+        </div>
 
         <script>
             function selectOption(element) {
@@ -88,6 +261,7 @@
             // Quiz Timer
             let timeLeft = @Model.TimeLeftSeconds;
             const timerEl = document.getElementById('timerDisplay');
+            const sidebarTimerEl = document.getElementById('sidebarTimer');
             const form = document.getElementById('quizForm');
             
             function formatTime(seconds) {
@@ -97,10 +271,12 @@
             }
 
             timerEl.innerText = formatTime(timeLeft);
+            sidebarTimerEl.innerText = formatTime(timeLeft);
             
             const timer = setInterval(() => {
                 timeLeft--;
                 timerEl.innerText = formatTime(timeLeft);
+                sidebarTimerEl.innerText = formatTime(timeLeft);
                 
                 if(timeLeft <= 60) {
                     timerEl.style.color = 'var(--danger)';
@@ -111,7 +287,8 @@
                 if (timeLeft <= 0) {
                     clearInterval(timer);
                     window.removeEventListener('beforeunload', preventLeave);
-                    form.submit();
+                    // Auto-submit when time is up
+                    document.querySelectorAll('form')[0].submit();
                 }
             }, 1000);
 
@@ -129,7 +306,7 @@
                 }
             });
 
-            // Handle deliberate form submission (we allow it, so we stop preventing leave)
+            // Handle form submission
             form.addEventListener('submit', function() {
                 window.removeEventListener('beforeunload', preventLeave);
             });

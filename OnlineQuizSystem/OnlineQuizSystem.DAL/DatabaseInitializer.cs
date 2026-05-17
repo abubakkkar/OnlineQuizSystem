@@ -65,7 +65,9 @@ namespace OnlineQuizSystem.DAL
                     CorrectOption CHAR(1),
                     DifficultyLevel INT,
                     TeacherID INT,
-                    FOREIGN KEY(TeacherID) REFERENCES Teachers(TeacherID)
+                    SectionID INT NULL,
+                    FOREIGN KEY(TeacherID) REFERENCES Teachers(TeacherID),
+                    FOREIGN KEY(SectionID) REFERENCES Sections(SectionID)
                 );";
 
                 string sectionsTable = @"
@@ -99,6 +101,9 @@ namespace OnlineQuizSystem.DAL
                     TeacherID INT,
                     Score INT,
                     StartTime DATETIME,
+                    EndTime DATETIME,
+                    TotalQuestions INT DEFAULT 0,
+                    IsSubmitted BIT DEFAULT 0,
                     FOREIGN KEY(UserID) REFERENCES Users(UserID),
                     FOREIGN KEY(TeacherID) REFERENCES Teachers(TeacherID)
                 );";
@@ -133,12 +138,33 @@ namespace OnlineQuizSystem.DAL
                 new SqlCommand(teachersTable, con).ExecuteNonQuery();
                 new SqlCommand(usersTable, con).ExecuteNonQuery();
                 new SqlCommand(adminsTable, con).ExecuteNonQuery();
-                new SqlCommand(questionsTable, con).ExecuteNonQuery();
                 new SqlCommand(sectionsTable, con).ExecuteNonQuery();
+                new SqlCommand(questionsTable, con).ExecuteNonQuery();
                 new SqlCommand(userSectionsTable, con).ExecuteNonQuery();
                 new SqlCommand(quizSessionsTable, con).ExecuteNonQuery();
                 new SqlCommand(userTeachersTable, con).ExecuteNonQuery();
                 new SqlCommand(resultsTable, con).ExecuteNonQuery();
+
+                // Add missing columns to existing tables (migration)
+                string addQuizSessionsColumns = @"
+                IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME='QuizSessions' AND COLUMN_NAME='EndTime')
+                    ALTER TABLE QuizSessions ADD EndTime DATETIME;
+                IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME='QuizSessions' AND COLUMN_NAME='TotalQuestions')
+                    ALTER TABLE QuizSessions ADD TotalQuestions INT DEFAULT 0;
+                IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME='QuizSessions' AND COLUMN_NAME='IsSubmitted')
+                    ALTER TABLE QuizSessions ADD IsSubmitted BIT DEFAULT 0;";
+                
+                string addQuestionsColumn = @"
+                IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME='Questions' AND COLUMN_NAME='SectionID')
+                    ALTER TABLE Questions ADD SectionID INT NULL;";
+
+                string addSectionsColumn = @"
+                IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME='Sections' AND COLUMN_NAME='MaxTimeMinutes')
+                    ALTER TABLE Sections ADD MaxTimeMinutes INT DEFAULT 30;";
+
+                new SqlCommand(addQuizSessionsColumns, con).ExecuteNonQuery();
+                new SqlCommand(addQuestionsColumn, con).ExecuteNonQuery();
+                new SqlCommand(addSectionsColumn, con).ExecuteNonQuery();
 
                 // Insert admin if not exists
                 string adminCheck = "IF NOT EXISTS (SELECT * FROM Admins WHERE Email='admin@brainspark.com') INSERT INTO Admins (Name, Email, Password) VALUES ('Admin', 'admin@brainspark.com', 'admin123');";

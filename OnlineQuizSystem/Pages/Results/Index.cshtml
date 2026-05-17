@@ -4,50 +4,77 @@
     ViewData["Title"] = "Quiz Results";
 }
 
-<h1>Your Quiz Results</h1>
+<div class="glass-card" style="max-width: 1200px;">
+    <h2 class="card-title">📊 Your Quiz Results</h2>
+    <p class="card-subtitle">Review your quiz performance</p>
 
-@if (Model.Results != null && Model.Results.Rows.Count > 0)
-{
-    <div class="table-responsive">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Question</th>
-                    <th>Your Answer</th>
-                    <th>Correct Answer</th>
-                    <th>Result</th>
-                    <th>Date</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (System.Data.DataRow row in Model.Results.Rows)
-                {
-                    <tr>
-                        <td>@row["QuestionText"]</td>
-                        <td>@row["SelectedAnswer"]</td>
-                        <td>@row["CorrectOption"]</td>
-                        <td>
-                            @if (Convert.ToBoolean(row["IsCorrect"]))
-                            {
-                                <span class="text-success">✓ Correct</span>
-                            }
-                            else
-                            {
-                                <span class="text-danger">✗ Incorrect</span>
-                            }
-                        </td>
-                        <td>@Convert.ToDateTime(row["AnsweredAt"]).ToString("g")</td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+    @if (Model.Results != null && Model.Results.Rows.Count > 0)
+    {
+        <div style="display: grid; gap: 1rem; margin-bottom: 2rem;">
+            @foreach (System.Data.DataRow row in Model.Results.Rows)
+            {
+                var isCorrect = Convert.ToBoolean(row["IsCorrect"]);
+                <div style="padding: 1.5rem; border-radius: 12px; border-left: 4px solid @(isCorrect ? "#34d399" : "#fb7185"); background: @(isCorrect ? "rgba(52, 211, 153, 0.08)" : "rgba(251, 113, 133, 0.08)"); display: grid; grid-template-columns: 1fr auto; gap: 1.5rem; align-items: start;">
+                    <div>
+                        <p style="color: var(--text-muted); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem;">Question</p>
+                        <p style="font-weight: 600; margin-bottom: 1rem;">@row["QuestionText"]</p>
+                        
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
+                            <div>
+                                <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.3rem;">Your Answer</p>
+                                <p style="font-weight: 600; color: var(--secondary);">Option @row["SelectedAnswer"]</p>
+                            </div>
+                            <div>
+                                <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.3rem;">Correct Answer</p>
+                                <p style="font-weight: 600; color: #34d399;">Option @row["CorrectOption"]</p>
+                            </div>
+                        </div>
+
+                        <p style="font-size: 0.85rem; color: var(--text-muted);">
+                            Answered: @Convert.ToDateTime(row["AnsweredAt"]).ToString("MMM dd, yyyy • hh:mm tt")
+                        </p>
+                    </div>
+                    
+                    <div style="padding: 1rem 1.5rem; border-radius: 8px; background: @(isCorrect ? "rgba(52, 211, 153, 0.2)" : "rgba(251, 113, 133, 0.2)"); text-align: center; min-width: 100px;">
+                        @if (isCorrect)
+                        {
+                            <div style="font-size: 2rem; margin-bottom: 0.5rem;">✓</div>
+                            <span style="color: #34d399; font-weight: 700;">Correct</span>
+                        }
+                        else
+                        {
+                            <div style="font-size: 2rem; margin-bottom: 0.5rem;">✕</div>
+                            <span style="color: #fb7185; font-weight: 700;">Incorrect</span>
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+
+        <div style="padding: 1.5rem; background: var(--bg-secondary); border-radius: 12px; text-align: center; margin-bottom: 2rem;">
+            @{
+                int totalCorrect = Model.Results.Rows.Cast<System.Data.DataRow>().Count(r => Convert.ToBoolean(r["IsCorrect"]));
+                int total = Model.Results.Rows.Count;
+                int percentage = total > 0 ? (totalCorrect * 100) / total : 0;
+            }
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.5rem;">Overall Performance</p>
+            <h3 style="font-size: 2.5rem; margin: 0.5rem 0; color: var(--primary);">@totalCorrect / @total Correct</h3>
+            <p style="font-size: 1.3rem; color: var(--success); font-weight: 600;">@percentage%</p>
+        </div>
+    }
+    else
+    {
+        <div style="padding: 3rem; text-align: center; background: var(--bg-secondary); border-radius: 12px;">
+            <div style="font-size: 4rem; margin-bottom: 1rem;">📋</div>
+            <h3 style="margin-bottom: 0.5rem;">No Results Yet</h3>
+            <p style="color: var(--text-muted); margin-bottom: 2rem;">You haven't taken any quizzes yet. Start now to see your results!</p>
+            <a href="/Quiz/Take" class="btn-primary" style="display: inline-block; padding: 0.8rem 2rem;">Take a Quiz</a>
+        </div>
+    }
+
+    <div style="margin-top: 2rem; text-align: center;">
+        <a asp-page="/Dashboard/Index" class="btn-secondary" style="display: inline-block; padding: 0.8rem 2rem;">
+            ← Back to Dashboard
+        </a>
     </div>
-}
-else
-{
-    <p>No quiz results found. <a href="/Quiz/Take">Take a quiz</a> to see your results here.</p>
-}
-
-<div>
-    <a href="/Dashboard" class="btn btn-primary">Back to Dashboard</a>
 </div>

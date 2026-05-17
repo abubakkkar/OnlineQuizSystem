@@ -340,43 +340,76 @@ select.form-control option:checked {
 
 .options-grid {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 1rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.2rem;
     margin-bottom: 2rem;
 }
 
 .option-label {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 1rem;
-    padding: 1.15rem 1.4rem;
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 20px;
+    justify-content: center;
+    gap: 0.8rem;
+    padding: 1.8rem 1.4rem;
+    background: linear-gradient(135deg, rgba(34, 211, 238, 0.08), rgba(244, 114, 182, 0.04));
+    border: 2px solid rgba(255, 255, 255, 0.12);
+    border-radius: 16px;
     cursor: pointer;
-    transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
-    font-size: 1.05rem;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    font-size: 1rem;
+    font-weight: 500;
+    text-align: center;
+    min-height: 120px;
+    position: relative;
+    overflow: hidden;
+}
+
+.option-label::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(34, 211, 238, 0.2), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
 }
 
 .option-label:hover {
-    background: rgba(255, 255, 255, 0.12);
-    transform: translateX(6px);
+    background: linear-gradient(135deg, rgba(34, 211, 238, 0.15), rgba(244, 114, 182, 0.1));
+    border-color: rgba(34, 211, 238, 0.4);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(34, 211, 238, 0.15);
+}
+
+.option-label:hover::before {
+    opacity: 1;
 }
 
 .option-label input[type="radio"] {
-    margin: 0;
-    transform: scale(1.2);
-    accent-color: var(--primary);
+    display: none;
+}
+
+.option-label::after {
+    content: '';
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    transition: all 0.3s ease;
 }
 
 .option-label.selected {
-    border-color: rgba(99, 102, 241, 0.8);
-    background: rgba(99, 102, 241, 0.14);
-    box-shadow: 0 18px 40px rgba(99, 102, 241, 0.12);
+    border-color: var(--primary);
+    background: linear-gradient(135deg, rgba(34, 211, 238, 0.25), rgba(34, 211, 238, 0.12));
+    box-shadow: 0 0 30px rgba(34, 211, 238, 0.3), inset 0 0 20px rgba(34, 211, 238, 0.1);
+    transform: translateY(-4px) scale(1.02);
 }
 
-.option-label.selected input[type="radio"] {
-    accent-color: var(--primary-hover);
+.option-label.selected::after {
+    background: var(--primary);
+    border-color: var(--primary);
+    box-shadow: 0 0 10px rgba(34, 211, 238, 0.5);
 }
 
 /* Footer */
@@ -392,6 +425,60 @@ footer {
 footer a {
     color: var(--primary);
     text-decoration: none;
+}
+
+/* Dashboard */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.dashboard-card {
+    padding: 2rem;
+    background: linear-gradient(135deg, rgba(34, 211, 238, 0.08), rgba(244, 114, 182, 0.04));
+    border: 2px solid rgba(255, 255, 255, 0.12);
+    border-radius: 16px;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.dashboard-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(34, 211, 238, 0.2), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.dashboard-card:hover {
+    background: linear-gradient(135deg, rgba(34, 211, 238, 0.15), rgba(244, 114, 182, 0.1));
+    border-color: rgba(34, 211, 238, 0.4);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 50px rgba(34, 211, 238, 0.2);
+}
+
+.dashboard-card:hover::before {
+    opacity: 1;
+}
+
+.dashboard-icon {
+    font-size: 3.5rem;
+    margin-bottom: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+.dashboard-card:hover .dashboard-icon {
+    transform: scale(1.15) rotate(5deg);
 }
 
 /* Utility */

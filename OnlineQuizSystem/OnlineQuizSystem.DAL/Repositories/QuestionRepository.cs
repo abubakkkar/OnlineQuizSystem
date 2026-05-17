@@ -18,6 +18,25 @@ namespace OnlineQuizSystem.DAL.Repositories
             return db.Select($"SELECT * FROM Questions WHERE TeacherID={teacherID}");
         }
 
+        // Get questions from sections the user is enrolled in for a specific teacher
+        public DataTable GetByTeacherAndStudent(int teacherID, int userID)
+        {
+            string query = $@"
+                SELECT DISTINCT q.* FROM Questions q
+                WHERE q.TeacherID = {teacherID}
+                AND (
+                    q.SectionID IS NULL 
+                    OR q.SectionID IN (
+                        SELECT us.SectionID 
+                        FROM UserSections us 
+                        WHERE us.UserID = {userID}
+                    )
+                )
+                ORDER BY q.QuestionID";
+            
+            return db.Select(query);
+        }
+
         public DataRow GetRandom(int level)
         {
             var dt = GetByDifficulty(level);

@@ -39,7 +39,9 @@ OptionD NVARCHAR(200),
 CorrectOption CHAR(1),
 DifficultyLevel INT,
 TeacherID INT,
-FOREIGN KEY(TeacherID) REFERENCES Teachers(TeacherID)
+SectionID INT NULL,
+FOREIGN KEY(TeacherID) REFERENCES Teachers(TeacherID),
+FOREIGN KEY(SectionID) REFERENCES Sections(SectionID)
 );
 
 CREATE TABLE Sections(
@@ -67,6 +69,9 @@ UserID INT,
 TeacherID INT,
 Score INT,
 StartTime DATETIME,
+EndTime DATETIME,
+TotalQuestions INT DEFAULT 0,
+IsSubmitted BIT DEFAULT 0,
 FOREIGN KEY(UserID) REFERENCES Users(UserID),
 FOREIGN KEY(TeacherID) REFERENCES Teachers(TeacherID)
 );

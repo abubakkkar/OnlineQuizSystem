@@ -26,6 +26,9 @@ namespace OnlineQuizSystem.Pages.Quiz
         public bool TeacherSelected { get; set; } = false;
         public DataTable EnrolledTeachers { get; set; }
         public int TimeLeftSeconds { get; set; } = 0;
+        public int AttemptedQuestions { get; set; } = 0;
+        public int TotalQuestions { get; set; } = 0;
+        public bool IsQuizSubmitted { get; set; } = false;
 
         public IActionResult OnGet(int? teacherId = null)
         {
@@ -67,6 +70,7 @@ namespace OnlineQuizSystem.Pages.Quiz
             int diff = HttpContext.Session.GetInt32("Difficulty") ?? 2;
             _quizService.Difficulty = diff;
             _quizService.TeacherID = selectedTeacherId;
+            _quizService.UserID = userID;
 
             // Start or continue quiz session
             int sessionID = HttpContext.Session.GetInt32("SessionID") ?? 0;
@@ -78,12 +82,23 @@ namespace OnlineQuizSystem.Pages.Quiz
             }
             _quizService.CurrentSessionID = sessionID;
 
+            // Check if quiz is already submitted
+            IsQuizSubmitted = _quizService.IsQuizSubmitted();
+            if (IsQuizSubmitted)
+            {
+                return RedirectToPage("/Results/Index");
+            }
+
             try
             {
                 TimeLeftSeconds = _quizService.GetRemainingTimeSeconds();
+                AttemptedQuestions = _quizService.GetAttemptedQuestions();
+                TotalQuestions = _quizService.GetTotalQuestions();
+
                 if (TimeLeftSeconds <= 0)
                 {
-                    // Time is up
+                    // Time is up - auto submit
+                    _quizService.SubmitQuiz();
                     HttpContext.Session.Remove("TeacherID");
                     HttpContext.Session.Remove("SessionID");
                     return RedirectToPage("/Results/Index");
@@ -106,12 +121,19 @@ namespace OnlineQuizSystem.Pages.Quiz
             int diff = HttpContext.Session.GetInt32("Difficulty") ?? 2;
             _quizService.Difficulty = diff;
 
-            // Set TeacherID for filtering questions
+            // Set TeacherID and UserID for filtering questions
             var teacherIdSession = HttpContext.Session.GetInt32("TeacherID");
             if (teacherIdSession.HasValue)
             {
                 _quizService.TeacherID = teacherIdSession.Value;
             }
+
+            var userIDStr = HttpContext.Session.GetString("UserID");
+            if (!int.TryParse(userIDStr, out int userID))
+            {
+                return RedirectToPage("/Auth/Login");
+            }
+            _quizService.UserID = userID;
 
             // Start or continue quiz session
             int sessionID = HttpContext.Session.GetInt32("SessionID") ?? 0;
@@ -120,6 +142,7 @@ namespace OnlineQuizSystem.Pages.Quiz
             int timeLeft = _quizService.GetRemainingTimeSeconds();
             if (timeLeft <= 0)
             {
+                _quizService.SubmitQuiz();
                 HttpContext.Session.Remove("TeacherID");
                 HttpContext.Session.Remove("SessionID");
                 return RedirectToPage("/Results/Index");
@@ -131,14 +154,28 @@ namespace OnlineQuizSystem.Pages.Quiz
             HttpContext.Session.SetInt32("Difficulty", _quizService.Difficulty);
 
             // Store the result in DB
-            var userIDStr = HttpContext.Session.GetString("UserID");
-            if (int.TryParse(userIDStr, out int userID) && Question != null)
+            if (userID > 0 && Question != null)
             {
                 int questionID = Convert.ToInt32(Question["QuestionID"]);
                 _resultService.SaveResult(userID, questionID, SelectedAnswer, isCorrect, _quizService.CurrentSessionID);
             }
 
             return RedirectToPage();
+        }
+
+        public IActionResult OnPostSubmit()
+        {
+            var sessionIDStr = HttpContext.Session.GetInt32("SessionID");
+            if (sessionIDStr.HasValue && sessionIDStr.Value > 0)
+            {
+                _quizService.CurrentSessionID = sessionIDStr.Value;
+                _quizService.SubmitQuiz();
+                HttpContext.Session.Remove("TeacherID");
+                HttpContext.Session.Remove("SessionID");
+                return RedirectToPage("/Results/Index");
+            }
+
+            return RedirectToPage("/Auth/Login");
         }
     }
 }

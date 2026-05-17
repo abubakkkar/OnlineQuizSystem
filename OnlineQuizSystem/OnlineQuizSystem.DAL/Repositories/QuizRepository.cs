@@ -22,7 +22,25 @@ namespace OnlineQuizSystem.DAL.Repositories
                 }
             }
 
-            DataTable dt = db.Select($"INSERT INTO QuizSessions (UserID, TeacherID, Score, StartTime, EndTime) VALUES ({userID}, {teacherIDValue}, 0, GETDATE(), DATEADD(minute, {maxMinutes}, GETDATE())); SELECT SCOPE_IDENTITY() as SessionID");
+            // Get total questions for this teacher/user combination
+            string getTotalQuery = teacherID.HasValue 
+                ? $@"SELECT COUNT(*) as TotalQuestions FROM Questions 
+                    WHERE TeacherID = {teacherID.Value}
+                    AND (SectionID IS NULL OR SectionID IN (
+                        SELECT us.SectionID FROM UserSections us WHERE us.UserID = {userID}
+                    ))"
+                : $"SELECT COUNT(*) as TotalQuestions FROM Questions";
+
+            DataTable totalDt = db.Select(getTotalQuery);
+            int totalQuestions = 0;
+            if (totalDt.Rows.Count > 0)
+            {
+                totalQuestions = Convert.ToInt32(totalDt.Rows[0]["TotalQuestions"]);
+            }
+
+            DataTable dt = db.Select($@"INSERT INTO QuizSessions (UserID, TeacherID, Score, StartTime, EndTime, TotalQuestions, IsSubmitted) 
+                VALUES ({userID}, {teacherIDValue}, 0, GETDATE(), DATEADD(minute, {maxMinutes}, GETDATE()), {totalQuestions}, 0); 
+                SELECT SCOPE_IDENTITY() as SessionID");
             if (dt.Rows.Count > 0 && dt.Rows[0]["SessionID"] != DBNull.Value)
             {
                 return Convert.ToInt32(dt.Rows[0]["SessionID"]);
@@ -44,6 +62,49 @@ namespace OnlineQuizSystem.DAL.Repositories
                 return remaining > 0 ? remaining : 0;
             }
             return 0;
+        }
+
+        public int GetAttemptedQuestions(int sessionID)
+        {
+            DataTable dt = db.Select($"SELECT COUNT(DISTINCT QuestionID) as AttemptedCount FROM Results WHERE SessionID = {sessionID}");
+            if (dt.Rows.Count > 0)
+            {
+                return Convert.ToInt32(dt.Rows[0]["AttemptedCount"]);
+            }
+            return 0;
+        }
+
+        public int GetTotalQuestions(int sessionID)
+        {
+            DataTable dt = db.Select($"SELECT TotalQuestions FROM QuizSessions WHERE SessionID = {sessionID}");
+            if (dt.Rows.Count > 0 && dt.Rows[0]["TotalQuestions"] != DBNull.Value)
+            {
+                return Convert.ToInt32(dt.Rows[0]["TotalQuestions"]);
+            }
+            return 0;
+        }
+
+        public void SubmitQuiz(int sessionID)
+        {
+            // Calculate score and mark as submitted
+            DataTable resultsDt = db.Select($"SELECT COUNT(*) as CorrectCount FROM Results WHERE SessionID = {sessionID} AND IsCorrect = 1");
+            int score = 0;
+            if (resultsDt.Rows.Count > 0)
+            {
+                score = Convert.ToInt32(resultsDt.Rows[0]["CorrectCount"]);
+            }
+
+            db.Execute($"UPDATE QuizSessions SET Score = {score}, IsSubmitted = 1 WHERE SessionID = {sessionID}");
+        }
+
+        public bool IsQuizSubmitted(int sessionID)
+        {
+            DataTable dt = db.Select($"SELECT IsSubmitted FROM QuizSessions WHERE SessionID = {sessionID}");
+            if (dt.Rows.Count > 0)
+            {
+                return Convert.ToBoolean(dt.Rows[0]["IsSubmitted"]);
+            }
+            return false;
         }
     }
 }
