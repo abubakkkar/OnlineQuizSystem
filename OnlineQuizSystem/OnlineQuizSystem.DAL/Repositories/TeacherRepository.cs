@@ -34,14 +34,21 @@ namespace OnlineQuizSystem.DAL.Repositories
                     s.SessionID, 
                     u.Name as StudentName, 
                     u.Email as StudentEmail, 
-                    COUNT(r.ResultID) as TotalQuestions, 
-                    ISNULL(SUM(CAST(r.IsCorrect as INT)), 0) as TotalMarks, 
+                    s.TotalQuestions, 
+                    s.Score as TotalMarks, 
                     s.StartTime 
                 FROM QuizSessions s 
                 JOIN Users u ON s.UserID = u.UserID 
-                LEFT JOIN Results r ON s.SessionID = r.SessionID 
                 WHERE s.TeacherID = {teacherId} 
-                GROUP BY s.SessionID, u.Name, u.Email, s.StartTime
+                AND s.IsSubmitted = 1
+                AND s.SessionID = (
+                    SELECT TOP 1 s2.SessionID 
+                    FROM QuizSessions s2 
+                    WHERE s2.UserID = s.UserID 
+                    AND s2.TeacherID = s.TeacherID 
+                    AND s2.IsSubmitted = 1 
+                    ORDER BY s2.StartTime DESC
+                )
                 ORDER BY s.StartTime DESC");
         }
     }

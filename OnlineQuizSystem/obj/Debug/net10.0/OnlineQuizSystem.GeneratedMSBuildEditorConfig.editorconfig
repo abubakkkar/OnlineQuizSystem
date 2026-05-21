@@ -38,6 +38,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXV0aFxBZG1pbkxvZ2luLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/OnlineQuizSystem/OnlineQuizSystem/Pages/Auth/AdminLogout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXV0aFxBZG1pbkxvZ291dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/OnlineQuizSystem/OnlineQuizSystem/Pages/Auth/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXV0aFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

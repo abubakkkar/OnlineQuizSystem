@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using OnlineQuizSystem.BLL.Services;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace OnlineQuizSystem.Pages.Auth
@@ -36,7 +37,12 @@ namespace OnlineQuizSystem.Pages.Auth
 
         public IActionResult OnPost()
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
+
+            try
             {
                 if (_adminService.Login(Input.Email, Input.Password))
                 {
@@ -49,11 +55,15 @@ namespace OnlineQuizSystem.Pages.Auth
                         HttpContext.Session.SetString("AdminEmail", adminRow["Email"].ToString());
                         HttpContext.Session.SetString("AdminID", adminRow["AdminID"].ToString());
                         
-                        return RedirectToPage("/Admin/Accounts");
+                        return RedirectToPage("/Admin/Index");
                     }
                 }
                 
                 ErrorMessage = "Invalid email or password.";
+            }
+            catch (Exception ex)
+            {
+                ErrorMessage = $"An error occurred during login. Please try again. Details: {ex.Message}";
             }
 
             return Page();

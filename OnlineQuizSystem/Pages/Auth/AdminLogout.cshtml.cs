@@ -5,17 +5,16 @@ namespace OnlineQuizSystem.Pages.Auth
 {
     public class AdminLogoutModel : PageModel
     {
-        public void OnGet()
+        public IActionResult OnGet()
         {
+            HttpContext.Session.Clear();
+            return RedirectToPage("/Index");
         }
 
         public IActionResult OnPost()
         {
-            // Clear admin session
-            HttpContext.Session.Remove("AdminID");
-            HttpContext.Session.Remove("AdminName");
-            HttpContext.Session.Remove("AdminRole");
-            HttpContext.Session.Remove("AdminEmail");
+            // Clear all session data
+            HttpContext.Session.Clear();
             
             return RedirectToPage("/Index");
         }

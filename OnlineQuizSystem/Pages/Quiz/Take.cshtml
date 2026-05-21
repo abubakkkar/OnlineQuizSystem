@@ -11,6 +11,13 @@
         position: relative;
     }
 
+    .quiz-container.selection-mode {
+        display: block;
+        max-width: 900px;
+        text-align: center;
+        padding: 3.5rem 3rem;
+    }
+
     .quiz-main {
         flex: 1;
         min-width: 0;
@@ -18,9 +25,9 @@
 
     .quiz-sidebar {
         width: 280px;
-        background: var(--bg-secondary);
-        border: 1px solid var(--border);
-        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 20px;
         padding: 1.5rem;
         height: fit-content;
         position: sticky;
@@ -39,7 +46,7 @@
     .progress-stat {
         margin-bottom: 1.5rem;
         padding-bottom: 1.5rem;
-        border-bottom: 1px solid var(--border);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
 
     .progress-stat:last-child {
@@ -65,7 +72,7 @@
     .progress-bar {
         width: 100%;
         height: 8px;
-        background: var(--bg-primary);
+        background: rgba(255, 255, 255, 0.05);
         border-radius: 4px;
         overflow: hidden;
         margin-top: 0.5rem;
@@ -80,7 +87,7 @@
     .submit-button-container {
         margin-top: 2rem;
         padding-top: 1.5rem;
-        border-top: 1px solid var(--border);
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
     }
 
     .submit-button {
@@ -96,9 +103,9 @@
     }
 
     .submit-button:hover {
-        background: var(--success-dark);
+        background: #10b981;
         transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
+        box-shadow: 0 4px 12px rgba(52, 211, 153, 0.3);
     }
 
     .submit-button:disabled {
@@ -107,9 +114,149 @@
         transform: none;
     }
 
+    /* Teacher Selection Styling */
+    .selection-header {
+        margin-bottom: 2.5rem;
+    }
+
+    .text-gradient {
+        background: linear-gradient(120deg, var(--primary), var(--secondary));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-size: 2.25rem;
+        font-weight: 800;
+    }
+
+    .teacher-selection-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 1.8rem;
+        margin: 2rem 0;
+        justify-content: center;
+    }
+
+    .teacher-card {
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.07));
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 24px;
+        padding: 2.2rem 1.8rem;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        color: var(--text-main);
+    }
+
+    .teacher-card::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg, rgba(34, 211, 238, 0.12), rgba(244, 114, 182, 0.08));
+        opacity: 0;
+        transition: opacity 0.4s ease;
+        z-index: 0;
+    }
+
+    .teacher-card:hover {
+        transform: translateY(-8px);
+        border-color: rgba(34, 211, 238, 0.35);
+        box-shadow: 0 20px 45px rgba(34, 211, 238, 0.15), 
+                    inset 0 0 15px rgba(34, 211, 238, 0.05);
+    }
+
+    .teacher-card:hover::before {
+        opacity: 1;
+    }
+
+    .teacher-avatar-container {
+        width: 84px;
+        height: 84px;
+        background: linear-gradient(135deg, rgba(34, 211, 238, 0.1), rgba(244, 114, 182, 0.1));
+        border: 2px solid rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1.2rem;
+        font-size: 2.6rem;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        transition: all 0.4s ease;
+        position: relative;
+        z-index: 1;
+    }
+
+    .teacher-card:hover .teacher-avatar-container {
+        transform: scale(1.1) rotate(6deg);
+        border-color: var(--primary);
+        box-shadow: 0 10px 30px rgba(34, 211, 238, 0.25);
+    }
+
+    .teacher-name {
+        font-size: 1.25rem;
+        font-weight: 700;
+        margin-bottom: 0.4rem;
+        color: var(--text-main);
+        letter-spacing: -0.01em;
+        position: relative;
+        z-index: 1;
+    }
+
+    .teacher-role {
+        font-size: 0.85rem;
+        color: var(--text-muted);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 1.8rem;
+        position: relative;
+        z-index: 1;
+    }
+
+    .attempt-btn {
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: var(--text-main);
+        padding: 0.75rem 1.4rem;
+        border-radius: 14px;
+        font-weight: 600;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+
+    .teacher-card:hover .attempt-btn {
+        background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+        color: white;
+        border-color: transparent;
+        box-shadow: 0 10px 25px rgba(6, 182, 212, 0.3);
+        transform: translateY(-2px);
+    }
+
+    .teacher-card:active .attempt-btn {
+        transform: translateY(0);
+    }
+
+    .teacher-card:hover .attempt-btn svg {
+        transform: translateX(4px);
+    }
+
     @@media (max-width: 1024px) {
         .quiz-container {
             flex-direction: column;
+        }
+
+        .quiz-container.selection-mode {
+            padding: 2.5rem 1.5rem;
         }
 
         .quiz-sidebar {
@@ -131,27 +278,38 @@
             grid-column: 1 / -1;
             margin-top: 0;
             padding-top: 1rem;
-            border-top: 1px solid var(--border);
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
         }
     }
 </style>
 
-<div class="glass-card quiz-container">
+<div class="glass-card quiz-container @(!Model.TeacherSelected ? "selection-mode" : "")">
     @if (!Model.TeacherSelected)
     {
         <div class="text-center">
-            <h2 class="card-title" style="margin-bottom: 1.5rem;">Select a Teacher</h2>
-            <p class="card-subtitle" style="margin-bottom: 2rem;">Choose which teacher's quiz you want to attempt</p>
+            <div class="selection-header">
+                <h2 class="card-title text-gradient" style="margin-bottom: 0.75rem;">Select Your Instructor</h2>
+                <p class="card-subtitle">Choose which teacher's quiz session you want to attempt today</p>
+            </div>
             
             @if (Model.EnrolledTeachers != null && Model.EnrolledTeachers.Rows.Count > 0)
             {
                 <form method="get">
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
+                    <div class="teacher-selection-grid">
                         @foreach (System.Data.DataRow teacher in Model.EnrolledTeachers.Rows)
                         {
-                            <button type="submit" name="teacherId" value="@teacher["TeacherID"]" class="teacher-btn" style="padding: 1.5rem; border: 2px solid var(--border); border-radius: 12px; background: var(--bg-secondary); cursor: pointer; transition: all 0.3s; font-size: 1rem; font-weight: 500;">
-                                👨‍🏫<br/>
-                                @teacher["Name"]
+                            <button type="submit" name="teacherId" value="@teacher["TeacherID"]" class="teacher-card">
+                                <div class="teacher-avatar-container">
+                                    👨‍🏫
+                                </div>
+                                <h3 class="teacher-name">@teacher["Name"]</h3>
+                                <p class="teacher-role">Faculty Instructor</p>
+                                <div class="attempt-btn">
+                                    <span>Attempt Quiz</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" style="transition: transform 0.3s;">
+                                        <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8z"/>
+                                    </svg>
+                                </div>
                             </button>
                         }
                     </div>
@@ -159,13 +317,27 @@
             }
             else
             {
-                <div style="margin-bottom: 2rem;">
-                    <div style="font-size: 3rem; margin-bottom: 1rem;">📚</div>
-                    <h3 style="margin-bottom: 1rem;">No Teachers Enrolled</h3>
-                    <p style="color: var(--text-muted); margin-bottom: 2rem;">You need to enroll in at least one teacher to take a quiz.</p>
-                    <a asp-page="/Dashboard/Index" class="btn-primary" style="display: inline-block; padding: 0.8rem 2rem;">Back to Dashboard</a>
+                <div style="margin-bottom: 2rem; padding: 2rem 0;">
+                    <div style="font-size: 3.5rem; margin-bottom: 1rem; filter: drop-shadow(0 8px 16px rgba(34,211,238,0.2));">📚</div>
+                    <h3 style="margin-bottom: 0.75rem; font-size: 1.5rem;">No Teachers Enrolled</h3>
+                    <p style="color: var(--text-muted); margin-bottom: 2.2rem; max-width: 480px; margin-left: auto; margin-right: auto;">You need to be enrolled in at least one teacher's section to take a quiz.</p>
+                    <a asp-page="/Dashboard/Index" class="btn-primary" style="display: inline-block;">Back to Dashboard</a>
                 </div>
             }
+        </div>
+    }
+    else if (Model.HasAlreadyAttempted)
+    {
+        <div class="text-center" style="padding: 3rem 2rem;">
+            <div style="font-size: 4rem; margin-bottom: 1.5rem; filter: drop-shadow(0 8px 16px rgba(34,211,238,0.2));">✅</div>
+            <h2 class="card-title text-gradient" style="margin-bottom: 1rem;">Quiz Already Completed</h2>
+            <p style="color: var(--text-muted); margin-bottom: 2.5rem; max-width: 480px; margin-left: auto; margin-right: auto;">
+                You have already attempted and submitted the quiz for this teacher. Each student is allowed only one attempt per teacher.
+            </p>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <a asp-page="/Results/Index" class="btn-primary" style="display: inline-block; padding: 0.8rem 2rem;">View My Results</a>
+                <a asp-page="/Dashboard/Index" class="btn-secondary" style="display: inline-block; padding: 0.8rem 2rem; border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; text-decoration: none;">Back to Dashboard</a>
+            </div>
         </div>
     }
     else if (Model.Question != null)
@@ -182,6 +354,7 @@
             <h3 class="question-text">@Model.Question["QuestionText"]</h3>
 
             <form method="post" id="quizForm">
+                <input type="hidden" name="QuestionID" value="@Model.Question["QuestionID"]" />
                 <input type="hidden" name="CorrectAnswer" value="@Model.Question["CorrectOption"]" />
                 
                 <div class="options-grid">

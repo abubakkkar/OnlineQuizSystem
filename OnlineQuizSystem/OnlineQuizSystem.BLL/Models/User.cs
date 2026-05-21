@@ -8,6 +8,7 @@
         public string Password { get; set; }
         public string Role { get; set; }
         public int? TeacherID { get; set; } // Kept for backward compatibility, use Teachers list instead
+        public bool IsActive { get; set; }
         public List<Teacher> Teachers { get; set; } = new List<Teacher>();
     }
 }

@@ -29,6 +29,7 @@ namespace OnlineQuizSystem.Pages.Quiz
         public int AttemptedQuestions { get; set; } = 0;
         public int TotalQuestions { get; set; } = 0;
         public bool IsQuizSubmitted { get; set; } = false;
+        public bool HasAlreadyAttempted { get; set; } = false;
 
         public IActionResult OnGet(int? teacherId = null)
         {
@@ -72,6 +73,13 @@ namespace OnlineQuizSystem.Pages.Quiz
             _quizService.TeacherID = selectedTeacherId;
             _quizService.UserID = userID;
 
+            // Check if student has already completed a quiz for this teacher
+            if (_quizService.HasCompletedQuizForTeacher(userID, selectedTeacherId))
+            {
+                HasAlreadyAttempted = true;
+                return Page();
+            }
+
             // Start or continue quiz session
             int sessionID = HttpContext.Session.GetInt32("SessionID") ?? 0;
             if (sessionID == 0)
@@ -103,6 +111,16 @@ namespace OnlineQuizSystem.Pages.Quiz
                     HttpContext.Session.Remove("SessionID");
                     return RedirectToPage("/Results/Index");
                 }
+
+                // If all questions are already answered, automatically submit and redirect to results
+                if (TotalQuestions > 0 && AttemptedQuestions >= TotalQuestions)
+                {
+                    _quizService.SubmitQuiz();
+                    HttpContext.Session.Remove("TeacherID");
+                    HttpContext.Session.Remove("SessionID");
+                    return RedirectToPage("/Results/Index");
+                }
+
                 Question = _quizService.GetQuestion();
             }
             catch
@@ -116,7 +134,7 @@ namespace OnlineQuizSystem.Pages.Quiz
             return Page();
         }
 
-        public IActionResult OnPost(char CorrectAnswer)
+        public IActionResult OnPost(char CorrectAnswer, int QuestionID)
         {
             int diff = HttpContext.Session.GetInt32("Difficulty") ?? 2;
             _quizService.Difficulty = diff;
@@ -154,10 +172,9 @@ namespace OnlineQuizSystem.Pages.Quiz
             HttpContext.Session.SetInt32("Difficulty", _quizService.Difficulty);
 
             // Store the result in DB
-            if (userID > 0 && Question != null)
+            if (userID > 0 && QuestionID > 0)
             {
-                int questionID = Convert.ToInt32(Question["QuestionID"]);
-                _resultService.SaveResult(userID, questionID, SelectedAnswer, isCorrect, _quizService.CurrentSessionID);
+                _resultService.SaveResult(userID, QuestionID, SelectedAnswer, isCorrect, _quizService.CurrentSessionID);
             }
 
             return RedirectToPage();

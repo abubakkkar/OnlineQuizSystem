@@ -35,7 +35,7 @@ namespace OnlineQuizSystem.Pages.Teacher
             return Page();
         }
 
-        public IActionResult OnPostCreate(string SectionName, string Description)
+        public IActionResult OnPostCreate(string SectionName, string Description, int MaxTimeMinutes = 5)
         {
             var teacherIDStr = HttpContext.Session.GetString("TeacherID");
             if (!int.TryParse(teacherIDStr, out int teacherID))
@@ -52,7 +52,7 @@ namespace OnlineQuizSystem.Pages.Teacher
 
             try
             {
-                _sectionService.CreateSection(teacherID, SectionName, Description ?? "");
+                _sectionService.CreateSection(teacherID, SectionName, Description ?? "", MaxTimeMinutes);
                 SuccessMessage = "Section created successfully!";
             }
             catch (Exception ex)

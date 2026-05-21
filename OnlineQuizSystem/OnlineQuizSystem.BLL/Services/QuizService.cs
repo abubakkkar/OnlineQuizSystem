@@ -20,6 +20,11 @@ namespace OnlineQuizSystem.BLL.Services
             return CurrentSessionID;
         }
 
+        public bool HasCompletedQuizForTeacher(int userID, int teacherID)
+        {
+            return quizRepo.HasCompletedQuizForTeacher(userID, teacherID);
+        }
+
         public DataRow GetQuestion()
         {
             if (TeacherID.HasValue)
@@ -29,8 +34,28 @@ namespace OnlineQuizSystem.BLL.Services
                     ? questionRepo.GetByTeacherAndStudent(TeacherID.Value, UserID)
                     : questionRepo.GetByTeacher(TeacherID.Value);
                 
+                // Get all answered question IDs for the current session
+                var answeredIds = new System.Collections.Generic.List<int>();
+                if (CurrentSessionID > 0)
+                {
+                    DataTable answeredDt = quizRepo.GetAnsweredQuestionIDs(CurrentSessionID);
+                    foreach (DataRow row in answeredDt.Rows)
+                    {
+                        if (row["QuestionID"] != DBNull.Value)
+                        {
+                            answeredIds.Add(Convert.ToInt32(row["QuestionID"]));
+                        }
+                    }
+                }
+                
                 // First, try to find a question at the current difficulty level
-                var filtered = dt.Select($"DifficultyLevel = {Difficulty}");
+                string filter = $"DifficultyLevel = {Difficulty}";
+                if (answeredIds.Count > 0)
+                {
+                    filter += $" AND QuestionID NOT IN ({string.Join(",", answeredIds)})";
+                }
+
+                var filtered = dt.Select(filter);
                 if (filtered.Length > 0)
                     return filtered[new Random().Next(filtered.Length)];
                 
@@ -38,7 +63,13 @@ namespace OnlineQuizSystem.BLL.Services
                 for (int level = 1; level <= 3; level++)
                 {
                     if (level == Difficulty) continue; // Skip the level we already tried
-                    filtered = dt.Select($"DifficultyLevel = {level}");
+                    string fallbackFilter = $"DifficultyLevel = {level}";
+                    if (answeredIds.Count > 0)
+                    {
+                        fallbackFilter += $" AND QuestionID NOT IN ({string.Join(",", answeredIds)})";
+                    }
+
+                    filtered = dt.Select(fallbackFilter);
                     if (filtered.Length > 0)
                         return filtered[new Random().Next(filtered.Length)];
                 }

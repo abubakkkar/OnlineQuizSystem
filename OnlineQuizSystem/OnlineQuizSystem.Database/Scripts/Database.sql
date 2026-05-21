@@ -1,4 +1,4 @@
-﻿CREATE DATABASE OnlineQuizDB;
+CREATE DATABASE OnlineQuizDB;
 GO
 USE OnlineQuizDB;
 GO
@@ -8,7 +8,8 @@ TeacherID INT IDENTITY PRIMARY KEY,
 Name NVARCHAR(100),
 Email NVARCHAR(100),
 Password NVARCHAR(100),
-Role NVARCHAR(20) DEFAULT 'Teacher'
+Role NVARCHAR(20) DEFAULT 'Teacher',
+IsActive BIT DEFAULT 1
 );
 
 CREATE TABLE Users(
@@ -18,6 +19,7 @@ Email NVARCHAR(100),
 Password NVARCHAR(100),
 Role NVARCHAR(20),
 TeacherID INT NULL,
+IsActive BIT DEFAULT 1,
 FOREIGN KEY(TeacherID) REFERENCES Teachers(TeacherID)
 );
 
@@ -98,4 +100,4 @@ FOREIGN KEY(UserID) REFERENCES Users(UserID),
 FOREIGN KEY(QuestionID) REFERENCES Questions(QuestionID),
 FOREIGN KEY(SessionID) REFERENCES QuizSessions(SessionID)
 );
-
+select * from Teachers;

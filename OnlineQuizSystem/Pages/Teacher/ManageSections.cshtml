@@ -26,7 +26,7 @@
     <div style="background: var(--bg-secondary); padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem;">
         <h3 style="font-size: 1rem; font-weight: 600; margin-bottom: 1rem;">➕ Create New Section</h3>
         
-        <form method="post" asp-page-handler="Create" style="display: grid; grid-template-columns: 1fr 1fr auto; gap: 1rem; align-items: end;">
+        <form method="post" asp-page-handler="Create" style="display: grid; grid-template-columns: 1fr 1fr auto auto; gap: 1rem; align-items: end;">
             <div>
                 <label class="form-label">Section Name</label>
                 <input type="text" name="SectionName" class="form-control" placeholder="e.g., Class A" required />
@@ -35,6 +35,11 @@
             <div>
                 <label class="form-label">Description</label>
                 <input type="text" name="Description" class="form-control" placeholder="Brief description" />
+            </div>
+
+            <div>
+                <label class="form-label">Quiz Time (minutes)</label>
+                <input type="number" name="MaxTimeMinutes" class="form-control" placeholder="5" min="1" max="180" value="5" required />
             </div>
 
             <button type="submit" class="btn-primary" style="padding: 0.8rem 1.5rem; height: fit-content;">
@@ -59,7 +64,7 @@
                             {
                                 <div style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.25rem;">@(section["Description"])</div>
                             }
-                            <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">Created: @Convert.ToDateTime(section["CreatedDate"]).ToString("MMM dd, yyyy")</div>
+                            <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.5rem;">Created: @Convert.ToDateTime(section["CreatedDate"]).ToString("MMM dd, yyyy") · ⏱ @(section.Table.Columns.Contains("MaxTimeMinutes") && section["MaxTimeMinutes"] != DBNull.Value ? section["MaxTimeMinutes"].ToString() : "30") min</div>
                         </div>
                         <div style="display: flex; gap: 0.5rem;">
                             <form method="post" asp-page-handler="Delete" asp-route-sectionId="@(section["SectionID"])" style="display: inline;" onsubmit="return confirm('Are you sure you want to delete this section?');">

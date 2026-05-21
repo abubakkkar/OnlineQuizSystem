@@ -15,10 +15,25 @@ namespace OnlineQuizSystem.DAL.Repositories
             int maxMinutes = 30;
             if (teacherID.HasValue)
             {
-                DataTable maxTimeDt = db.Select($"SELECT MAX(MaxTimeMinutes) as MaxMins FROM Sections WHERE TeacherID = {teacherID.Value}");
+                // First, check the specific section the student is enrolled in for this teacher
+                DataTable maxTimeDt = db.Select($@"
+                    SELECT MAX(s.MaxTimeMinutes) as MaxMins 
+                    FROM Sections s 
+                    INNER JOIN UserSections us ON s.SectionID = us.SectionID 
+                    WHERE s.TeacherID = {teacherID.Value} AND us.UserID = {userID}");
+                
                 if (maxTimeDt.Rows.Count > 0 && maxTimeDt.Rows[0]["MaxMins"] != DBNull.Value)
                 {
                     maxMinutes = Convert.ToInt32(maxTimeDt.Rows[0]["MaxMins"]);
+                }
+                else
+                {
+                    // Fallback to the maximum section time for this teacher
+                    DataTable fallbackDt = db.Select($"SELECT MAX(MaxTimeMinutes) as MaxMins FROM Sections WHERE TeacherID = {teacherID.Value}");
+                    if (fallbackDt.Rows.Count > 0 && fallbackDt.Rows[0]["MaxMins"] != DBNull.Value)
+                    {
+                        maxMinutes = Convert.ToInt32(fallbackDt.Rows[0]["MaxMins"]);
+                    }
                 }
             }
 
@@ -46,6 +61,21 @@ namespace OnlineQuizSystem.DAL.Repositories
                 return Convert.ToInt32(dt.Rows[0]["SessionID"]);
             }
             return 0;
+        }
+
+        public DataTable GetAnsweredQuestionIDs(int sessionID)
+        {
+            return db.Select($"SELECT QuestionID FROM Results WHERE SessionID = {sessionID}");
+        }
+
+        public bool HasCompletedQuizForTeacher(int userID, int teacherID)
+        {
+            DataTable dt = db.Select($"SELECT COUNT(*) as CompletedCount FROM QuizSessions WHERE UserID = {userID} AND TeacherID = {teacherID} AND IsSubmitted = 1");
+            if (dt.Rows.Count > 0)
+            {
+                return Convert.ToInt32(dt.Rows[0]["CompletedCount"]) > 0;
+            }
+            return false;
         }
 
         public void UpdateSessionScore(int sessionID, int score)
