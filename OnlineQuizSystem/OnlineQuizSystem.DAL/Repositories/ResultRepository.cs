@@ -9,7 +9,7 @@ namespace OnlineQuizSystem.DAL.Repositories
 
         public void SaveResult(int userID, int questionID, char selectedAnswer, bool isCorrect, int sessionID)
         {
-            db.Execute($"INSERT INTO Results (UserID, QuestionID, SelectedAnswer, IsCorrect, SessionID) VALUES ({userID}, {questionID}, '{selectedAnswer}', {(isCorrect ? 1 : 0)}, {sessionID})");
+            db.Execute($"EXEC dbo.sp_SaveQuizResult @UserID={userID}, @QuestionID={questionID}, @SelectedAnswer='{selectedAnswer}', @SessionID={sessionID}");
         }
 
         public DataTable GetResultsByUser(int userID)

@@ -11,31 +11,7 @@ namespace OnlineQuizSystem.DAL.Repositories
         {
             // Insert new session and return the SessionID in a single batch
             string teacherIDValue = teacherID.HasValue ? teacherID.Value.ToString() : "NULL";
-            
             int maxMinutes = 30;
-            if (teacherID.HasValue)
-            {
-                // First, check the specific section the student is enrolled in for this teacher
-                DataTable maxTimeDt = db.Select($@"
-                    SELECT MAX(s.MaxTimeMinutes) as MaxMins 
-                    FROM Sections s 
-                    INNER JOIN UserSections us ON s.SectionID = us.SectionID 
-                    WHERE s.TeacherID = {teacherID.Value} AND us.UserID = {userID}");
-                
-                if (maxTimeDt.Rows.Count > 0 && maxTimeDt.Rows[0]["MaxMins"] != DBNull.Value)
-                {
-                    maxMinutes = Convert.ToInt32(maxTimeDt.Rows[0]["MaxMins"]);
-                }
-                else
-                {
-                    // Fallback to the maximum section time for this teacher
-                    DataTable fallbackDt = db.Select($"SELECT MAX(MaxTimeMinutes) as MaxMins FROM Sections WHERE TeacherID = {teacherID.Value}");
-                    if (fallbackDt.Rows.Count > 0 && fallbackDt.Rows[0]["MaxMins"] != DBNull.Value)
-                    {
-                        maxMinutes = Convert.ToInt32(fallbackDt.Rows[0]["MaxMins"]);
-                    }
-                }
-            }
 
             // Get total questions for this teacher/user combination
             string getTotalQuery = teacherID.HasValue 
@@ -53,9 +29,7 @@ namespace OnlineQuizSystem.DAL.Repositories
                 totalQuestions = Convert.ToInt32(totalDt.Rows[0]["TotalQuestions"]);
             }
 
-            DataTable dt = db.Select($@"INSERT INTO QuizSessions (UserID, TeacherID, Score, StartTime, EndTime, TotalQuestions, IsSubmitted) 
-                VALUES ({userID}, {teacherIDValue}, 0, GETDATE(), DATEADD(minute, {maxMinutes}, GETDATE()), {totalQuestions}, 0); 
-                SELECT SCOPE_IDENTITY() as SessionID");
+            DataTable dt = db.Select($@"EXEC dbo.sp_StartQuizSession @UserID={userID}, @TeacherID={(teacherID.HasValue ? teacherID.Value.ToString() : "NULL")}, @MaxTimeMinutes={maxMinutes}");
             if (dt.Rows.Count > 0 && dt.Rows[0]["SessionID"] != DBNull.Value)
             {
                 return Convert.ToInt32(dt.Rows[0]["SessionID"]);
@@ -116,15 +90,7 @@ namespace OnlineQuizSystem.DAL.Repositories
 
         public void SubmitQuiz(int sessionID)
         {
-            // Calculate score and mark as submitted
-            DataTable resultsDt = db.Select($"SELECT COUNT(*) as CorrectCount FROM Results WHERE SessionID = {sessionID} AND IsCorrect = 1");
-            int score = 0;
-            if (resultsDt.Rows.Count > 0)
-            {
-                score = Convert.ToInt32(resultsDt.Rows[0]["CorrectCount"]);
-            }
-
-            db.Execute($"UPDATE QuizSessions SET Score = {score}, IsSubmitted = 1 WHERE SessionID = {sessionID}");
+            db.Execute($"EXEC dbo.sp_SubmitQuiz @SessionID={sessionID}");
         }
 
         public bool IsQuizSubmitted(int sessionID)

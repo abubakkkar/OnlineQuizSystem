@@ -13,13 +13,19 @@
     <form method="post">
         <div class="form-group">
             <label asp-for="Input.Name" class="form-label"></label>
-            <input asp-for="Input.Name" class="form-control" placeholder="John Doe" />
+            <input asp-for="Input.Name" class="form-control" placeholder="Muhammad Ali" />
             <span asp-validation-for="Input.Name" class="text-danger" style="color: var(--danger); font-size: 0.85rem;"></span>
         </div>
 
         <div class="form-group">
+            <label asp-for="Input.RollNo" class="form-label"></label>
+            <input asp-for="Input.RollNo" class="form-control" placeholder="2025-XX-000" />
+            <span asp-validation-for="Input.RollNo" class="text-danger" style="color: var(--danger); font-size: 0.85rem;"></span>
+        </div>
+
+        <div class="form-group">
             <label asp-for="Input.Email" class="form-label"></label>
-            <input asp-for="Input.Email" class="form-control" placeholder="name@example.com" />
+            <input asp-for="Input.Email" class="form-control" placeholder="rollno@student.uet.edu.pk" />
             <span asp-validation-for="Input.Email" class="text-danger" style="color: var(--danger); font-size: 0.85rem;"></span>
         </div>
         
@@ -35,29 +41,6 @@
             <span asp-validation-for="Input.ConfirmPassword" class="text-danger" style="color: var(--danger); font-size: 0.85rem;"></span>
         </div>
         
-        <div class="form-group">
-            <label class="form-label">Select Teachers (You can select multiple)</label>
-            <div style="border: 1px solid var(--border); border-radius: 8px; padding: 1rem; max-height: 200px; overflow-y: auto;">
-                @if (Model.Teachers != null && Model.Teachers.Rows.Count > 0)
-                {
-                    foreach (System.Data.DataRow row in Model.Teachers.Rows)
-                    {
-                        <div style="margin-bottom: 0.75rem;">
-                            <label style="display: flex; align-items: center; cursor: pointer;">
-                                <input type="checkbox" name="SelectedTeacherIds" value="@row["TeacherID"]" style="margin-right: 0.5rem;" />
-                                <span>@row["Name"]</span>
-                            </label>
-                        </div>
-                    }
-                }
-                else
-                {
-                    <p style="color: var(--text-muted);">No teachers available</p>
-                }
-            </div>
-            <span asp-validation-for="Input.SelectedTeacherIds" class="text-danger" style="color: var(--danger); font-size: 0.85rem;"></span>
-        </div>
-
         <button type="submit" class="btn-primary" style="width: 100%; padding: 0.95rem 1.1rem; font-size: 1rem; margin-top: 0.5rem; border-radius: 16px;">
             Create Account
         </button>

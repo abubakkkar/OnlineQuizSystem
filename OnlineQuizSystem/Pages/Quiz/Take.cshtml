@@ -470,7 +470,17 @@
                 e.preventDefault();
                 e.returnValue = '';
             }
+
+            function preventBackNavigation(event) {
+                if (timeLeft > 0) {
+                    history.pushState(null, document.title, window.location.href);
+                    alert('Navigation back is disabled while the quiz is in progress. Please submit the quiz to finish.');
+                }
+            }
+
             window.addEventListener('beforeunload', preventLeave);
+            window.addEventListener('popstate', preventBackNavigation);
+            history.pushState(null, document.title, window.location.href);
 
             // Disable back/forward navigation cache behavior
             window.addEventListener('pageshow', function(event) {
@@ -479,10 +489,16 @@
                 }
             });
 
+            function clearQuizNavigationGuards() {
+                window.removeEventListener('beforeunload', preventLeave);
+                window.removeEventListener('popstate', preventBackNavigation);
+            }
+
             // Handle form submission
             form.addEventListener('submit', function() {
-                window.removeEventListener('beforeunload', preventLeave);
+                clearQuizNavigationGuards();
             });
+
         </script>
     }
     else

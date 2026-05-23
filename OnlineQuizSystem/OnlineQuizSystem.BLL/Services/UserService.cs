@@ -13,9 +13,9 @@ namespace OnlineQuizSystem.BLL.Services
             return repo.Login(email, pass);
         }
 
-        public void Register(string n, string e, string p, int? teacherID = null)
+        public void Register(string n, string e, string p, string rollNo, int? teacherID = null)
         {
-            repo.Register(n, e, p, teacherID);
+            repo.Register(n, e, p, rollNo, teacherID);
         }
 
         // Get all teachers enrolled by a user

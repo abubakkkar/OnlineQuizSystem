@@ -35,11 +35,13 @@ namespace OnlineQuizSystem.DAL
                 IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='Users' and xtype='U')
                 CREATE TABLE Users (
                     UserID INT PRIMARY KEY IDENTITY(1,1),
+                    RollNo NVARCHAR(50) NOT NULL UNIQUE,
                     Name NVARCHAR(100),
                     Email NVARCHAR(100) UNIQUE,
                     Password NVARCHAR(100),
                     Role NVARCHAR(20),
                     TeacherID INT NULL,
+                    IsActive BIT DEFAULT 1,
                     FOREIGN KEY(TeacherID) REFERENCES Teachers(TeacherID)
                 );";
 
@@ -81,6 +83,29 @@ namespace OnlineQuizSystem.DAL
                     FOREIGN KEY(TeacherID) REFERENCES Teachers(TeacherID)
                 );";
 
+                string quizzesTable = @"
+                IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='Quizzes' and xtype='U')
+                CREATE TABLE Quizzes (
+                    QuizID INT PRIMARY KEY IDENTITY(1,1),
+                    SectionID INT NULL,
+                    TeacherID INT NULL,
+                    Title NVARCHAR(200),
+                    MaxTimeMinutes INT DEFAULT 30,
+                    CreatedDate DATETIME DEFAULT GETDATE(),
+                    FOREIGN KEY(SectionID) REFERENCES Sections(SectionID),
+                    FOREIGN KEY(TeacherID) REFERENCES Teachers(TeacherID)
+                );";
+
+                string quizQuestionsTable = @"
+                IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='QuizQuestions' and xtype='U')
+                CREATE TABLE QuizQuestions (
+                    QuizQuestionID INT PRIMARY KEY IDENTITY(1,1),
+                    QuizID INT NOT NULL,
+                    QuestionID INT NOT NULL,
+                    FOREIGN KEY(QuizID) REFERENCES Quizzes(QuizID),
+                    FOREIGN KEY(QuestionID) REFERENCES Questions(QuestionID)
+                );";
+
                 string userSectionsTable = @"
                 IF NOT EXISTS (SELECT * FROM sysobjects WHERE name='UserSections' and xtype='U')
                 CREATE TABLE UserSections (
@@ -99,9 +124,11 @@ namespace OnlineQuizSystem.DAL
                     SessionID INT PRIMARY KEY IDENTITY(1,1),
                     UserID INT,
                     TeacherID INT,
+                    QuizID INT NULL,
                     Score INT,
                     StartTime DATETIME,
                     EndTime DATETIME,
+                    MaxTimeMinutes INT DEFAULT 30,
                     TotalQuestions INT DEFAULT 0,
                     IsSubmitted BIT DEFAULT 0,
                     FOREIGN KEY(UserID) REFERENCES Users(UserID),
@@ -145,15 +172,33 @@ namespace OnlineQuizSystem.DAL
                 new SqlCommand(userTeachersTable, con).ExecuteNonQuery();
                 new SqlCommand(resultsTable, con).ExecuteNonQuery();
 
+                string addRollNoColumn = @"
+                IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME='Users' AND COLUMN_NAME='RollNo')
+                BEGIN
+                    ALTER TABLE Users ADD RollNo NVARCHAR(50) NULL;
+                    IF NOT EXISTS (SELECT * FROM sys.indexes WHERE name = 'IX_Users_RollNo' AND object_id = OBJECT_ID('Users'))
+                        CREATE UNIQUE INDEX IX_Users_RollNo ON Users(RollNo);
+                END
+                ELSE
+                BEGIN
+                    IF NOT EXISTS (SELECT * FROM sys.indexes WHERE name = 'IX_Users_RollNo' AND object_id = OBJECT_ID('Users'))
+                        CREATE UNIQUE INDEX IX_Users_RollNo ON Users(RollNo);
+                END";
+
+                new SqlCommand(addRollNoColumn, con).ExecuteNonQuery();
+
                 // Add missing columns to existing tables (migration)
                 string addQuizSessionsColumns = @"
                 IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME='QuizSessions' AND COLUMN_NAME='EndTime')
                     ALTER TABLE QuizSessions ADD EndTime DATETIME;
+                IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME='QuizSessions' AND COLUMN_NAME='MaxTimeMinutes')
+                    ALTER TABLE QuizSessions ADD MaxTimeMinutes INT DEFAULT 30;
+                IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME='QuizSessions' AND COLUMN_NAME='QuizID')
+                    ALTER TABLE QuizSessions ADD QuizID INT NULL;
                 IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME='QuizSessions' AND COLUMN_NAME='TotalQuestions')
                     ALTER TABLE QuizSessions ADD TotalQuestions INT DEFAULT 0;
                 IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME='QuizSessions' AND COLUMN_NAME='IsSubmitted')
-                    ALTER TABLE QuizSessions ADD IsSubmitted BIT DEFAULT 0;";
-                
+                    ALTER TABLE QuizSessions ADD IsSubmitted BIT DEFAULT 0;";                
                 string addQuestionsColumn = @"
                 IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME='Questions' AND COLUMN_NAME='SectionID')
                     ALTER TABLE Questions ADD SectionID INT NULL;";
@@ -162,19 +207,54 @@ namespace OnlineQuizSystem.DAL
                 IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME='Sections' AND COLUMN_NAME='MaxTimeMinutes')
                     ALTER TABLE Sections ADD MaxTimeMinutes INT DEFAULT 30;";
 
+                string addQuizzesAndMappings = @"
+                IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME='Quizzes')
+                BEGIN
+                    CREATE TABLE Quizzes (QuizID INT PRIMARY KEY IDENTITY(1,1), SectionID INT NULL, TeacherID INT NULL, Title NVARCHAR(200), MaxTimeMinutes INT DEFAULT 30, CreatedDate DATETIME DEFAULT GETDATE());
+                END
+                IF NOT EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME='QuizQuestions')
+                BEGIN
+                    CREATE TABLE QuizQuestions (QuizQuestionID INT PRIMARY KEY IDENTITY(1,1), QuizID INT NOT NULL, QuestionID INT NOT NULL);
+                END";
+
                 new SqlCommand(addQuizSessionsColumns, con).ExecuteNonQuery();
                 new SqlCommand(addQuestionsColumn, con).ExecuteNonQuery();
                 new SqlCommand(addSectionsColumn, con).ExecuteNonQuery();
+                new SqlCommand(addQuizzesAndMappings, con).ExecuteNonQuery();
+
+                string advancedDbObjects = @"
+                IF OBJECT_ID('dbo.ufn_GetSessionScore', 'FN') IS NULL
+                BEGIN
+                    EXEC('CREATE FUNCTION dbo.ufn_GetSessionScore(@SessionID INT) RETURNS INT AS BEGIN RETURN 0; END');
+                END
+                IF OBJECT_ID('dbo.ufn_GetSessionPercentage', 'FN') IS NULL
+                BEGIN
+                    EXEC('CREATE FUNCTION dbo.ufn_GetSessionPercentage(@SessionID INT) RETURNS DECIMAL(5,2) AS BEGIN RETURN 0; END');
+                END
+                IF OBJECT_ID('dbo.sp_StartQuizSession', 'P') IS NULL
+                BEGIN
+                    EXEC('CREATE PROCEDURE dbo.sp_StartQuizSession @UserID INT, @TeacherID INT = NULL, @QuizID INT = NULL, @MaxTimeMinutes INT = 30 AS BEGIN SET NOCOUNT ON; DECLARE @TotalQuestions INT = 0; DECLARE @UseMinutes INT = @MaxTimeMinutes; IF @QuizID IS NOT NULL BEGIN SELECT @UseMinutes = ISNULL(MaxTimeMinutes, @MaxTimeMinutes) FROM Quizzes WHERE QuizID = @QuizID; SELECT @TotalQuestions = (SELECT COUNT(*) FROM QuizQuestions qq WHERE qq.QuizID = @QuizID); IF @TotalQuestions = 0 BEGIN DECLARE @sec INT = (SELECT SectionID FROM Quizzes WHERE QuizID = @QuizID); SELECT @TotalQuestions = ISNULL((SELECT COUNT(*) FROM Questions q WHERE q.SectionID = @sec), 0); END END ELSE BEGIN SELECT @TotalQuestions = (SELECT COUNT(*) FROM Questions q WHERE (@TeacherID IS NULL OR q.TeacherID = @TeacherID) AND (@TeacherID IS NULL OR q.SectionID IS NULL OR q.SectionID IN (SELECT us.SectionID FROM UserSections us WHERE us.USERID = @UserID))); END INSERT INTO QuizSessions (UserID, TeacherID, QuizID, Score, StartTime, EndTime, MaxTimeMinutes, TotalQuestions, IsSubmitted) VALUES (@UserID, @TeacherID, @QuizID, 0, GETDATE(), DATEADD(MINUTE, @UseMinutes, GETDATE()), @UseMinutes, @TotalQuestions, 0); SELECT SCOPE_IDENTITY() AS SessionID; END');
+                END
+                IF OBJECT_ID('dbo.sp_SaveQuizResult', 'P') IS NULL
+                BEGIN
+                    EXEC('CREATE PROCEDURE dbo.sp_SaveQuizResult @UserID INT, @QuestionID INT, @SelectedAnswer CHAR(1), @SessionID INT AS BEGIN SET NOCOUNT ON; IF EXISTS (SELECT 1 FROM Results WHERE SessionID = @SessionID AND QuestionID = @QuestionID) BEGIN RAISERROR(''This question has already been answered in this session.'', 16, 1); RETURN; END DECLARE @CorrectOption CHAR(1) = (SELECT CorrectOption FROM Questions WHERE QuestionID = @QuestionID); DECLARE @IsCorrect BIT = CASE WHEN @CorrectOption = @SelectedAnswer THEN 1 ELSE 0 END; INSERT INTO Results (UserID, QuestionID, SelectedAnswer, IsCorrect, SessionID) VALUES (@UserID, @QuestionID, @SelectedAnswer, @IsCorrect, @SessionID); UPDATE QuizSessions SET Score = dbo.ufn_GetSessionScore(@SessionID) WHERE SessionID = @SessionID; END');
+                END
+                IF OBJECT_ID('dbo.sp_SubmitQuiz', 'P') IS NULL
+                BEGIN
+                    EXEC('CREATE PROCEDURE dbo.sp_SubmitQuiz @SessionID INT AS BEGIN SET NOCOUNT ON; UPDATE QuizSessions SET Score = dbo.ufn_GetSessionScore(@SessionID), IsSubmitted = 1, EndTime = CASE WHEN EndTime < GETDATE() THEN EndTime ELSE GETDATE() END WHERE SessionID = @SessionID; END');
+                END
+                IF OBJECT_ID('dbo.sp_AutoSubmitExpiredSessions', 'P') IS NULL
+                BEGIN
+                    EXEC('CREATE PROCEDURE dbo.sp_AutoSubmitExpiredSessions AS BEGIN SET NOCOUNT ON; UPDATE qs SET Score = dbo.ufn_GetSessionScore(qs.SessionID), IsSubmitted = 1 FROM QuizSessions qs WHERE qs.IsSubmitted = 0 AND qs.EndTime <= GETDATE(); END');
+                END";
+                new SqlCommand(advancedDbObjects, con).ExecuteNonQuery();
 
                 // Insert admin if not exists
                 string adminCheck = "IF NOT EXISTS (SELECT * FROM Admins WHERE Email='admin@brainspark.com') INSERT INTO Admins (Name, Email, Password) VALUES ('Admin', 'admin@brainspark.com', 'admin123');";
                 new SqlCommand(adminCheck, con).ExecuteNonQuery();
                 
                 // Add sample teachers
-                string teacher1 = "IF NOT EXISTS (SELECT * FROM Teachers WHERE Email='teacher1@school.com') INSERT INTO Teachers (Name, Email, Password) VALUES ('Teacher One', 'teacher1@school.com', 'teacher123');";
-                string teacher2 = "IF NOT EXISTS (SELECT * FROM Teachers WHERE Email='teacher2@school.com') INSERT INTO Teachers (Name, Email, Password) VALUES ('Teacher Two', 'teacher2@school.com', 'teacher123');";
-                new SqlCommand(teacher1, con).ExecuteNonQuery();
-                new SqlCommand(teacher2, con).ExecuteNonQuery();            }
+            }
         }
     }
 }

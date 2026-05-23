@@ -12,10 +12,10 @@ namespace OnlineQuizSystem.DAL.Repositories
             return db.Select($"SELECT * FROM Users WHERE Email='{email}' AND Password='{pass}'");
         }
 
-        public void Register(string name, string email, string password, int? teacherID = null)
+        public void Register(string name, string email, string password, string rollNo, int? teacherID = null)
         {
             string teacherIDValue = teacherID.HasValue ? teacherID.Value.ToString() : "NULL";
-            db.Execute($"INSERT INTO Users (Name, Email, Password, Role, TeacherID) VALUES ('{name}', '{email}', '{password}', 'Student', {teacherIDValue})");
+            db.Execute($"INSERT INTO Users (RollNo, Name, Email, Password, Role, TeacherID) VALUES ('{rollNo}', '{name}', '{email}', '{password}', 'Student', {teacherIDValue})");
         }
 
         // Get all teachers enrolled by a user

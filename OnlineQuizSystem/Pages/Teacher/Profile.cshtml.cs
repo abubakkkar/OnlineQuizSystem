@@ -22,7 +22,7 @@ namespace OnlineQuizSystem.Pages.Teacher
 
         public IActionResult OnGet()
         {
-            if (string.IsNullOrEmpty(HttpContext.Session.GetString("Name")))
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString("TeacherID")) || HttpContext.Session.GetString("Role") != "Teacher")
             {
                 return RedirectToPage("/Auth/Login");
             }
@@ -30,7 +30,7 @@ namespace OnlineQuizSystem.Pages.Teacher
             var teacherIDStr = HttpContext.Session.GetString("TeacherID");
             if (!int.TryParse(teacherIDStr, out int teacherID))
             {
-                return RedirectToPage("/Auth/AdminLogin");
+                return RedirectToPage("/Auth/Login");
             }
 
             LoadProfileData(teacherID);
