@@ -10,57 +10,100 @@
 
     @if (Model.Results != null && Model.Results.Rows.Count > 0)
     {
-        <div style="display: grid; gap: 1rem; margin-bottom: 2rem;">
-            @foreach (System.Data.DataRow row in Model.Results.Rows)
-            {
-                var isCorrect = Convert.ToBoolean(row["IsCorrect"]);
-                <div style="padding: 1.5rem; border-radius: 12px; border-left: 4px solid @(isCorrect ? "#34d399" : "#fb7185"); background: @(isCorrect ? "rgba(52, 211, 153, 0.08)" : "rgba(251, 113, 133, 0.08)"); display: grid; grid-template-columns: 1fr auto; gap: 1.5rem; align-items: start;">
-                    <div>
-                        <p style="color: var(--text-muted); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem;">Question</p>
-                        <p style="font-weight: 600; margin-bottom: 1rem;">@row["QuestionText"]</p>
-                        
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem;">
-                            <div>
-                                <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.3rem;">Your Answer</p>
-                                <p style="font-weight: 600; color: var(--secondary);">Option @row["SelectedAnswer"]</p>
-                            </div>
-                            <div>
-                                <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.3rem;">Correct Answer</p>
-                                <p style="font-weight: 600; color: #34d399;">Option @row["CorrectOption"]</p>
-                            </div>
-                        </div>
+        <div style="display: grid; gap: 1rem; margin-bottom: 2rem; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
+            <div style="padding: 1.5rem; background: var(--bg-secondary); border-radius: 16px; border: 1px solid rgba(96, 165, 250, 0.12);">
+                <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.5rem;">Overall Performance</p>
+                <h3 style="font-size: 2.5rem; margin: 0.5rem 0; color: var(--primary);">@Model.OverallCorrectAnswers / @Model.OverallTotalQuestions</h3>
+                <p style="font-size: 1.3rem; color: var(--success); font-weight: 600;">@Model.OverallPercentage% correct</p>
+                <div style="margin-top: 1rem; background: rgba(59, 130, 246, 0.12); border-radius: 999px; height: 16px; overflow: hidden;">
+                    <div style="width: @Model.OverallPercentage%; height: 100%; background: linear-gradient(90deg, #60a5fa, #2563eb);"></div>
+                </div>
+            </div>
+            <div style="padding: 1.5rem; background: var(--bg-secondary); border-radius: 16px; border: 1px solid rgba(59, 130, 246, 0.12);">
+                <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.5rem;">Quiz Attempts</p>
+                <h3 style="font-size: 2.5rem; margin: 0.5rem 0; color: var(--primary);">@Model.TotalQuizzes</h3>
+                <p style="font-size: 1.1rem; color: var(--text-muted);">Separate quiz results now display per session instead of merging all quizzes together.</p>
+            </div>
+            <div style="padding: 1.5rem; background: var(--bg-secondary); border-radius: 16px; border: 1px solid rgba(59, 130, 246, 0.12);">
+                <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.5rem;">Average Score</p>
+                <h3 style="font-size: 2.5rem; margin: 0.5rem 0; color: var(--primary);">@Model.OverallPercentage%</h3>
+                <p style="font-size: 1.1rem; color: var(--text-muted);">Quiz-by-quiz progress is now visible with dedicated session cards.</p>
+            </div>
+        </div>
 
-                        <p style="font-size: 0.85rem; color: var(--text-muted);">
-                            Answered: @Convert.ToDateTime(row["AnsweredAt"]).ToString("MMM dd, yyyy • hh:mm tt")
-                        </p>
+        <div style="display: grid; gap: 1rem; margin-bottom: 2rem;">
+            @foreach (var summary in Model.SessionSummaries)
+            {
+                <div style="padding: 1.5rem; border-radius: 16px; background: var(--bg-secondary); border: 1px solid rgba(59, 130, 246, 0.15);">
+                    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; align-items: center;">
+                        <div>
+                            <p style="color: var(--text-muted); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.4rem;">Quiz Session</p>
+                            <h3 style="margin: 0; font-size: 1.3rem;">@summary.QuizTitle</h3>
+                            <p style="margin: 0.3rem 0 0; color: var(--text-muted);">Completed on @summary.EndTime.ToString("MMM dd, yyyy")</p>
+                        </div>
+                        <div style="text-align: right; min-width: 130px;">
+                            <span style="display: block; font-size: 1rem; color: var(--success); font-weight: 700;">@summary.CorrectCount / @summary.TotalQuestions Correct</span>
+                            <span style="font-size: 0.95rem; color: var(--text-muted);">@summary.Percentage% Score</span>
+                        </div>
                     </div>
-                    
-                    <div style="padding: 1rem 1.5rem; border-radius: 8px; background: @(isCorrect ? "rgba(52, 211, 153, 0.2)" : "rgba(251, 113, 133, 0.2)"); text-align: center; min-width: 100px;">
-                        @if (isCorrect)
-                        {
-                            <div style="font-size: 2rem; margin-bottom: 0.5rem;">✓</div>
-                            <span style="color: #34d399; font-weight: 700;">Correct</span>
-                        }
-                        else
-                        {
-                            <div style="font-size: 2rem; margin-bottom: 0.5rem;">✕</div>
-                            <span style="color: #fb7185; font-weight: 700;">Incorrect</span>
-                        }
+                    <div style="margin-top: 1rem; background: rgba(59, 130, 246, 0.12); border-radius: 999px; height: 14px; overflow: hidden;">
+                        <div style="width: @summary.Percentage%; height: 100%; background: linear-gradient(90deg, #38bdf8, #0ea5e9);"></div>
                     </div>
                 </div>
             }
         </div>
 
-        <div style="padding: 1.5rem; background: var(--bg-secondary); border-radius: 12px; text-align: center; margin-bottom: 2rem;">
-            @{
-                int totalCorrect = Model.Results.Rows.Cast<System.Data.DataRow>().Count(r => Convert.ToBoolean(r["IsCorrect"]));
-                int total = Model.Results.Rows.Count;
-                int percentage = total > 0 ? (totalCorrect * 100) / total : 0;
-            }
-            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.5rem;">Overall Performance</p>
-            <h3 style="font-size: 2.5rem; margin: 0.5rem 0; color: var(--primary);">@totalCorrect / @total Correct</h3>
-            <p style="font-size: 1.3rem; color: var(--success); font-weight: 600;">@percentage%</p>
-        </div>
+        @foreach (var summary in Model.SessionSummaries)
+        {
+            <div style="padding: 1.5rem; margin-bottom: 2rem; border-radius: 16px; background: var(--bg-secondary);">
+                <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; align-items: center; margin-bottom: 1rem;">
+                    <div>
+                        <h3 style="margin: 0 0 0.5rem;">@summary.QuizTitle</h3>
+                        <p style="margin: 0; color: var(--text-muted);">Session ID: @summary.SessionID · @summary.CorrectCount / @summary.TotalQuestions correct · @summary.Percentage% · Completed @summary.EndTime.ToString("MMM dd, yyyy • hh:mm tt")</p>
+                    </div>
+                    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: center;">
+                        <span style="padding: 0.5rem 0.9rem; border-radius: 999px; background: rgba(16, 185, 129, 0.15); color: #059669; font-weight: 700;">@summary.Score points</span>
+                        <span style="padding: 0.5rem 0.9rem; border-radius: 999px; background: rgba(59, 130, 246, 0.12); color: #2563eb; font-weight: 700;">@((summary.IsSubmitted) ? "Submitted" : "Draft")</span>
+                    </div>
+                </div>
+
+                <div style="display: grid; gap: 1rem;">
+                    @foreach (System.Data.DataRow row in Model.SessionResultsBySession[summary.SessionID])
+                    {
+                        var isCorrect = Convert.ToBoolean(row["IsCorrect"]);
+                        <div style="padding: 1rem; border-radius: 12px; border-left: 4px solid @(isCorrect ? "#34d399" : "#fb7185"); background: @(isCorrect ? "rgba(52, 211, 153, 0.08)" : "rgba(251, 113, 133, 0.08)"); display: grid; grid-template-columns: 1fr auto; gap: 1rem; align-items: start;">
+                            <div>
+                                <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.5rem;">Question</p>
+                                <p style="font-weight: 600; margin-bottom: 0.8rem;">@row["QuestionText"]</p>
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 0.8rem;">
+                                    <div>
+                                        <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.2rem;">Your Answer</p>
+                                        <p style="font-weight: 600; color: var(--secondary);">Option @row["SelectedAnswer"]</p>
+                                    </div>
+                                    <div>
+                                        <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.2rem;">Correct Answer</p>
+                                        <p style="font-weight: 600; color: #34d399;">Option @row["CorrectOption"]</p>
+                                    </div>
+                                </div>
+                                <p style="font-size: 0.85rem; color: var(--text-muted);">Answered: @Convert.ToDateTime(row["AnsweredAt"]).ToString("MMM dd, yyyy • hh:mm tt")</p>
+                            </div>
+                            <div style="padding: 1rem 1.5rem; border-radius: 8px; background: @(isCorrect ? "rgba(52, 211, 153, 0.2)" : "rgba(251, 113, 133, 0.2)"); text-align: center; min-width: 100px;">
+                                @if (isCorrect)
+                                {
+                                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">✓</div>
+                                    <span style="color: #34d399; font-weight: 700;">Correct</span>
+                                }
+                                else
+                                {
+                                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">✕</div>
+                                    <span style="color: #fb7185; font-weight: 700;">Incorrect</span>
+                                }
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
     }
     else
     {

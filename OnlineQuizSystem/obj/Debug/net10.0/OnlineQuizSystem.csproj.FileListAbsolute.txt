@@ -426,4 +426,4 @@ D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\refint\OnlineQuizSystem.d
 D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\OnlineQuizSystem.pdb
 D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\OnlineQuizSystem.genruntimeconfig.cache
 D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\ref\OnlineQuizSystem.dll
-D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\jg4w63aq5q-{0}-aj0omd636p-aj0omd636p.gz
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\jg4w63aq5q-{0}-w1tz046ze3-w1tz046ze3.gz
