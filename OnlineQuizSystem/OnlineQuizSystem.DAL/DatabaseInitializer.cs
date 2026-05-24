@@ -223,30 +223,13 @@ namespace OnlineQuizSystem.DAL
                 new SqlCommand(addQuizzesAndMappings, con).ExecuteNonQuery();
 
                 string advancedDbObjects = @"
-                IF OBJECT_ID('dbo.ufn_GetSessionScore', 'FN') IS NULL
-                BEGIN
-                    EXEC('CREATE FUNCTION dbo.ufn_GetSessionScore(@SessionID INT) RETURNS INT AS BEGIN RETURN 0; END');
-                END
-                IF OBJECT_ID('dbo.ufn_GetSessionPercentage', 'FN') IS NULL
-                BEGIN
-                    EXEC('CREATE FUNCTION dbo.ufn_GetSessionPercentage(@SessionID INT) RETURNS DECIMAL(5,2) AS BEGIN RETURN 0; END');
-                END
-                IF OBJECT_ID('dbo.sp_StartQuizSession', 'P') IS NULL
-                BEGIN
-                    EXEC('CREATE PROCEDURE dbo.sp_StartQuizSession @UserID INT, @TeacherID INT = NULL, @QuizID INT = NULL, @MaxTimeMinutes INT = 30 AS BEGIN SET NOCOUNT ON; DECLARE @TotalQuestions INT = 0; DECLARE @UseMinutes INT = @MaxTimeMinutes; IF @QuizID IS NOT NULL BEGIN SELECT @UseMinutes = ISNULL(MaxTimeMinutes, @MaxTimeMinutes) FROM Quizzes WHERE QuizID = @QuizID; SELECT @TotalQuestions = (SELECT COUNT(*) FROM QuizQuestions qq WHERE qq.QuizID = @QuizID); IF @TotalQuestions = 0 BEGIN DECLARE @sec INT = (SELECT SectionID FROM Quizzes WHERE QuizID = @QuizID); SELECT @TotalQuestions = ISNULL((SELECT COUNT(*) FROM Questions q WHERE q.SectionID = @sec), 0); END END ELSE BEGIN SELECT @TotalQuestions = (SELECT COUNT(*) FROM Questions q WHERE (@TeacherID IS NULL OR q.TeacherID = @TeacherID) AND (@TeacherID IS NULL OR q.SectionID IS NULL OR q.SectionID IN (SELECT us.SectionID FROM UserSections us WHERE us.USERID = @UserID))); END INSERT INTO QuizSessions (UserID, TeacherID, QuizID, Score, StartTime, EndTime, MaxTimeMinutes, TotalQuestions, IsSubmitted) VALUES (@UserID, @TeacherID, @QuizID, 0, GETDATE(), DATEADD(MINUTE, @UseMinutes, GETDATE()), @UseMinutes, @TotalQuestions, 0); SELECT SCOPE_IDENTITY() AS SessionID; END');
-                END
-                IF OBJECT_ID('dbo.sp_SaveQuizResult', 'P') IS NULL
-                BEGIN
-                    EXEC('CREATE PROCEDURE dbo.sp_SaveQuizResult @UserID INT, @QuestionID INT, @SelectedAnswer CHAR(1), @SessionID INT AS BEGIN SET NOCOUNT ON; IF EXISTS (SELECT 1 FROM Results WHERE SessionID = @SessionID AND QuestionID = @QuestionID) BEGIN RAISERROR(''This question has already been answered in this session.'', 16, 1); RETURN; END DECLARE @CorrectOption CHAR(1) = (SELECT CorrectOption FROM Questions WHERE QuestionID = @QuestionID); DECLARE @IsCorrect BIT = CASE WHEN @CorrectOption = @SelectedAnswer THEN 1 ELSE 0 END; INSERT INTO Results (UserID, QuestionID, SelectedAnswer, IsCorrect, SessionID) VALUES (@UserID, @QuestionID, @SelectedAnswer, @IsCorrect, @SessionID); UPDATE QuizSessions SET Score = dbo.ufn_GetSessionScore(@SessionID) WHERE SessionID = @SessionID; END');
-                END
-                IF OBJECT_ID('dbo.sp_SubmitQuiz', 'P') IS NULL
-                BEGIN
-                    EXEC('CREATE PROCEDURE dbo.sp_SubmitQuiz @SessionID INT AS BEGIN SET NOCOUNT ON; UPDATE QuizSessions SET Score = dbo.ufn_GetSessionScore(@SessionID), IsSubmitted = 1, EndTime = CASE WHEN EndTime < GETDATE() THEN EndTime ELSE GETDATE() END WHERE SessionID = @SessionID; END');
-                END
-                IF OBJECT_ID('dbo.sp_AutoSubmitExpiredSessions', 'P') IS NULL
-                BEGIN
-                    EXEC('CREATE PROCEDURE dbo.sp_AutoSubmitExpiredSessions AS BEGIN SET NOCOUNT ON; UPDATE qs SET Score = dbo.ufn_GetSessionScore(qs.SessionID), IsSubmitted = 1 FROM QuizSessions qs WHERE qs.IsSubmitted = 0 AND qs.EndTime <= GETDATE(); END');
-                END";
+                EXEC('CREATE OR ALTER FUNCTION dbo.ufn_GetSessionScore(@SessionID INT) RETURNS INT AS BEGIN RETURN ISNULL((SELECT COUNT(*) FROM Results r WHERE r.SessionID = @SessionID AND r.IsCorrect = 1), 0); END');
+                EXEC('CREATE OR ALTER FUNCTION dbo.ufn_GetSessionPercentage(@SessionID INT) RETURNS DECIMAL(5,2) AS BEGIN DECLARE @score INT = dbo.ufn_GetSessionScore(@SessionID); DECLARE @total INT = ISNULL((SELECT TotalQuestions FROM QuizSessions WHERE SessionID = @SessionID), 0); RETURN CASE WHEN @total = 0 THEN 0 ELSE CAST(@score * 100.0 / @total AS DECIMAL(5,2)) END; END');
+                EXEC('CREATE OR ALTER PROCEDURE dbo.sp_StartQuizSession @UserID INT, @TeacherID INT = NULL, @QuizID INT = NULL, @MaxTimeMinutes INT = 30 AS BEGIN SET NOCOUNT ON; DECLARE @TotalQuestions INT = 0; DECLARE @UseMinutes INT = @MaxTimeMinutes; IF @QuizID IS NOT NULL BEGIN SELECT @UseMinutes = ISNULL(MaxTimeMinutes, @MaxTimeMinutes) FROM Quizzes WHERE QuizID = @QuizID; SELECT @TotalQuestions = (SELECT COUNT(*) FROM QuizQuestions qq WHERE qq.QuizID = @QuizID); IF @TotalQuestions = 0 BEGIN DECLARE @sec INT = (SELECT SectionID FROM Quizzes WHERE QuizID = @QuizID); SELECT @TotalQuestions = ISNULL((SELECT COUNT(*) FROM Questions q WHERE q.SectionID = @sec), 0); END END ELSE BEGIN SELECT @TotalQuestions = (SELECT COUNT(*) FROM Questions q WHERE (@TeacherID IS NULL OR q.TeacherID = @TeacherID) AND (@TeacherID IS NULL OR q.SectionID IS NULL OR q.SectionID IN (SELECT us.SectionID FROM UserSections us WHERE us.USERID = @UserID))); END INSERT INTO QuizSessions (UserID, TeacherID, QuizID, Score, StartTime, EndTime, MaxTimeMinutes, TotalQuestions, IsSubmitted) VALUES (@UserID, @TeacherID, @QuizID, 0, GETDATE(), DATEADD(MINUTE, @UseMinutes, GETDATE()), @UseMinutes, @TotalQuestions, 0); SELECT SCOPE_IDENTITY() AS SessionID; END');
+                EXEC('CREATE OR ALTER PROCEDURE dbo.sp_SaveQuizResult @UserID INT, @QuestionID INT, @SelectedAnswer CHAR(1), @SessionID INT AS BEGIN SET NOCOUNT ON; IF EXISTS (SELECT 1 FROM Results WHERE SessionID = @SessionID AND QuestionID = @QuestionID) BEGIN RAISERROR(''This question has already been answered in this session.'', 16, 1); RETURN; END DECLARE @CorrectOption CHAR(1) = (SELECT CorrectOption FROM Questions WHERE QuestionID = @QuestionID); DECLARE @IsCorrect BIT = CASE WHEN @CorrectOption = @SelectedAnswer THEN 1 ELSE 0 END; INSERT INTO Results (UserID, QuestionID, SelectedAnswer, IsCorrect, SessionID) VALUES (@UserID, @QuestionID, @SelectedAnswer, @IsCorrect, @SessionID); UPDATE QuizSessions SET Score = dbo.ufn_GetSessionScore(@SessionID) WHERE SESSIONID = @SESSIONID; END');
+                EXEC('CREATE OR ALTER PROCEDURE dbo.sp_SubmitQuiz @SessionID INT AS BEGIN SET NOCOUNT ON; UPDATE QuizSessions SET Score = dbo.ufn_GetSessionScore(@SessionID), IsSubmitted = 1, EndTime = CASE WHEN EndTime < GETDATE() THEN EndTime ELSE GETDATE() END WHERE SessionID = @SessionID; END');
+                EXEC('CREATE OR ALTER PROCEDURE dbo.sp_AutoSubmitExpiredSessions AS BEGIN SET NOCOUNT ON; UPDATE qs SET Score = dbo.ufn_GetSessionScore(qs.SessionID), IsSubmitted = 1 FROM QuizSessions qs WHERE qs.IsSubmitted = 0 AND qs.EndTime <= GETDATE(); END');
+";
                 new SqlCommand(advancedDbObjects, con).ExecuteNonQuery();
 
                 // Insert admin if not exists

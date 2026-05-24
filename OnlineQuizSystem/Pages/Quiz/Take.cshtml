@@ -281,9 +281,46 @@
             border-top: 1px solid rgba(255, 255, 255, 0.08);
         }
     }
+
+    .quiz-navigation-disabled header .nav-link,
+    .quiz-navigation-disabled header .btn-logout,
+    .quiz-navigation-disabled header .nav-link.btn-primary {
+        pointer-events: none !important;
+        opacity: 0.45;
+        cursor: not-allowed;
+    }
+
+    .quiz-navigation-disabled header .nav-welcome {
+        opacity: 0.5;
+    }
+
+    .quiz-overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.82);
+        color: #ffffff;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 2rem;
+        z-index: 999;
+        border-radius: 24px;
+    }
+
+    .quiz-overlay h2 {
+        margin-bottom: 0.75rem;
+        font-size: 2rem;
+    }
 </style>
 
 <div class="glass-card quiz-container @(!Model.TeacherSelected ? "selection-mode" : "")">
+    <div id="quizAutoSubmitOverlay" class="quiz-overlay">
+        <div>
+            <h2>Quiz Submitted</h2>
+            <p>Your quiz is being submitted because the active quiz tab was left. You cannot continue this attempt.</p>
+        </div>
+    </div>
     @if (!Model.TeacherSelected)
     {
         <div class="text-center">
@@ -348,7 +385,10 @@
                     <span style="color: var(--text-muted); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;">Difficulty Level</span>
                     <div style="font-weight: 700; color: var(--primary);">Level @Model.Difficulty</div>
                 </div>
-                <div class="timer" id="timerDisplay">--:--</div>
+                <div>
+                    <div class="timer" id="timerDisplay">--:--</div>
+                    <div style="margin-top: 0.75rem; color: var(--danger); font-size: 0.95rem;">Switching tabs will auto-submit the quiz and end this attempt immediately.</div>
+                </div>
             </div>
 
             <h3 class="question-text">@Model.Question["QuestionText"]</h3>
@@ -416,7 +456,7 @@
             </div>
 
             <div class="submit-button-container">
-                <form method="post" asp-page-handler="Submit" style="display: inline;">
+                <form id="submitQuizForm" method="post" asp-page-handler="Submit" style="display: inline;">
                     <button type="submit" class="submit-button" onclick="return confirm('Are you sure you want to submit the quiz? You cannot change your answers after submission.');">
                         ✓ Submit Quiz
                     </button>
@@ -459,27 +499,118 @@
                 
                 if (timeLeft <= 0) {
                     clearInterval(timer);
-                    window.removeEventListener('beforeunload', preventLeave);
-                    // Auto-submit when time is up
-                    document.querySelectorAll('form')[0].submit();
+                    autoSubmitQuiz('Time is up. Your quiz is being submitted automatically.');
                 }
             }, 1000);
 
             // Prevent leaving page during quiz
+            let quizNavigationActive = true;
+            let quizAutoSubmitted = false;
+
+            function disableQuizInteractions() {
+                document.querySelectorAll('#quizForm input, #quizForm button, #submitQuizForm button').forEach(el => {
+                    el.disabled = true;
+                });
+                const overlay = document.getElementById('quizAutoSubmitOverlay');
+                if (overlay) {
+                    overlay.style.display = 'flex';
+                }
+            }
+
+            function sendQuizSubmitRequest() {
+                const submitUrl = window.location.pathname + '?handler=Submit';
+                if (navigator.sendBeacon) {
+                    const payload = new Blob([], { type: 'text/plain;charset=UTF-8' });
+                    return navigator.sendBeacon(submitUrl, payload);
+                }
+
+                fetch(submitUrl, {
+                    method: 'POST',
+                    keepalive: true
+                }).catch(() => {
+                    // Best effort only
+                });
+                return true;
+            }
+
+            function autoSubmitQuiz(message) {
+                if (!quizNavigationActive || quizAutoSubmitted) return;
+                quizAutoSubmitted = true;
+                clearInterval(timer);
+                disableQuizInteractions();
+                clearQuizNavigationGuards();
+                if (message) {
+                    alert(message);
+                }
+
+                sendQuizSubmitRequest();
+                if (!document.hidden) {
+                    submitQuizForm?.submit();
+                }
+            }
+
             function preventLeave(e) {
+                if (!quizNavigationActive) return;
                 e.preventDefault();
                 e.returnValue = '';
             }
 
             function preventBackNavigation(event) {
-                if (timeLeft > 0) {
-                    history.pushState(null, document.title, window.location.href);
-                    alert('Navigation back is disabled while the quiz is in progress. Please submit the quiz to finish.');
+                if (!quizNavigationActive) return;
+                event.preventDefault();
+                history.pushState(null, document.title, window.location.href);
+                setTimeout(() => history.go(1), 0);
+                alert('Navigation back is disabled while the quiz is in progress. Please submit the quiz to finish.');
+            }
+
+            function preventNavigationClick(event) {
+                if (!quizNavigationActive) return;
+                if (event.defaultPrevented || event.button !== 0) return;
+
+                const anchor = event.target.closest('a[href]');
+                if (!anchor) return;
+                if (anchor.closest('#quizForm')) return;
+
+                const href = anchor.getAttribute('href');
+                if (!href || href.startsWith('#')) return;
+                if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+
+                const targetUrl = new URL(anchor.href, window.location.href);
+                const currentUrl = new URL(window.location.href);
+                if (targetUrl.pathname === currentUrl.pathname && targetUrl.search === currentUrl.search) return;
+
+                event.preventDefault();
+                event.stopPropagation();
+                alert('Navigation is disabled while the quiz is in progress. Please submit the quiz to finish.');
+            }
+
+            function activateQuizNavigationGuard() {
+                quizNavigationActive = true;
+                document.body.classList.add('quiz-navigation-disabled');
+            }
+
+            const submitQuizForm = document.getElementById('submitQuizForm');
+
+            function handleVisibilityChange() {
+                if (!quizNavigationActive) return;
+                if (document.hidden) {
+                    autoSubmitQuiz('You left the quiz tab. The quiz will now be submitted automatically.');
+                }
+            }
+
+            function handleWindowBlur() {
+                if (!quizNavigationActive) return;
+                if (!document.hidden) {
+                    autoSubmitQuiz('The quiz tab was left. Your quiz will be submitted automatically.');
                 }
             }
 
             window.addEventListener('beforeunload', preventLeave);
             window.addEventListener('popstate', preventBackNavigation);
+            window.addEventListener('click', preventNavigationClick, true);
+            window.addEventListener('visibilitychange', handleVisibilityChange);
+            window.addEventListener('blur', handleWindowBlur);
+            history.pushState(null, document.title, window.location.href);
             history.pushState(null, document.title, window.location.href);
 
             // Disable back/forward navigation cache behavior
@@ -490,9 +621,20 @@
             });
 
             function clearQuizNavigationGuards() {
+                quizNavigationActive = false;
+                document.body.classList.remove('quiz-navigation-disabled');
                 window.removeEventListener('beforeunload', preventLeave);
                 window.removeEventListener('popstate', preventBackNavigation);
+                window.removeEventListener('click', preventNavigationClick, true);
+                window.removeEventListener('visibilitychange', handleVisibilityChange);
+                window.removeEventListener('blur', handleWindowBlur);
+                if (visibilityTimeout) {
+                    clearTimeout(visibilityTimeout);
+                    visibilityTimeout = null;
+                }
             }
+
+            activateQuizNavigationGuard();
 
             // Handle form submission
             form.addEventListener('submit', function() {

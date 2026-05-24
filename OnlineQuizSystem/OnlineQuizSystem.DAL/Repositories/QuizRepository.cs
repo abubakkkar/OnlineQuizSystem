@@ -13,6 +13,21 @@ namespace OnlineQuizSystem.DAL.Repositories
             string teacherIDValue = teacherID.HasValue ? teacherID.Value.ToString() : "NULL";
             int maxMinutes = 30;
 
+            if (teacherID.HasValue)
+            {
+                DataTable sectionTimeDt = db.Select($@"SELECT TOP 1 ISNULL(s.MaxTimeMinutes, 30) AS MaxTimeMinutes
+                    FROM Sections s
+                    INNER JOIN UserSections us ON s.SectionID = us.SectionID
+                    WHERE s.TeacherID = {teacherID.Value}
+                    AND us.UserID = {userID}
+                    ORDER BY s.MaxTimeMinutes ASC");
+
+                if (sectionTimeDt.Rows.Count > 0 && sectionTimeDt.Rows[0]["MaxTimeMinutes"] != DBNull.Value)
+                {
+                    maxMinutes = Convert.ToInt32(sectionTimeDt.Rows[0]["MaxTimeMinutes"]);
+                }
+            }
+
             // Get total questions for this teacher/user combination
             string getTotalQuery = teacherID.HasValue 
                 ? $@"SELECT COUNT(*) as TotalQuestions FROM Questions 
