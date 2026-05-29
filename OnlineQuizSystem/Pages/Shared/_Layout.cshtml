@@ -1,19 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - BrainSpark Quiz</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <script>
+        (function () {
+            // Theme preference
+            const theme = localStorage.getItem('theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', theme);
+            
+            // Dynamic Favicon Selection
+            const faviconChoice = localStorage.getItem('faviconChoice') || 'lightning';
+            const favicons = {
+                lightning: `data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%236366f1%22 stroke-width=%222%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22><path d=%22M13 2L3 14h9l-1 8 10-12h-9l1-8z%22 fill=%22url(%23g)%22/><defs><linearGradient id=%22g%22 x1=%220%25%22 y1=%220%25%22 x2=%22100%25%22 y2=%22100%25%22><stop offset=%220%25%22 stop-color=%22%236366f1%22/><stop offset=%22100%25%22 stop-color=%22%23ec4899%22/></linearGradient></defs></svg>`,
+                brain: `data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22url(%23g)%22 stroke-width=%222%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22><defs><linearGradient id=%22g%22 x1=%220%25%22 y1=%220%25%22 x2=%22100%25%22 y2=%22100%25%22><stop offset=%220%25%22 stop-color=%22%23a855f7%22/><stop offset=%22100%25%22 stop-color=%22%23ec4899%22/></linearGradient></defs><path d=%22M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96-.44 2.5 2.5 0 0 1-2-3.56 2.5 2.5 0 0 1 .04-3.5 2.5 2.5 0 0 1 2.5-4.5 2.5 2.5 0 0 1 1.92-3A2.5 2.5 0 0 1 9.5 2Z%22/><path d=%22M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96-.44 2.5 2.5 0 0 0 2-3.56 2.5 2.5 0 0 0-.04-3.5 2.5 2.5 0 0 0-2.5-4.5 2.5 2.5 0 0 0-1.92-3A2.5 2.5 0 0 0 14.5 2Z%22/></svg>`,
+                scholar: `data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22url(%23g)%22 stroke-width=%222%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22><defs><linearGradient id=%22g%22 x1=%220%25%22 y1=%220%25%22 x2=%22100%25%22 y2=%22100%25%22><stop offset=%220%25%22 stop-color=%22%233b82f6%22/><stop offset=%22100%25%22 stop-color=%22%2310b981%22/></linearGradient></defs><path d=%22M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z%22/><path d=%22M6 12v5c0 2 2 3 6 3s6-1 6-3v-5%22/><path d=%22M21.5 12v6%22/></svg>`,
+                star: `data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22url(%23g)%22 stroke=%22url(%23g)%22 stroke-width=%221%22 stroke-linejoin=%22round%22><defs><linearGradient id=%22g%22 x1=%220%25%22 y1=%220%25%22 x2=%22100%25%22 y2=%22100%25%22><stop offset=%220%25%22 stop-color=%22%23f59e0b%22/><stop offset=%22100%25%22 stop-color=%22%23f97316%22/></linearGradient></defs><polygon points=%2212 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2%22/></svg>`,
+                target: `data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22url(%23g)%22 stroke-width=%222%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22><defs><linearGradient id=%22g%22 x1=%220%25%22 y1=%220%25%22 x2=%22100%25%22 y2=%22100%25%22><stop offset=%220%25%22 stop-color=%22%23ef4444%22/><stop offset=%22100%25%22 stop-color=%22%23f43f5e%22/></linearGradient></defs><circle cx=%2212%22 cy=%2212%22 r=%2210%22/><circle cx=%2212%22 cy=%2212%22 r=%226%22/><circle cx=%2212%22 cy=%2212%22 r=%222%22/></svg>`
+            };
+            
+            const link = document.createElement('link');
+            link.id = 'faviconLink';
+            link.rel = 'icon';
+            link.type = 'image/svg+xml';
+            link.href = favicons[faviconChoice] || favicons.lightning;
+            document.head.appendChild(link);
+        })();
+    </script>
 </head>
 <body>
     <header>
         <nav class="navbar">
             <div class="nav-container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">BrainSpark</a>
+                <a class="navbar-brand" asp-area="" asp-page="/Index">
+                    <span class="brand-logo" id="brandLogoIcon">⚡</span>
+                    <span class="brand-text">BrainSpark</span>
+                </a>
                 <div class="nav-links">
                     @{
                         var role = Context.Session.GetString("Role");
@@ -25,7 +52,7 @@
                     {
                         <a class="nav-link" asp-area="" asp-page="/Auth/Login">User Login</a>
                         <a class="nav-link" asp-area="" asp-page="/Auth/AdminLogin">Admin Login</a>
-                        <a class="nav-link btn-primary" asp-area="" asp-page="/Auth/Signup">Sign Up</a>
+                        <a class="nav-link btn-primary nav-cta" asp-area="" asp-page="/Auth/Signup">Sign Up</a>
                     }
                     else if (!string.IsNullOrEmpty(adminName))
                     {
@@ -54,6 +81,35 @@
                             <button type="submit" class="nav-link btn-logout">Logout</button>
                         </form>
                     }
+                    
+                    <div class="favicon-picker-container">
+                        <button id="faviconToggle" type="button" class="favicon-toggle-btn" aria-label="Choose Brand Icon" title="Customize Favicon & Brand Icon">
+                            <span id="currentFaviconDisplay">⚡</span>
+                        </button>
+                        <div id="faviconDropdown" class="favicon-dropdown">
+                            <div class="dropdown-header">Choose Brand Icon</div>
+                            <button class="favicon-option" data-icon="lightning">
+                                <span class="option-icon">⚡</span> Lightning (Indigo/Rose)
+                            </button>
+                            <button class="favicon-option" data-icon="brain">
+                                <span class="option-icon">🧠</span> Brain Mind (Purple/Rose)
+                            </button>
+                            <button class="favicon-option" data-icon="scholar">
+                                <span class="option-icon">🎓</span> Scholar (Blue/Green)
+                            </button>
+                            <button class="favicon-option" data-icon="star">
+                                <span class="option-icon">⭐</span> Spark Star (Amber/Orange)
+                            </button>
+                            <button class="favicon-option" data-icon="target">
+                                <span class="option-icon">🎯</span> Quiz Target (Red/Rose)
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <button id="themeToggle" type="button" class="theme-toggle-btn" aria-label="Toggle theme">
+                        <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+                        <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+                    </button>
                 </div>
             </div>
         </nav>
@@ -65,7 +121,9 @@
 
     <footer>
         <div class="footer-content">
-            &copy; 2026 - BrainSpark Online Quiz System - <a asp-area="" asp-page="/Privacy">Privacy</a>
+            <span class="footer-copy">&copy; 2026 - BrainSpark Online Quiz System</span>
+            <span class="footer-divider">•</span>
+            <a class="footer-link" asp-area="" asp-page="/Privacy">Privacy Policy</a>
         </div>
     </footer>
 
