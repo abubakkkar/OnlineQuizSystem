@@ -220,6 +220,22 @@ header {
     transform: scale(1.15) rotate(-5deg);
 }
 
+/* Image logo used for BrainSpark */
+.site-logo {
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+    border-radius: 8px;
+    box-shadow: 0 6px 20px rgba(99,102,241,0.12);
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+    object-fit: contain;
+}
+
+.navbar-brand:hover .site-logo {
+    transform: scale(1.08) rotate(-6deg);
+    filter: drop-shadow(0 0 12px var(--primary-glow));
+}
+
 .brand-text {
     background: linear-gradient(135deg, var(--text-main) 40%, var(--primary) 100%);
     -webkit-background-clip: text;

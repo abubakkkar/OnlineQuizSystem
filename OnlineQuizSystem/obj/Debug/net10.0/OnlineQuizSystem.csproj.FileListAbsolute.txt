@@ -531,5 +531,5 @@ C:\Users\EOL\Documents\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\Onlin
 C:\Users\EOL\Documents\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\ref\OnlineQuizSystem.dll
 D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\ff4fo74ony-{0}-2gyd1alzng-2gyd1alzng.gz
 D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\r09d5ttecw-{0}-2gyd1alzng-2gyd1alzng.gz
-D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\jg4w63aq5q-{0}-r3rd90d6o4-r3rd90d6o4.gz
-D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\cs2qhxxo7o-{0}-1kb4d0daz5-1kb4d0daz5.gz
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\cs2qhxxo7o-{0}-50izr0ksj1-50izr0ksj1.gz
+D:\OnlineQuizSystem\OnlineQuizSystem\obj\Debug\net10.0\compressed\jg4w63aq5q-{0}-erokwk2609-erokwk2609.gz
