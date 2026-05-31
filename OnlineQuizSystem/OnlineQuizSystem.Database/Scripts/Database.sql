@@ -100,5 +100,13 @@ FOREIGN KEY(UserID) REFERENCES Users(UserID),
 FOREIGN KEY(QuestionID) REFERENCES Questions(QuestionID),
 FOREIGN KEY(SessionID) REFERENCES QuizSessions(SessionID)
 );
-insert into Teachers(Name, Email, Password,CourseName) values('Sir Adnan', 'adnan@teacher.uet.edu.pk', 'adnan123','OOP');
-insert into Teachers(Name, Email, Password,CourseName) values('Miss Wagma', 'wagma@teacher.uet.edu.pk', 'wagma123','OOPLAB');
+
+select * from Teachers;
+select * from Users;
+select * from Admins;
+select * from Questions;
+select * from Sections;
+select * from UserSections;
+select * from QuizSessions;
+select * from UserTeachers;
+select * from Results;
