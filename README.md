@@ -40,6 +40,7 @@ A modern, full-stack online quiz application built with ASP.NET. This project pr
 - `OnlineQuizSystem.DAL/` - Data access layer and repositories
 - `OnlineQuizSystem.Database/` - SQL database scripts and schema
 - `OnlineQuizSystem.UI/` - Razor Pages UI, views, and frontend assets
+- `DATABASE_STRUCTURE.md` - overview of tables, relationships, and database automation objects
 
 ---
 
