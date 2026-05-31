@@ -1,42 +1,6 @@
 USE OnlineQuizDB;
 GO
 
-/*
-  automation.sql
-  -------------
-  This script adds:
-    1. Views for reporting and easy summaries
-    2. Scalar functions for reusable business logic
-    3. A stored procedure for recording quiz answers
-    4. A trigger to keep session totals in sync automatically
-    5. A seed automation procedure to insert sample data
-
-  The final section calls the objects so you can see them working.
-*/
-
--- Drop existing objects so the script can be rerun safely.
-IF OBJECT_ID('dbo.vw_UserSessionSummary', 'V') IS NOT NULL
-    DROP VIEW dbo.vw_UserSessionSummary;
-GO
-IF OBJECT_ID('dbo.vw_SectionEnrollmentDetails', 'V') IS NOT NULL
-    DROP VIEW dbo.vw_SectionEnrollmentDetails;
-GO
-IF OBJECT_ID('dbo.fn_GetSessionPercent', 'FN') IS NOT NULL
-    DROP FUNCTION dbo.fn_GetSessionPercent;
-GO
-IF OBJECT_ID('dbo.fn_IsAnswerCorrect', 'FN') IS NOT NULL
-    DROP FUNCTION dbo.fn_IsAnswerCorrect;
-GO
-IF OBJECT_ID('dbo.sp_RecordQuizAnswer', 'P') IS NOT NULL
-    DROP PROCEDURE dbo.sp_RecordQuizAnswer;
-GO
-IF OBJECT_ID('dbo.sp_SeedSampleData', 'P') IS NOT NULL
-    DROP PROCEDURE dbo.sp_SeedSampleData;
-GO
-IF OBJECT_ID('dbo.trg_UpdateSessionTotalsOnResultInsert', 'TR') IS NOT NULL
-    DROP TRIGGER dbo.trg_UpdateSessionTotalsOnResultInsert;
-GO
-
 -- Function: convert raw score into a percentage safely.
 CREATE FUNCTION dbo.fn_GetSessionPercent(
     @Score INT,
@@ -110,35 +74,27 @@ LEFT JOIN UserSections us
 GROUP BY
     s.SectionID,
     s.SectionName,
+    t.Name AS TeacherName
+FROM Sections s
+INNER JOIN Teachers t
+    ON s.TeacherID = t.TeacherID
+LEFT JOIN UserSections us
+    ON s.SectionID = us.SectionID
+GROUP BY
+    s.SectionID,
+    s.SectionName,
     t.Name;
 GO
 
--- Procedure: insert a quiz answer and let the trigger update session totals.
-CREATE PROCEDURE dbo.sp_RecordQuizAnswer
-    @SessionID INT,
-    @UserID INT,
-    @QuestionID INT,
-    @SelectedAnswer CHAR(1)
+-- Procedure to get student information.
+CREATE PROCEDURE dbo.sp_GetStudentInfo
+    @UserID INT
 AS
 BEGIN
     SET NOCOUNT ON;
-
-    -- Validate the session and user quickly.
-    IF NOT EXISTS (SELECT 1 FROM QuizSessions WHERE SessionID = @SessionID AND UserID = @UserID)
-    BEGIN
-        RAISERROR('Session %d does not exist for user %d.', 16, 1, @SessionID, @UserID);
-        RETURN;
-    END;
-
-    -- Insert the answer result. The trigger will update the session totals.
-    INSERT INTO Results (UserID, QuestionID, SelectedAnswer, IsCorrect, SessionID)
-    VALUES (
-        @UserID,
-        @QuestionID,
-        @SelectedAnswer,
-        dbo.fn_IsAnswerCorrect(@QuestionID, @SelectedAnswer),
-        @SessionID
-    );
+    SELECT *
+    FROM Users 
+    WHERE UserID = @UserID;
 END;
 GO
 
@@ -238,10 +194,6 @@ GO
 
 /*
   Example calls below show how each object works.
-  1) Seed data automatically.
-  2) Record an answer and let the trigger update totals.
-  3) Query the views and functions to verify the results.
-  4) Inspect the inserted Results row and session totals.
 */
 
 EXEC dbo.sp_SeedSampleData;
