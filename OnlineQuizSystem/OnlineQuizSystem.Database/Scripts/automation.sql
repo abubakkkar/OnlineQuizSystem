@@ -248,25 +248,7 @@ EXEC dbo.sp_SeedSampleData;
 GO
 
 -- Example: record an answer for a valid existing session and question.
-DECLARE @SampleSessionID INT;
-DECLARE @SampleUserID INT;
-DECLARE @SampleQuestionID INT;
 
-SELECT TOP 1 @SampleSessionID = SessionID, @SampleUserID = UserID
-FROM QuizSessions;
-
-SELECT TOP 1 @SampleQuestionID = QuestionID
-FROM Questions;
-
-IF @SampleSessionID IS NOT NULL AND @SampleUserID IS NOT NULL AND @SampleQuestionID IS NOT NULL
-BEGIN
-    EXEC dbo.sp_RecordQuizAnswer
-        @SessionID = @SampleSessionID,
-        @UserID = @SampleUserID,
-        @QuestionID = @SampleQuestionID,
-        @SelectedAnswer = 'B';
-END;
-GO
 
 -- Example: query the session summary view.
 SELECT *
@@ -296,4 +278,23 @@ GO
 
 -- Example: verify a single function call for answer correctness.
 SELECT dbo.fn_IsAnswerCorrect(1, 'B') AS IsCorrectAnswer;
+GO
+DECLARE @SampleSessionID INT;
+DECLARE @SampleUserID INT;
+DECLARE @SampleQuestionID INT;
+
+SELECT TOP 1 @SampleSessionID = SessionID, @SampleUserID = UserID
+FROM QuizSessions;
+
+SELECT TOP 1 @SampleQuestionID = QuestionID
+FROM Questions;
+
+IF @SampleSessionID IS NOT NULL AND @SampleUserID IS NOT NULL AND @SampleQuestionID IS NOT NULL
+BEGIN
+    EXEC dbo.sp_RecordQuizAnswer
+        @SessionID = @SampleSessionID,
+        @UserID = @SampleUserID,
+        @QuestionID = @SampleQuestionID,
+        @SelectedAnswer = 'B';
+END;
 GO

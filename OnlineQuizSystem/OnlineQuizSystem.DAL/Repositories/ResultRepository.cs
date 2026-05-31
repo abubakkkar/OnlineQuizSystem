@@ -14,7 +14,25 @@ namespace OnlineQuizSystem.DAL.Repositories
 
         public DataTable GetResultsByUser(int userID)
         {
-            return db.Select($"SELECT r.*, q.QuestionText, q.CorrectOption, qs.QuizID, qs.TotalQuestions, qs.Score, qs.StartTime, qs.EndTime, qs.IsSubmitted, COALESCE(qu.Title, t.Name, 'Practice Quiz') AS QuizTitle FROM Results r INNER JOIN Questions q ON r.QuestionID = q.QuestionID INNER JOIN QuizSessions qs ON r.SessionID = qs.SessionID LEFT JOIN Quizzes qu ON qs.QuizID = qu.QuizID LEFT JOIN Teachers t ON qs.TeacherID = t.TeacherID WHERE r.UserID = {userID} ORDER BY qs.EndTime DESC, r.AnsweredAt DESC");
+            // Return all quiz sessions for the user and any associated result rows (if present).
+            // This ensures sessions with zero answered questions are still returned so they
+            // can be shown with 0 score/0 answers.
+              return db.Select($@"SELECT qs.SessionID, qs.UserID, qs.Score,
+                             -- Compute total questions for the session dynamically to avoid stale/miscounted values
+                             CASE WHEN qs.QuizID IS NOT NULL THEN ISNULL((SELECT COUNT(*) FROM QuizQuestions qq WHERE qq.QuizID = qs.QuizID), 0)
+                                 ELSE ISNULL((SELECT COUNT(*) FROM Questions q WHERE (qs.TeacherID IS NULL OR q.TeacherID = qs.TeacherID) AND (q.SectionID IS NULL OR q.SectionID IN (SELECT us.SectionID FROM UserSections us WHERE us.UserID = qs.UserID))), 0)
+                             END AS TotalQuestions,
+                             qs.StartTime, qs.EndTime, qs.IsSubmitted,
+                               COALESCE(qu.Title, t.Name, 'Practice Quiz') AS QuizTitle,
+                               r.ResultID, r.QuestionID, r.SelectedAnswer, r.IsCorrect, r.AnsweredAt,
+                               q.QuestionText, q.CorrectOption
+                        FROM QuizSessions qs
+                        LEFT JOIN Results r ON qs.SessionID = r.SessionID
+                        LEFT JOIN Questions q ON r.QuestionID = q.QuestionID
+                        LEFT JOIN Quizzes qu ON qs.QuizID = qu.QuizID
+                        LEFT JOIN Teachers t ON qs.TeacherID = t.TeacherID
+                        WHERE qs.UserID = {userID}
+                        ORDER BY qs.EndTime DESC, r.AnsweredAt DESC");
         }
 
         public DataTable GetResultsBySession(int sessionID)

@@ -13,6 +13,17 @@ namespace OnlineQuizSystem.DAL.Repositories
             string teacherIDValue = teacherID.HasValue ? teacherID.Value.ToString() : "NULL";
             int maxMinutes = 30;
 
+            // If there is an existing IN-PROGRESS (non-submitted) session for this user and teacher, resume it.
+            // Do NOT return submitted sessions — those are completed quizzes and must not be resumed.
+            if (teacherID.HasValue)
+            {
+                DataTable existing = db.Select($"SELECT TOP 1 SessionID FROM QuizSessions WHERE UserID = {userID} AND TeacherID = {teacherID.Value} AND IsSubmitted = 0 ORDER BY StartTime DESC");
+                if (existing.Rows.Count > 0 && existing.Rows[0]["SessionID"] != DBNull.Value)
+                {
+                    return Convert.ToInt32(existing.Rows[0]["SessionID"]);
+                }
+            }
+
             if (teacherID.HasValue)
             {
                 DataTable sectionTimeDt = db.Select($@"SELECT TOP 1 ISNULL(s.MaxTimeMinutes, 30) AS MaxTimeMinutes
@@ -67,6 +78,24 @@ namespace OnlineQuizSystem.DAL.Repositories
             return false;
         }
 
+        public int GetAvailableQuestionCount(int userID, int teacherID)
+        {
+            DataTable dt = db.Select($@"SELECT COUNT(*) AS QuestionCount FROM Questions q
+                WHERE q.TeacherID = {teacherID}
+                AND (
+                    q.SectionID IS NULL
+                    OR q.SectionID IN (
+                        SELECT us.SectionID FROM UserSections us WHERE us.UserID = {userID}
+                    )
+                )");
+
+            if (dt.Rows.Count > 0 && dt.Rows[0]["QuestionCount"] != DBNull.Value)
+            {
+                return Convert.ToInt32(dt.Rows[0]["QuestionCount"]);
+            }
+            return 0;
+        }
+
         public void UpdateSessionScore(int sessionID, int score)
         {
             db.Execute($"UPDATE QuizSessions SET Score = {score} WHERE SessionID = {sessionID}");
@@ -106,6 +135,11 @@ namespace OnlineQuizSystem.DAL.Repositories
         public void SubmitQuiz(int sessionID)
         {
             db.Execute($"EXEC dbo.sp_SubmitQuiz @SessionID={sessionID}");
+        }
+
+        public void AutoSubmitExpiredSessions()
+        {
+            db.Execute("EXEC dbo.sp_AutoSubmitExpiredSessions");
         }
 
         public bool IsQuizSubmitted(int sessionID)

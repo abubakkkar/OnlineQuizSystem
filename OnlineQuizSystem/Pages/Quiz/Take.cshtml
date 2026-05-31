@@ -5,6 +5,10 @@
 }
 
 <style>
+    .glass-card.quiz-container {
+    max-width: 1400px;
+    width: 95%;
+}
     .quiz-container {
         display: flex;
         gap: 2rem;
@@ -380,8 +384,9 @@
     else if (Model.Question != null)
     {
         <div class="quiz-main">
-            <div class="quiz-header">
+            <div class="quiz-header" style="display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;margin-bottom:1rem;">
                 <div>
+
                     <span style="color: var(--text-muted); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px;">Difficulty Level</span>
                     <div style="font-weight: 700; color: var(--primary);">Level @Model.Difficulty</div>
                 </div>
@@ -396,6 +401,7 @@
             <form method="post" id="quizForm">
                 <input type="hidden" name="QuestionID" value="@Model.Question["QuestionID"]" />
                 <input type="hidden" name="CorrectAnswer" value="@Model.Question["CorrectOption"]" />
+                <input type="hidden" name="SelectedAnswer" id="hiddenSelectedAnswer" value="" />
                 
                 <div class="options-grid">
                     <label class="option-label" onclick="selectOption(this)">
@@ -468,7 +474,11 @@
             function selectOption(element) {
                 document.querySelectorAll('.option-label').forEach(el => el.classList.remove('selected'));
                 element.classList.add('selected');
-                element.querySelector('input').checked = true;
+                const input = element.querySelector('input');
+                input.checked = true;
+
+                const hidden = document.getElementById('hiddenSelectedAnswer');
+                if (hidden) hidden.value = input.value;
             }
 
             // Quiz Timer
@@ -517,20 +527,36 @@
                 }
             }
 
-            function sendQuizSubmitRequest() {
-                const submitUrl = window.location.pathname + '?handler=Submit';
-                if (navigator.sendBeacon) {
-                    const payload = new Blob([], { type: 'text/plain;charset=UTF-8' });
-                    return navigator.sendBeacon(submitUrl, payload);
+            function sendQuizAutoSubmitRequest() {
+                const submitUrl = window.location.pathname + '?handler=AutoSubmit';
+
+                const selected = document.querySelector('input[name="SelectedAnswer"]:checked');
+                const selectedAnswer = selected ? selected.value : null;
+                const questionId = document.querySelector('input[name="QuestionID"]').value;
+                const correctAnswer = document.querySelector('input[name="CorrectAnswer"]').value;
+
+                const body = new URLSearchParams();
+                if (selectedAnswer) body.append('SelectedAnswer', selectedAnswer);
+                body.append('QuestionID', questionId);
+                if (correctAnswer) body.append('CorrectAnswer', correctAnswer);
+
+                // Most reliable for tab switch / backgrounding: sendBeacon.
+                try {
+                    const blob = new Blob([body.toString()], { type: 'application/x-www-form-urlencoded' });
+                    navigator.sendBeacon(submitUrl, blob);
+                } catch (e) {
+                    // ignore
                 }
 
+                // Fallback for browsers where sendBeacon isn't supported.
                 fetch(submitUrl, {
                     method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body,
                     keepalive: true
                 }).catch(() => {
                     // Best effort only
                 });
-                return true;
             }
 
             function autoSubmitQuiz(message) {
@@ -539,15 +565,21 @@
                 clearInterval(timer);
                 disableQuizInteractions();
                 clearQuizNavigationGuards();
+
                 if (message) {
                     alert(message);
                 }
 
-                sendQuizSubmitRequest();
+                // IMPORTANT: finalize quiz session in server.
+                // Cheating/tab-leave cases will not save the current answer => teacher will see 0 marks.
+                sendQuizAutoSubmitRequest();
+
+                // Do not rely on form submit; just reload results page if visible.
                 if (!document.hidden) {
-                    submitQuizForm?.submit();
+                    window.location.href = '/Results/Index';
                 }
             }
+
 
             function preventLeave(e) {
                 if (!quizNavigationActive) return;

@@ -31,5 +31,11 @@ namespace OnlineQuizSystem.BLL.Services
         {
             return repo.GetTeacherResults(teacherId);
         }
+
+        public void AutoSubmitExpiredSessions()
+        {
+            var quizRepo = new OnlineQuizSystem.DAL.Repositories.QuizRepository();
+            quizRepo.AutoSubmitExpiredSessions();
+        }
     }
 }

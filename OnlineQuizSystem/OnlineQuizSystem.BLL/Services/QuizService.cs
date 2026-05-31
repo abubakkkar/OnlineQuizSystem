@@ -135,5 +135,10 @@ namespace OnlineQuizSystem.BLL.Services
             }
             return false;
         }
+
+        public int GetAvailableQuestionCount(int userID, int teacherID)
+        {
+            return quizRepo.GetAvailableQuestionCount(userID, teacherID);
+        }
     }
 }

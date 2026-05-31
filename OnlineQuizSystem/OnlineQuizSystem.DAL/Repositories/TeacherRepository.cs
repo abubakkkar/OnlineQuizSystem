@@ -34,7 +34,10 @@ namespace OnlineQuizSystem.DAL.Repositories
                     s.SessionID, 
                     u.Name as StudentName, 
                     u.Email as StudentEmail, 
-                    s.TotalQuestions, 
+                    -- compute total questions dynamically to avoid stale/miscounted values
+                    CASE WHEN s.QuizID IS NOT NULL THEN ISNULL((SELECT COUNT(*) FROM QuizQuestions qq WHERE qq.QuizID = s.QuizID), 0)
+                         ELSE ISNULL((SELECT COUNT(*) FROM Questions q WHERE (s.TeacherID IS NULL OR q.TeacherID = s.TeacherID) AND (q.SectionID IS NULL OR q.SectionID IN (SELECT us.SectionID FROM UserSections us WHERE us.UserID = s.UserID))), 0)
+                    END AS TotalQuestions,
                     s.Score as TotalMarks, 
                     s.StartTime 
                 FROM QuizSessions s 

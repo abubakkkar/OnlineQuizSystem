@@ -8,6 +8,13 @@
     <h2 class="card-title">📊 Your Quiz Results</h2>
     <p class="card-subtitle">Review your quiz performance</p>
 
+    @if (TempData["QuizMessage"] != null)
+    {
+        <div style="margin: 1rem 0; padding: 0.9rem 1rem; border-radius: 8px; background: rgba(16,185,129,0.08); color: #065f46; border: 1px solid rgba(16,185,129,0.12);">
+            @TempData["QuizMessage"]
+        </div>
+    }
+
     @if (Model.Results != null && Model.Results.Rows.Count > 0)
     {
         <div style="display: grid; gap: 1rem; margin-bottom: 2rem; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));">
@@ -68,38 +75,54 @@
                 </div>
 
                 <div style="display: grid; gap: 1rem;">
-                    @foreach (System.Data.DataRow row in Model.SessionResultsBySession[summary.SessionID])
+                    @{
+                        var rows = Model.SessionResultsBySession[summary.SessionID];
+                        // If there are no answered questions (ResultID is null), show a simple placeholder
+                        bool hasAnyAnswers = rows.Any(r => r["ResultID"] != DBNull.Value && r["ResultID"] != null);
+                    }
+                    @if (!hasAnyAnswers)
                     {
-                        var isCorrect = Convert.ToBoolean(row["IsCorrect"]);
-                        <div style="padding: 1rem; border-radius: 12px; border-left: 4px solid @(isCorrect ? "#34d399" : "#fb7185"); background: @(isCorrect ? "rgba(52, 211, 153, 0.08)" : "rgba(251, 113, 133, 0.08)"); display: grid; grid-template-columns: 1fr auto; gap: 1rem; align-items: start;">
-                            <div>
-                                <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.5rem;">Question</p>
-                                <p style="font-weight: 600; margin-bottom: 0.8rem;">@row["QuestionText"]</p>
-                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 0.8rem;">
-                                    <div>
-                                        <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.2rem;">Your Answer</p>
-                                        <p style="font-weight: 600; color: var(--secondary);">Option @row["SelectedAnswer"]</p>
-                                    </div>
-                                    <div>
-                                        <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.2rem;">Correct Answer</p>
-                                        <p style="font-weight: 600; color: #34d399;">Option @row["CorrectOption"]</p>
-                                    </div>
-                                </div>
-                                <p style="font-size: 0.85rem; color: var(--text-muted);">Answered: @Convert.ToDateTime(row["AnsweredAt"]).ToString("MMM dd, yyyy • hh:mm tt")</p>
-                            </div>
-                            <div style="padding: 1rem 1.5rem; border-radius: 8px; background: @(isCorrect ? "rgba(52, 211, 153, 0.2)" : "rgba(251, 113, 133, 0.2)"); text-align: center; min-width: 100px;">
-                                @if (isCorrect)
-                                {
-                                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">✓</div>
-                                    <span style="color: #34d399; font-weight: 700;">Correct</span>
-                                }
-                                else
-                                {
-                                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">✕</div>
-                                    <span style="color: #fb7185; font-weight: 700;">Incorrect</span>
-                                }
-                            </div>
+                        <div style="padding: 1rem; border-radius: 12px; background: rgba(255,255,255,0.02); text-align: center;">
+                            <p style="margin: 0; font-weight: 700;">No answers submitted for this session.</p>
+                            <p style="margin: 0.25rem 0 0; color: var(--text-muted);">Score: 0 / @summary.TotalQuestions</p>
                         </div>
+                    }
+                    else
+                    {
+                        @foreach (System.Data.DataRow row in rows)
+                        {
+                            if (row["ResultID"] == DBNull.Value || row["ResultID"] == null) continue;
+                            var isCorrect = row["IsCorrect"] != DBNull.Value && Convert.ToBoolean(row["IsCorrect"]);
+                            <div style="padding: 1rem; border-radius: 12px; border-left: 4px solid @(isCorrect ? "#34d399" : "#fb7185"); background: @(isCorrect ? "rgba(52, 211, 153, 0.08)" : "rgba(251, 113, 133, 0.08)"); display: grid; grid-template-columns: 1fr auto; gap: 1rem; align-items: start;">
+                                <div>
+                                    <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.5rem;">Question</p>
+                                    <p style="font-weight: 600; margin-bottom: 0.8rem;">@row["QuestionText"]</p>
+                                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 0.8rem;">
+                                        <div>
+                                            <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.2rem;">Your Answer</p>
+                                            <p style="font-weight: 600; color: var(--secondary);">Option @(row["SelectedAnswer"] != DBNull.Value ? row["SelectedAnswer"] : "-")</p>
+                                        </div>
+                                        <div>
+                                            <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.2rem;">Correct Answer</p>
+                                            <p style="font-weight: 600; color: #34d399;">Option @(row["CorrectOption"] != DBNull.Value ? row["CorrectOption"] : "-")</p>
+                                        </div>
+                                    </div>
+                                    <p style="font-size: 0.85rem; color: var(--text-muted);">Answered: @(row["AnsweredAt"] != DBNull.Value ? Convert.ToDateTime(row["AnsweredAt"]).ToString("MMM dd, yyyy • hh:mm tt") : "-")</p>
+                                </div>
+                                <div style="padding: 1rem 1.5rem; border-radius: 8px; background: @(isCorrect ? "rgba(52, 211, 153, 0.2)" : "rgba(251, 113, 133, 0.2)"); text-align: center; min-width: 100px;">
+                                    @if (isCorrect)
+                                    {
+                                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">✓</div>
+                                        <span style="color: #34d399; font-weight: 700;">Correct</span>
+                                    }
+                                    else
+                                    {
+                                        <div style="font-size: 2rem; margin-bottom: 0.5rem;">✕</div>
+                                        <span style="color: #fb7185; font-weight: 700;">Incorrect</span>
+                                    }
+                                </div>
+                            </div>
+                        }
                     }
                 </div>
             </div>

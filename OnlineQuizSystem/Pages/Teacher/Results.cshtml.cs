@@ -26,6 +26,16 @@ namespace OnlineQuizSystem.Pages.Teacher
 
             int teacherID = int.Parse(HttpContext.Session.GetString("TeacherID"));
 
+            // Ensure expired sessions are submitted so teacher sees finalised results (including 0-score leaves)
+            try
+            {
+                _teacherService.AutoSubmitExpiredSessions();
+            }
+            catch
+            {
+                // ignore DB errors here and continue to fetch available results
+            }
+
             Results = _teacherService.GetTeacherResults(teacherID);
 
             return Page();
