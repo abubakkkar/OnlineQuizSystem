@@ -125,16 +125,22 @@ This table records every quiz answer and feeds score calculations.
   - returns a percentage safely and avoids division by zero
 - `dbo.fn_IsAnswerCorrect(@QuestionID, @SelectedAnswer)`
   - checks whether the selected answer matches the correct option
+ - `dbo.ufn_GetQuestionDetails(@QuestionID)`
+   - inline table-valued function that returns question details (QuestionText, OptionA..D, CorrectOption, DifficultyLevel, TeacherID) for a given `QuestionID`
 
 ### Stored procedures
 - `dbo.sp_RecordQuizAnswer`
   - inserts a result row and uses the correctness function to set `IsCorrect`
 - `dbo.sp_SeedSampleData`
   - seeds demo data only when target tables are empty
+ - `dbo.sp_RunTriggerValidationTests`
+   - automation procedure that runs three simple trigger validation tests (invalid insert, valid insert, invalid update) and returns a result set useful for verification or demonstration
 
 ### Trigger
 - `dbo.trg_UpdateSessionTotalsOnResultInsert`
   - updates `QuizSessions.Score` and `TotalQuestions` automatically after answers are inserted into `Results`
+ - `dbo.trg_ValidateCorrectOption`
+   - validation trigger on `Questions` (AFTER INSERT, UPDATE). Ensures `CorrectOption` is one of `A`, `B`, `C`, or `D`; otherwise raises an error and rolls back the change
 
 ## Key workflows
 

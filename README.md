@@ -53,6 +53,26 @@ git clone https://github.com/abubakkkar/OnlineQuizSystem.git
 cd OnlineQuizSystem
 ```
 
+## 🗄️ Database automation & testing
+
+You can seed sample data and run a small automated trigger test to demonstrate trigger behavior to an instructor.
+
+1. Open your SQL tool (SSMS, Azure Data Studio, or `sqlcmd`) and connect to the server.
+2. Run the seed and test procedures:
+
+```sql
+USE OnlineQuizDB;
+GO
+EXEC dbo.sp_SeedSampleData; -- ensure sample rows exist
+GO
+EXEC dbo.sp_RunTriggerValidationTests; -- runs the automated trigger tests and returns results
+GO
+```
+
+The `sp_RunTriggerValidationTests` procedure returns a result set with `TestName`, `Success`, and `Message` columns you can copy or screenshot for submission. Include the `triggers.sql` and `automation.sql` files when you show the test to your teacher.
+
+```
+
 2. Open the solution in Visual Studio or your preferred IDE.
 
 3. Restore packages and build the solution.
