@@ -1,70 +1,71 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\123\\OnlineQuizSystem\\",
+  "WorkspaceRootPath": "D:\\OnlineQuizSystem\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{7A6548B7-40C5-45C8-8AD4-943A9A0BA8D9}|OnlineQuizSystem\\OnlineQuizSystem.csproj|d:\\123\\onlinequizsystem\\onlinequizsystem\\onlinequizsystem.ui\\forms\\quizform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7A6548B7-40C5-45C8-8AD4-943A9A0BA8D9}|OnlineQuizSystem\\OnlineQuizSystem.csproj|solutionrelative:onlinequizsystem\\onlinequizsystem.ui\\forms\\quizform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\OnlineQuizSystem\\OnlineQuizSystem\\OnlineQuizSystem.Database\\Scripts\\functions.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:OnlineQuizSystem\\OnlineQuizSystem.Database\\Scripts\\functions.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7A6548B7-40C5-45C8-8AD4-943A9A0BA8D9}|OnlineQuizSystem\\OnlineQuizSystem.csproj|d:\\123\\onlinequizsystem\\onlinequizsystem\\onlinequizsystem.ui\\forms\\dashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7A6548B7-40C5-45C8-8AD4-943A9A0BA8D9}|OnlineQuizSystem\\OnlineQuizSystem.csproj|solutionrelative:onlinequizsystem\\onlinequizsystem.ui\\forms\\dashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\OnlineQuizSystem\\OnlineQuizSystem\\OnlineQuizSystem.Database\\Scripts\\automation.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:OnlineQuizSystem\\OnlineQuizSystem.Database\\Scripts\\automation.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7A6548B7-40C5-45C8-8AD4-943A9A0BA8D9}|OnlineQuizSystem\\OnlineQuizSystem.csproj|d:\\123\\onlinequizsystem\\onlinequizsystem\\onlinequizsystem.ui\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7A6548B7-40C5-45C8-8AD4-943A9A0BA8D9}|OnlineQuizSystem\\OnlineQuizSystem.csproj|solutionrelative:onlinequizsystem\\onlinequizsystem.ui\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\OnlineQuizSystem\\OnlineQuizSystem\\OnlineQuizSystem.DAL\\Repositories\\QuestionRepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:OnlineQuizSystem\\OnlineQuizSystem.DAL\\Repositories\\QuestionRepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7A6548B7-40C5-45C8-8AD4-943A9A0BA8D9}|OnlineQuizSystem\\OnlineQuizSystem.csproj|d:\\123\\onlinequizsystem\\onlinequizsystem\\onlinequizsystem.ui\\forms\\adminpanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7A6548B7-40C5-45C8-8AD4-943A9A0BA8D9}|OnlineQuizSystem\\OnlineQuizSystem.csproj|solutionrelative:onlinequizsystem\\onlinequizsystem.ui\\forms\\adminpanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\123\\OnlineQuizSystem\\OnlineQuizSystem\\OnlineQuizSystem.UI\\Forms\\Dashboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7A6548B7-40C5-45C8-8AD4-943A9A0BA8D9}|OnlineQuizSystem\\OnlineQuizSystem.csproj|d:\\123\\onlinequizsystem\\onlinequizsystem\\onlinequizsystem.ui\\forms\\signupform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7A6548B7-40C5-45C8-8AD4-943A9A0BA8D9}|OnlineQuizSystem\\OnlineQuizSystem.csproj|solutionrelative:onlinequizsystem\\onlinequizsystem.ui\\forms\\signupform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\123\\OnlineQuizSystem\\OnlineQuizSystem\\OnlineQuizSystem.UI\\Forms\\QuizForm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7A6548B7-40C5-45C8-8AD4-943A9A0BA8D9}|OnlineQuizSystem\\OnlineQuizSystem.csproj|d:\\123\\onlinequizsystem\\onlinequizsystem\\onlinequizsystem.bll\\services\\quizservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7A6548B7-40C5-45C8-8AD4-943A9A0BA8D9}|OnlineQuizSystem\\OnlineQuizSystem.csproj|solutionrelative:onlinequizsystem\\onlinequizsystem.bll\\services\\quizservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\OnlineQuizSystem\\OnlineQuizSystem\\OnlineQuizSystem.DAL\\Repositories\\UserRepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:OnlineQuizSystem\\OnlineQuizSystem.DAL\\Repositories\\UserRepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7A6548B7-40C5-45C8-8AD4-943A9A0BA8D9}|OnlineQuizSystem\\OnlineQuizSystem.csproj|d:\\123\\onlinequizsystem\\onlinequizsystem\\onlinequizsystem.ui\\forms\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7A6548B7-40C5-45C8-8AD4-943A9A0BA8D9}|OnlineQuizSystem\\OnlineQuizSystem.csproj|solutionrelative:onlinequizsystem\\onlinequizsystem.ui\\forms\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\123\\OnlineQuizSystem\\OnlineQuizSystem\\OnlineQuizSystem.UI\\Forms\\AdminPanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7A6548B7-40C5-45C8-8AD4-943A9A0BA8D9}|OnlineQuizSystem\\OnlineQuizSystem.csproj|d:\\123\\onlinequizsystem\\onlinequizsystem\\onlinequizsystem.bll\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7A6548B7-40C5-45C8-8AD4-943A9A0BA8D9}|OnlineQuizSystem\\OnlineQuizSystem.csproj|solutionrelative:onlinequizsystem\\onlinequizsystem.bll\\services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\123\\OnlineQuizSystem\\OnlineQuizSystem\\OnlineQuizSystem.UI\\Forms\\SignUpForm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7A6548B7-40C5-45C8-8AD4-943A9A0BA8D9}|OnlineQuizSystem\\OnlineQuizSystem.csproj|d:\\123\\onlinequizsystem\\onlinequizsystem\\onlinequizsystem.bll\\models\\question.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7A6548B7-40C5-45C8-8AD4-943A9A0BA8D9}|OnlineQuizSystem\\OnlineQuizSystem.csproj|solutionrelative:onlinequizsystem\\onlinequizsystem.bll\\models\\question.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\123\\OnlineQuizSystem\\OnlineQuizSystem\\OnlineQuizSystem.UI\\Forms\\LoginForm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7A6548B7-40C5-45C8-8AD4-943A9A0BA8D9}|OnlineQuizSystem\\OnlineQuizSystem.csproj|d:\\123\\onlinequizsystem\\onlinequizsystem\\onlinequizsystem.bll\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7A6548B7-40C5-45C8-8AD4-943A9A0BA8D9}|OnlineQuizSystem\\OnlineQuizSystem.csproj|solutionrelative:onlinequizsystem\\onlinequizsystem.bll\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\123\\OnlineQuizSystem\\OnlineQuizSystem\\OnlineQuizSystem.UI\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7A6548B7-40C5-45C8-8AD4-943A9A0BA8D9}|OnlineQuizSystem\\OnlineQuizSystem.csproj|d:\\123\\onlinequizsystem\\onlinequizsystem\\onlinequizsystem.dal\\repositories\\questionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7A6548B7-40C5-45C8-8AD4-943A9A0BA8D9}|OnlineQuizSystem\\OnlineQuizSystem.csproj|solutionrelative:onlinequizsystem\\onlinequizsystem.dal\\repositories\\questionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\OnlineQuizSystem\\OnlineQuizSystem\\OnlineQuizSystem.BLL\\Services\\QuizService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:OnlineQuizSystem\\OnlineQuizSystem.BLL\\Services\\QuizService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7A6548B7-40C5-45C8-8AD4-943A9A0BA8D9}|OnlineQuizSystem\\OnlineQuizSystem.csproj|d:\\123\\onlinequizsystem\\onlinequizsystem\\onlinequizsystem.dal\\repositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7A6548B7-40C5-45C8-8AD4-943A9A0BA8D9}|OnlineQuizSystem\\OnlineQuizSystem.csproj|solutionrelative:onlinequizsystem\\onlinequizsystem.dal\\repositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\OnlineQuizSystem\\OnlineQuizSystem\\OnlineQuizSystem.BLL\\Services\\UserService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:OnlineQuizSystem\\OnlineQuizSystem.BLL\\Services\\UserService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7A6548B7-40C5-45C8-8AD4-943A9A0BA8D9}|OnlineQuizSystem\\OnlineQuizSystem.csproj|d:\\123\\onlinequizsystem\\onlinequizsystem\\onlinequizsystem.dal\\dbhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7A6548B7-40C5-45C8-8AD4-943A9A0BA8D9}|OnlineQuizSystem\\OnlineQuizSystem.csproj|solutionrelative:onlinequizsystem\\onlinequizsystem.dal\\dbhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\OnlineQuizSystem\\OnlineQuizSystem\\OnlineQuizSystem.BLL\\Models\\Question.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:OnlineQuizSystem\\OnlineQuizSystem.BLL\\Models\\Question.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7A6548B7-40C5-45C8-8AD4-943A9A0BA8D9}|OnlineQuizSystem\\OnlineQuizSystem.csproj|d:\\123\\onlinequizsystem\\onlinequizsystem\\onlinequizsystem.database\\scripts\\database.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}",
-      "RelativeMoniker": "D:0:0:{7A6548B7-40C5-45C8-8AD4-943A9A0BA8D9}|OnlineQuizSystem\\OnlineQuizSystem.csproj|solutionrelative:onlinequizsystem\\onlinequizsystem.database\\scripts\\database.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\OnlineQuizSystem\\OnlineQuizSystem\\OnlineQuizSystem.BLL\\Models\\User.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:OnlineQuizSystem\\OnlineQuizSystem.BLL\\Models\\User.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7A6548B7-40C5-45C8-8AD4-943A9A0BA8D9}|OnlineQuizSystem\\OnlineQuizSystem.csproj|d:\\123\\onlinequizsystem\\onlinequizsystem\\onlinequizsystem.database\\scripts\\database.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame",
-      "RelativeMoniker": "D:0:0:{7A6548B7-40C5-45C8-8AD4-943A9A0BA8D9}|OnlineQuizSystem\\OnlineQuizSystem.csproj|solutionrelative:onlinequizsystem\\onlinequizsystem.database\\scripts\\database.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\OnlineQuizSystem\\OnlineQuizSystem\\OnlineQuizSystem.DAL\\DBHelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:OnlineQuizSystem\\OnlineQuizSystem.DAL\\DBHelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7A6548B7-40C5-45C8-8AD4-943A9A0BA8D9}|OnlineQuizSystem\\OnlineQuizSystem.csproj|d:\\123\\onlinequizsystem\\onlinequizsystem\\onlinequizsystem.database\\scripts\\database.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|ResultFrame",
-      "RelativeMoniker": "D:0:0:{7A6548B7-40C5-45C8-8AD4-943A9A0BA8D9}|OnlineQuizSystem\\OnlineQuizSystem.csproj|solutionrelative:onlinequizsystem\\onlinequizsystem.database\\scripts\\database.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|ResultFrame"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\123\\OnlineQuizSystem\\OnlineQuizSystem\\OnlineQuizSystem.Database\\Scripts\\Database.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\OnlineQuizSystem\\OnlineQuizSystem\\OnlineQuizSystem.Database\\Scripts\\automation.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:OnlineQuizSystem\\OnlineQuizSystem.Database\\Scripts\\automation.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\OnlineQuizSystem\\OnlineQuizSystem\\OnlineQuizSystem.Database\\Scripts\\functions.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:OnlineQuizSystem\\OnlineQuizSystem.Database\\Scripts\\functions.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame"
     }
   ],
   "DocumentGroupContainers": [
@@ -78,11 +79,11 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 5,
               "Title": "UserRepository.cs",
-              "DocumentMoniker": "D:\\123\\OnlineQuizSystem\\OnlineQuizSystem\\OnlineQuizSystem.DAL\\Repositories\\UserRepository.cs",
+              "DocumentMoniker": "D:\\OnlineQuizSystem\\OnlineQuizSystem\\OnlineQuizSystem.DAL\\Repositories\\UserRepository.cs",
               "RelativeDocumentMoniker": "OnlineQuizSystem\\OnlineQuizSystem.DAL\\Repositories\\UserRepository.cs",
-              "ToolTip": "D:\\123\\OnlineQuizSystem\\OnlineQuizSystem\\OnlineQuizSystem.DAL\\Repositories\\UserRepository.cs",
+              "ToolTip": "D:\\OnlineQuizSystem\\OnlineQuizSystem\\OnlineQuizSystem.DAL\\Repositories\\UserRepository.cs",
               "RelativeToolTip": "OnlineQuizSystem\\OnlineQuizSystem.DAL\\Repositories\\UserRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -92,89 +93,100 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "AdminPanel.cs",
-              "DocumentMoniker": "D:\\123\\OnlineQuizSystem\\OnlineQuizSystem\\OnlineQuizSystem.UI\\Forms\\AdminPanel.cs",
-              "RelativeDocumentMoniker": "OnlineQuizSystem\\OnlineQuizSystem.UI\\Forms\\AdminPanel.cs",
-              "ToolTip": "D:\\123\\OnlineQuizSystem\\OnlineQuizSystem\\OnlineQuizSystem.UI\\Forms\\AdminPanel.cs",
-              "RelativeToolTip": "OnlineQuizSystem\\OnlineQuizSystem.UI\\Forms\\AdminPanel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAABAAAAAAAAAA==",
+              "DocumentIndex": 7,
+              "Title": "SignUpForm.cs",
+              "DocumentMoniker": "D:\\123\\OnlineQuizSystem\\OnlineQuizSystem\\OnlineQuizSystem.UI\\Forms\\SignUpForm.cs",
+              "RelativeDocumentMoniker": "..\\123\\OnlineQuizSystem\\OnlineQuizSystem\\OnlineQuizSystem.UI\\Forms\\SignUpForm.cs",
+              "ToolTip": "D:\\123\\OnlineQuizSystem\\OnlineQuizSystem\\OnlineQuizSystem.UI\\Forms\\SignUpForm.cs",
+              "RelativeToolTip": "..\\123\\OnlineQuizSystem\\OnlineQuizSystem\\OnlineQuizSystem.UI\\Forms\\SignUpForm.cs",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-08T05:30:25.364Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-08T05:29:48.762Z",
+              "IsPinned": true
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "QuizForm.cs",
-              "DocumentMoniker": "D:\\123\\OnlineQuizSystem\\OnlineQuizSystem\\OnlineQuizSystem.UI\\Forms\\QuizForm.cs",
-              "RelativeDocumentMoniker": "OnlineQuizSystem\\OnlineQuizSystem.UI\\Forms\\QuizForm.cs",
-              "ToolTip": "D:\\123\\OnlineQuizSystem\\OnlineQuizSystem\\OnlineQuizSystem.UI\\Forms\\QuizForm.cs",
-              "RelativeToolTip": "OnlineQuizSystem\\OnlineQuizSystem.UI\\Forms\\QuizForm.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAD0AAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-08T05:30:06.657Z",
+              "Title": "functions.sql ",
+              "DocumentMoniker": "D:\\OnlineQuizSystem\\OnlineQuizSystem\\OnlineQuizSystem.Database\\Scripts\\functions.sql",
+              "RelativeDocumentMoniker": "OnlineQuizSystem\\OnlineQuizSystem.Database\\Scripts\\functions.sql",
+              "ToolTip": "functions.sql ",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2026-06-07T07:21:15.844Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Dashboard.cs",
-              "DocumentMoniker": "D:\\123\\OnlineQuizSystem\\OnlineQuizSystem\\OnlineQuizSystem.UI\\Forms\\Dashboard.cs",
-              "RelativeDocumentMoniker": "OnlineQuizSystem\\OnlineQuizSystem.UI\\Forms\\Dashboard.cs",
-              "ToolTip": "D:\\123\\OnlineQuizSystem\\OnlineQuizSystem\\OnlineQuizSystem.UI\\Forms\\Dashboard.cs",
-              "RelativeToolTip": "OnlineQuizSystem\\OnlineQuizSystem.UI\\Forms\\Dashboard.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-08T05:29:57.469Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "SignUpForm.cs",
-              "DocumentMoniker": "D:\\123\\OnlineQuizSystem\\OnlineQuizSystem\\OnlineQuizSystem.UI\\Forms\\SignUpForm.cs",
-              "RelativeDocumentMoniker": "OnlineQuizSystem\\OnlineQuizSystem.UI\\Forms\\SignUpForm.cs",
-              "ToolTip": "D:\\123\\OnlineQuizSystem\\OnlineQuizSystem\\OnlineQuizSystem.UI\\Forms\\SignUpForm.cs",
-              "RelativeToolTip": "OnlineQuizSystem\\OnlineQuizSystem.UI\\Forms\\SignUpForm.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-08T05:29:48.762Z",
+              "Title": "automation.sql ",
+              "DocumentMoniker": "D:\\OnlineQuizSystem\\OnlineQuizSystem\\OnlineQuizSystem.Database\\Scripts\\automation.sql",
+              "RelativeDocumentMoniker": "OnlineQuizSystem\\OnlineQuizSystem.Database\\Scripts\\automation.sql",
+              "ToolTip": "automation.sql ",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2026-06-07T07:21:13.829Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
+              "Title": "AdminPanel.cs",
+              "DocumentMoniker": "D:\\123\\OnlineQuizSystem\\OnlineQuizSystem\\OnlineQuizSystem.UI\\Forms\\AdminPanel.cs",
+              "RelativeDocumentMoniker": "..\\123\\OnlineQuizSystem\\OnlineQuizSystem\\OnlineQuizSystem.UI\\Forms\\AdminPanel.cs",
+              "ToolTip": "D:\\123\\OnlineQuizSystem\\OnlineQuizSystem\\OnlineQuizSystem.UI\\Forms\\AdminPanel.cs",
+              "RelativeToolTip": "..\\123\\OnlineQuizSystem\\OnlineQuizSystem\\OnlineQuizSystem.UI\\Forms\\AdminPanel.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-08T05:30:25.364Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "QuizForm.cs",
+              "DocumentMoniker": "D:\\123\\OnlineQuizSystem\\OnlineQuizSystem\\OnlineQuizSystem.UI\\Forms\\QuizForm.cs",
+              "RelativeDocumentMoniker": "..\\123\\OnlineQuizSystem\\OnlineQuizSystem\\OnlineQuizSystem.UI\\Forms\\QuizForm.cs",
+              "ToolTip": "D:\\123\\OnlineQuizSystem\\OnlineQuizSystem\\OnlineQuizSystem.UI\\Forms\\QuizForm.cs",
+              "RelativeToolTip": "..\\123\\OnlineQuizSystem\\OnlineQuizSystem\\OnlineQuizSystem.UI\\Forms\\QuizForm.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-08T05:30:06.657Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Dashboard.cs",
+              "DocumentMoniker": "D:\\123\\OnlineQuizSystem\\OnlineQuizSystem\\OnlineQuizSystem.UI\\Forms\\Dashboard.cs",
+              "RelativeDocumentMoniker": "..\\123\\OnlineQuizSystem\\OnlineQuizSystem\\OnlineQuizSystem.UI\\Forms\\Dashboard.cs",
+              "ToolTip": "D:\\123\\OnlineQuizSystem\\OnlineQuizSystem\\OnlineQuizSystem.UI\\Forms\\Dashboard.cs",
+              "RelativeToolTip": "..\\123\\OnlineQuizSystem\\OnlineQuizSystem\\OnlineQuizSystem.UI\\Forms\\Dashboard.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-08T05:29:57.469Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "LoginForm.cs",
               "DocumentMoniker": "D:\\123\\OnlineQuizSystem\\OnlineQuizSystem\\OnlineQuizSystem.UI\\Forms\\LoginForm.cs",
-              "RelativeDocumentMoniker": "OnlineQuizSystem\\OnlineQuizSystem.UI\\Forms\\LoginForm.cs",
+              "RelativeDocumentMoniker": "..\\123\\OnlineQuizSystem\\OnlineQuizSystem\\OnlineQuizSystem.UI\\Forms\\LoginForm.cs",
               "ToolTip": "D:\\123\\OnlineQuizSystem\\OnlineQuizSystem\\OnlineQuizSystem.UI\\Forms\\LoginForm.cs",
-              "RelativeToolTip": "OnlineQuizSystem\\OnlineQuizSystem.UI\\Forms\\LoginForm.cs",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAQwBoAAAABAAAAAAAAAA==",
+              "RelativeToolTip": "..\\123\\OnlineQuizSystem\\OnlineQuizSystem\\OnlineQuizSystem.UI\\Forms\\LoginForm.cs",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-08T05:29:10.92Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-08T05:29:10.92Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 9,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\123\\OnlineQuizSystem\\OnlineQuizSystem\\OnlineQuizSystem.UI\\Program.cs",
-              "RelativeDocumentMoniker": "OnlineQuizSystem\\OnlineQuizSystem.UI\\Program.cs",
+              "RelativeDocumentMoniker": "..\\123\\OnlineQuizSystem\\OnlineQuizSystem\\OnlineQuizSystem.UI\\Program.cs",
               "ToolTip": "D:\\123\\OnlineQuizSystem\\OnlineQuizSystem\\OnlineQuizSystem.UI\\Program.cs",
-              "RelativeToolTip": "OnlineQuizSystem\\OnlineQuizSystem.UI\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "RelativeToolTip": "..\\123\\OnlineQuizSystem\\OnlineQuizSystem\\OnlineQuizSystem.UI\\Program.cs",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-08T05:28:50.609Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-08T05:28:50.609Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 10,
               "Title": "QuizService.cs",
-              "DocumentMoniker": "D:\\123\\OnlineQuizSystem\\OnlineQuizSystem\\OnlineQuizSystem.BLL\\Services\\QuizService.cs",
+              "DocumentMoniker": "D:\\OnlineQuizSystem\\OnlineQuizSystem\\OnlineQuizSystem.BLL\\Services\\QuizService.cs",
               "RelativeDocumentMoniker": "OnlineQuizSystem\\OnlineQuizSystem.BLL\\Services\\QuizService.cs",
-              "ToolTip": "D:\\123\\OnlineQuizSystem\\OnlineQuizSystem\\OnlineQuizSystem.BLL\\Services\\QuizService.cs",
+              "ToolTip": "D:\\OnlineQuizSystem\\OnlineQuizSystem\\OnlineQuizSystem.BLL\\Services\\QuizService.cs",
               "RelativeToolTip": "OnlineQuizSystem\\OnlineQuizSystem.BLL\\Services\\QuizService.cs",
               "ViewState": "AgIAAAMAAAAAAAAAAAAQwBMAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -183,11 +195,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 11,
               "Title": "UserService.cs",
-              "DocumentMoniker": "D:\\123\\OnlineQuizSystem\\OnlineQuizSystem\\OnlineQuizSystem.BLL\\Services\\UserService.cs",
+              "DocumentMoniker": "D:\\OnlineQuizSystem\\OnlineQuizSystem\\OnlineQuizSystem.BLL\\Services\\UserService.cs",
               "RelativeDocumentMoniker": "OnlineQuizSystem\\OnlineQuizSystem.BLL\\Services\\UserService.cs",
-              "ToolTip": "D:\\123\\OnlineQuizSystem\\OnlineQuizSystem\\OnlineQuizSystem.BLL\\Services\\UserService.cs",
+              "ToolTip": "D:\\OnlineQuizSystem\\OnlineQuizSystem\\OnlineQuizSystem.BLL\\Services\\UserService.cs",
               "RelativeToolTip": "OnlineQuizSystem\\OnlineQuizSystem.BLL\\Services\\UserService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -196,11 +208,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 12,
               "Title": "Question.cs",
-              "DocumentMoniker": "D:\\123\\OnlineQuizSystem\\OnlineQuizSystem\\OnlineQuizSystem.BLL\\Models\\Question.cs",
+              "DocumentMoniker": "D:\\OnlineQuizSystem\\OnlineQuizSystem\\OnlineQuizSystem.BLL\\Models\\Question.cs",
               "RelativeDocumentMoniker": "OnlineQuizSystem\\OnlineQuizSystem.BLL\\Models\\Question.cs",
-              "ToolTip": "D:\\123\\OnlineQuizSystem\\OnlineQuizSystem\\OnlineQuizSystem.BLL\\Models\\Question.cs",
+              "ToolTip": "D:\\OnlineQuizSystem\\OnlineQuizSystem\\OnlineQuizSystem.BLL\\Models\\Question.cs",
               "RelativeToolTip": "OnlineQuizSystem\\OnlineQuizSystem.BLL\\Models\\Question.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -209,24 +221,24 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 2,
               "Title": "QuestionRepository.cs",
-              "DocumentMoniker": "D:\\123\\OnlineQuizSystem\\OnlineQuizSystem\\OnlineQuizSystem.DAL\\Repositories\\QuestionRepository.cs",
+              "DocumentMoniker": "D:\\OnlineQuizSystem\\OnlineQuizSystem\\OnlineQuizSystem.DAL\\Repositories\\QuestionRepository.cs",
               "RelativeDocumentMoniker": "OnlineQuizSystem\\OnlineQuizSystem.DAL\\Repositories\\QuestionRepository.cs",
-              "ToolTip": "D:\\123\\OnlineQuizSystem\\OnlineQuizSystem\\OnlineQuizSystem.DAL\\Repositories\\QuestionRepository.cs",
+              "ToolTip": "D:\\OnlineQuizSystem\\OnlineQuizSystem\\OnlineQuizSystem.DAL\\Repositories\\QuestionRepository.cs",
               "RelativeToolTip": "OnlineQuizSystem\\OnlineQuizSystem.DAL\\Repositories\\QuestionRepository.cs",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAcwBwAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAcwA4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-05-08T05:27:51.432Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 13,
               "Title": "User.cs",
-              "DocumentMoniker": "D:\\123\\OnlineQuizSystem\\OnlineQuizSystem\\OnlineQuizSystem.BLL\\Models\\User.cs",
+              "DocumentMoniker": "D:\\OnlineQuizSystem\\OnlineQuizSystem\\OnlineQuizSystem.BLL\\Models\\User.cs",
               "RelativeDocumentMoniker": "OnlineQuizSystem\\OnlineQuizSystem.BLL\\Models\\User.cs",
-              "ToolTip": "D:\\123\\OnlineQuizSystem\\OnlineQuizSystem\\OnlineQuizSystem.BLL\\Models\\User.cs",
+              "ToolTip": "D:\\OnlineQuizSystem\\OnlineQuizSystem\\OnlineQuizSystem.BLL\\Models\\User.cs",
               "RelativeToolTip": "OnlineQuizSystem\\OnlineQuizSystem.BLL\\Models\\User.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -235,11 +247,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 14,
               "Title": "DBHelper.cs",
-              "DocumentMoniker": "D:\\123\\OnlineQuizSystem\\OnlineQuizSystem\\OnlineQuizSystem.DAL\\DBHelper.cs",
+              "DocumentMoniker": "D:\\OnlineQuizSystem\\OnlineQuizSystem\\OnlineQuizSystem.DAL\\DBHelper.cs",
               "RelativeDocumentMoniker": "OnlineQuizSystem\\OnlineQuizSystem.DAL\\DBHelper.cs",
-              "ToolTip": "D:\\123\\OnlineQuizSystem\\OnlineQuizSystem\\OnlineQuizSystem.DAL\\DBHelper.cs",
+              "ToolTip": "D:\\OnlineQuizSystem\\OnlineQuizSystem\\OnlineQuizSystem.DAL\\DBHelper.cs",
               "RelativeToolTip": "OnlineQuizSystem\\OnlineQuizSystem.DAL\\DBHelper.cs",
               "ViewState": "AgIAAAgAAAAAAAAAAAAcwCAAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -248,15 +260,14 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "Database.sql ",
+              "DocumentIndex": 15,
+              "Title": "Database.sql",
               "DocumentMoniker": "D:\\123\\OnlineQuizSystem\\OnlineQuizSystem\\OnlineQuizSystem.Database\\Scripts\\Database.sql",
-              "RelativeDocumentMoniker": "OnlineQuizSystem\\OnlineQuizSystem.Database\\Scripts\\Database.sql",
+              "RelativeDocumentMoniker": "..\\123\\OnlineQuizSystem\\OnlineQuizSystem\\OnlineQuizSystem.Database\\Scripts\\Database.sql",
               "ToolTip": "D:\\123\\OnlineQuizSystem\\OnlineQuizSystem\\OnlineQuizSystem.Database\\Scripts\\Database.sql",
-              "RelativeToolTip": "OnlineQuizSystem\\OnlineQuizSystem.Database\\Scripts\\Database.sql",
+              "RelativeToolTip": "..\\123\\OnlineQuizSystem\\OnlineQuizSystem\\OnlineQuizSystem.Database\\Scripts\\Database.sql",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2026-05-08T05:25:41.624Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-05-08T05:25:41.624Z"
             }
           ]
         }

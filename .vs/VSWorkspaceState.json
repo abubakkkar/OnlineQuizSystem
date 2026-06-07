@@ -1,0 +1,12 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\OnlineQuizSystem",
+    "\\OnlineQuizSystem\\OnlineQuizSystem.DAL",
+    "\\OnlineQuizSystem\\OnlineQuizSystem.DAL\\Repositories",
+    "\\OnlineQuizSystem\\OnlineQuizSystem.Database",
+    "\\OnlineQuizSystem\\OnlineQuizSystem.Database\\Scripts"
+  ],
+  "SelectedNode": "\\OnlineQuizSystem\\OnlineQuizSystem.Database\\Scripts\\functions.sql",
+  "PreviewInSolutionExplorer": false
+}
