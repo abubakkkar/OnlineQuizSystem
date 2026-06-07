@@ -1,127 +1,3 @@
-USE OnlineQuizDB;
-GO
-
--- Function: convert raw score into a percentage safely.
-CREATE FUNCTION dbo.fn_GetSessionPercent(
-    @Score INT,
-    @TotalQuestions INT
-)
-RETURNS DECIMAL(5,2)
-AS
-BEGIN
-    DECLARE @Percent DECIMAL(5,2);
-    IF @TotalQuestions = 0
-        SET @Percent = 0.00;
-    ELSE
-        SET @Percent = ROUND((CAST(@Score AS DECIMAL(10,2)) / @TotalQuestions) * 100.0, 2);
-
-    RETURN @Percent;
-END;
-GO
-
--- Function: answer correctness helper.
-CREATE FUNCTION dbo.fn_IsAnswerCorrect(
-    @QuestionID INT,
-    @SelectedAnswer CHAR(1)
-)
-RETURNS BIT
-AS
-BEGIN
-    DECLARE @CorrectOption CHAR(1);
-
-    SELECT @CorrectOption = CorrectOption
-    FROM Questions
-    WHERE QuestionID = @QuestionID;
-
-    IF @CorrectOption IS NULL
-        RETURN 0; -- unknown question means not correct
-
-    RETURN CASE WHEN @SelectedAnswer = @CorrectOption THEN 1 ELSE 0 END;
-END;
-GO
-
--- View: session summary by user. Shows the quiz score and easy-to-read percentage.
-CREATE VIEW dbo.vw_UserSessionSummary
-AS
-SELECT
-    qs.SessionID,
-    u.UserID,
-    u.Name AS UserName,
-    qs.Score,
-    qs.TotalQuestions,
-    dbo.fn_GetSessionPercent(qs.Score, qs.TotalQuestions) AS ScorePercent,
-    qs.StartTime,
-    qs.EndTime,
-    qs.IsSubmitted
-FROM QuizSessions qs
-INNER JOIN Users u
-    ON qs.UserID = u.UserID;
-GO
-
--- View: section enrollment details. Shows how many students are enrolled in each section.
-CREATE VIEW dbo.vw_SectionEnrollmentDetails
-AS
-SELECT
-    s.SectionID,
-    s.SectionName,
-    t.Name AS TeacherName,
-    COUNT(us.UserSectionID) AS EnrolledUserCount
-FROM Sections s
-INNER JOIN Teachers t
-    ON s.TeacherID = t.TeacherID
-LEFT JOIN UserSections us
-    ON s.SectionID = us.SectionID
-GROUP BY
-    s.SectionID,
-    s.SectionName,
-    t.Name AS TeacherName
-FROM Sections s
-INNER JOIN Teachers t
-    ON s.TeacherID = t.TeacherID
-LEFT JOIN UserSections us
-    ON s.SectionID = us.SectionID
-GROUP BY
-    s.SectionID,
-    s.SectionName,
-    t.Name;
-GO
-
--- Procedure to get student information.
-CREATE PROCEDURE dbo.sp_GetStudentInfo
-    @UserID INT
-AS
-BEGIN
-    SET NOCOUNT ON;
-    SELECT *
-    FROM Users 
-    WHERE UserID = @UserID;
-END;
-GO
-
--- Trigger: automatically update session score and question count after results are inserted.
-CREATE TRIGGER dbo.trg_UpdateSessionTotalsOnResultInsert
-ON dbo.Results
-AFTER INSERT
-AS
-BEGIN
-    SET NOCOUNT ON;
-
-    UPDATE qs
-    SET
-        qs.TotalQuestions = qs.TotalQuestions + i.InsertedCount,
-        qs.Score = qs.Score + i.CorrectCount
-    FROM QuizSessions qs
-    INNER JOIN (
-        SELECT
-            SessionID,
-            COUNT(*) AS InsertedCount,
-            SUM(CAST(IsCorrect AS INT)) AS CorrectCount
-        FROM inserted
-        GROUP BY SessionID
-    ) AS i
-        ON qs.SessionID = i.SessionID;
-END;
-GO
 
 -- Automation: seed sample data if the tables are empty.
 CREATE PROCEDURE dbo.sp_SeedSampleData
@@ -192,61 +68,69 @@ BEGIN
 END;
 GO
 
-/*
-  Example calls below show how each object works.
-*/
-
-EXEC dbo.sp_SeedSampleData;
-GO
-
--- Example: record an answer for a valid existing session and question.
-
-
--- Example: query the session summary view.
-SELECT *
-FROM dbo.vw_UserSessionSummary;
-GO
-
--- Example: query the section enrollment detail view.
-SELECT *
-FROM dbo.vw_SectionEnrollmentDetails;
-GO
-
--- Example: query the raw Results table for the inserted answer.
-SELECT *
-FROM dbo.Results
-WHERE SessionID = 1;
-GO
-
--- Example: call the percentage function directly.
-SELECT dbo.fn_GetSessionPercent(1, 1) AS ExampleScorePercent;
-GO
-
--- Example: check that the trigger updated the session totals.
-SELECT *
-FROM QuizSessions
-WHERE SessionID = 1;
-GO
-
--- Example: verify a single function call for answer correctness.
-SELECT dbo.fn_IsAnswerCorrect(1, 'B') AS IsCorrectAnswer;
-GO
-DECLARE @SampleSessionID INT;
-DECLARE @SampleUserID INT;
-DECLARE @SampleQuestionID INT;
-
-SELECT TOP 1 @SampleSessionID = SessionID, @SampleUserID = UserID
-FROM QuizSessions;
-
-SELECT TOP 1 @SampleQuestionID = QuestionID
-FROM Questions;
-
-IF @SampleSessionID IS NOT NULL AND @SampleUserID IS NOT NULL AND @SampleQuestionID IS NOT NULL
+-- Procedure: run simple trigger validation tests for dbo.trg_ValidateCorrectOption
+CREATE PROCEDURE dbo.sp_RunTriggerValidationTests
+AS
 BEGIN
-    EXEC dbo.sp_RecordQuizAnswer
-        @SessionID = @SampleSessionID,
-        @UserID = @SampleUserID,
-        @QuestionID = @SampleQuestionID,
-        @SelectedAnswer = 'B';
+    SET NOCOUNT ON;
+
+    DECLARE @Results TABLE (
+        TestName NVARCHAR(100),
+        Success BIT,
+        Message NVARCHAR(4000),
+        CreatedQuestionID INT
+    );
+
+    -- Test 1: invalid insert (CorrectOption not in A-D) -> should error
+    BEGIN TRY
+        INSERT INTO Questions (QuestionText, OptionA, OptionB, OptionC, OptionD, CorrectOption, DifficultyLevel, TeacherID, SectionID)
+        VALUES ('_TRIGGER_TEST_INVALID', 'A','B','C','D', 'X', 1, (SELECT TOP 1 TeacherID FROM Teachers), (SELECT TOP 1 SectionID FROM Sections));
+
+        -- If insert succeeded, record failure and remove row
+        INSERT INTO @Results VALUES ('Invalid Insert', 0, 'Expected failure but insert succeeded', NULL);
+        DELETE FROM Questions WHERE QuestionText = '_TRIGGER_TEST_INVALID';
+    END TRY
+    BEGIN CATCH
+        INSERT INTO @Results (TestName, Success, Message, CreatedQuestionID)
+        VALUES ('Invalid Insert', 1, ERROR_MESSAGE(), NULL);
+    END CATCH;
+
+    -- Test 2: valid insert (should succeed)
+    DECLARE @NewID INT = NULL;
+    BEGIN TRY
+        INSERT INTO Questions (QuestionText, OptionA, OptionB, OptionC, OptionD, CorrectOption, DifficultyLevel, TeacherID, SectionID)
+        VALUES ('_TRIGGER_TEST_VALID', 'A','B','C','D', 'A', 1, (SELECT TOP 1 TeacherID FROM Teachers), (SELECT TOP 1 SectionID FROM Sections));
+        SET @NewID = CAST(SCOPE_IDENTITY() AS INT);
+        INSERT INTO @Results VALUES ('Valid Insert', 1, 'Inserted successfully', @NewID);
+    END TRY
+    BEGIN CATCH
+        INSERT INTO @Results VALUES ('Valid Insert', 0, ERROR_MESSAGE(), NULL);
+    END CATCH;
+
+    -- Test 3: update to invalid value (should error)
+    BEGIN TRY
+        IF @NewID IS NOT NULL
+        BEGIN
+            UPDATE Questions SET CorrectOption = 'Z' WHERE QuestionID = @NewID;
+            INSERT INTO @Results VALUES ('Invalid Update', 0, 'Expected failure but update succeeded', @NewID);
+            -- attempt to restore
+            UPDATE Questions SET CorrectOption = 'A' WHERE QuestionID = @NewID;
+        END
+        ELSE
+        BEGIN
+            INSERT INTO @Results VALUES ('Invalid Update', 0, 'Skipped because valid insert failed', NULL);
+        END
+    END TRY
+    BEGIN CATCH
+        INSERT INTO @Results VALUES ('Invalid Update', 1, ERROR_MESSAGE(), @NewID);
+    END CATCH;
+
+    -- Cleanup created test row
+    IF @NewID IS NOT NULL
+        DELETE FROM Questions WHERE QuestionID = @NewID;
+
+    -- Return results
+    SELECT TestName, Success, Message, CreatedQuestionID FROM @Results;
 END;
 GO
+
