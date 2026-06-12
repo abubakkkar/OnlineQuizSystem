@@ -101,16 +101,3 @@ FOREIGN KEY(QuestionID) REFERENCES Questions(QuestionID),
 FOREIGN KEY(SessionID) REFERENCES QuizSessions(SessionID)
 );
 
-select * from Teachers;
-select * from Users;
-select * from Admins;
-select * from Questions;
-select * from Sections;
-select * from UserSections;
-select * from QuizSessions;
-select * from UserTeachers;
-<<<<<<< HEAD
-select * from Results;
-=======
-select * from Results;
->>>>>>> 78deed66f75311827c273f6755f86c2672c43947

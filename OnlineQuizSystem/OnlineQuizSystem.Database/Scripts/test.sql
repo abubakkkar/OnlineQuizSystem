@@ -87,3 +87,33 @@ GO
 -- Run the automated trigger tests (returns results)
 EXEC dbo.sp_RunTriggerValidationTests;
 GO
+--index verification query: list all indexes on user tables with details about key and included columns
+SELECT
+  s.name AS SchemaName,
+  t.name AS TableName,
+  i.name AS IndexName,
+  i.type_desc,
+  i.is_unique,
+  i.is_primary_key,
+  STUFF((
+    SELECT ', ' + c.name
+    FROM sys.index_columns ic
+    JOIN sys.columns c ON ic.object_id = c.object_id AND ic.column_id = c.column_id
+    WHERE ic.object_id = i.object_id AND ic.index_id = i.index_id AND ic.is_included_column = 0
+    ORDER BY ic.key_ordinal
+    FOR XML PATH(''), TYPE).value('.', 'nvarchar(max)'),1,2,'') AS KeyColumns,
+  STUFF((
+    SELECT ', ' + c.name
+    FROM sys.index_columns ic
+    JOIN sys.columns c ON ic.object_id = c.object_id AND ic.column_id = c.column_id
+    WHERE ic.object_id = i.object_id AND ic.index_id = i.index_id AND ic.is_included_column = 1
+    FOR XML PATH(''), TYPE).value('.', 'nvarchar(max)'),1,2,'') AS IncludedColumns,
+  i.fill_factor
+FROM sys.indexes i
+JOIN sys.tables t ON i.object_id = t.object_id
+JOIN sys.schemas s ON t.schema_id = s.schema_id
+WHERE t.is_ms_shipped = 0
+ORDER BY s.name, t.name, i.name;
+ --trigger 
+  insert into Questions (QuestionText, OptionA, OptionB, OptionC, OptionD, CorrectOption, DifficultyLevel, TeacherID)
+ values ('Sample Question', '', '', '', '','',1,1);
